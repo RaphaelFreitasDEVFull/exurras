@@ -1,0 +1,185 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "./genereted"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+//////////////////////////
+// ENUMS
+//////////////////////////
+
+enum Role {
+  ADMIN
+  OGA
+  SAMBA
+  MEMBER
+}
+
+enum Linha {
+  OGUM
+  OXOSSI
+  XANGO
+  OXALA
+  IEMANJA
+  OXUM
+  IANSA
+  NANA
+  OMOLU
+  PRETO_VELHO
+  ERE
+  EXU_MIRIM
+  BOIADEIRO
+  CABOCLA
+  MARINHEIRO
+  CIGANO
+  CIGANA
+  BAIANO
+  POMBA_GIRA
+  EXU
+  OUTROS
+}
+
+enum PointType {
+  ABERTURA
+  CHAMADA
+  FIRMA
+  DEFUMACAO
+  ENCERRAMENTO
+  CURA
+  PROTECAO
+  OUTRO
+}
+
+//////////////////////////
+// USER
+//////////////////////////
+
+model User {
+  id        String   @id @default(cuid())
+  name      String?
+  username  String   @unique
+  password  String
+  role      Role     @default(MEMBER)
+  createdAt DateTime @default(now())
+
+  // Relacionamentos
+  pointsCreated Point[]
+  sectionAudios SectionAudio[]
+  favorites     Favorite[]
+  approvals     Point[]        @relation("ApprovedBy")
+
+  @@index([username])
+}
+
+//////////////////////////
+// POINT (PONTO)
+//////////////////////////
+
+model Point {
+  id          String  @id @default(cuid())
+  title       String
+  slug        String  @unique
+  description String?
+
+  linha Linha
+  type  PointType @default(OUTRO)
+
+  createdAt DateTime @default(now())
+
+  // Criador
+  createdById String
+  createdBy   User   @relation(fields: [createdById], references: [id])
+
+  // Moderação
+  approved     Boolean   @default(false)
+  approvedAt   DateTime?
+  approvedById String?
+  approvedBy   User?     @relation("ApprovedBy", fields: [approvedById], references: [id])
+
+  // Mídia
+  audioUrl   String?
+  youtubeUrl String?
+
+  // Relacionamentos
+  sections  Section[]
+  favorites Favorite[]
+
+  @@index([title])
+  @@index([linha])
+  @@index([type])
+  @@index([approved])
+}
+
+//////////////////////////
+// SECTION (ESTROFE)
+//////////////////////////
+
+model Section {
+  id    String @id @default(cuid())
+  order Int
+  text  String
+
+  pointId String
+  point   Point  @relation(fields: [pointId], references: [id], onDelete: Cascade)
+
+  beats  Beat[]
+  audios SectionAudio[]
+
+  @@unique([pointId, order])
+  @@index([pointId])
+}
+
+//////////////////////////
+// BEAT (BATIDA)
+//////////////////////////
+
+model Beat {
+  id      String @id @default(cuid())
+  pattern String
+  order   Int
+
+  sectionId String
+  section   Section @relation(fields: [sectionId], references: [id], onDelete: Cascade)
+
+  @@unique([sectionId, order])
+}
+
+//////////////////////////
+// SECTION AUDIO
+//////////////////////////
+
+model SectionAudio {
+  id        String   @id @default(cuid())
+  url       String
+  createdAt DateTime @default(now())
+
+  // Moderação
+  approved Boolean @default(false)
+
+  sectionId String
+  section   Section @relation(fields: [sectionId], references: [id], onDelete: Cascade)
+
+  uploadedById String
+  uploadedBy   User   @relation(fields: [uploadedById], references: [id])
+
+  @@index([sectionId])
+}
+
+//////////////////////////
+// FAVORITES (LIKES)
+//////////////////////////
+
+model Favorite {
+  userId    String
+  pointId   String
+  createdAt DateTime @default(now())
+
+  user  User  @relation(fields: [userId], references: [id], onDelete: Cascade)
+  point Point @relation(fields: [pointId], references: [id], onDelete: Cascade)
+
+  @@id([userId, pointId])
+  @@index([pointId])
+}
