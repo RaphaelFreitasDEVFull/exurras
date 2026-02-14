@@ -36,7 +36,7 @@ const NewUserForm = () => {
           <SelectContent>
             <SelectGroup>
               <SelectItem value="ADMIN">Administrador</SelectItem>
-              <SelectItem value="OGÃ">Ogã</SelectItem>
+              <SelectItem value="OGA">Ogã</SelectItem>
               <SelectItem value="SAMBA">Samba</SelectItem>
               <SelectItem value="MEMBER">Engoma</SelectItem>
             </SelectGroup>

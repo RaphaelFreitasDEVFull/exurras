@@ -2,7 +2,7 @@ import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import { prisma } from "./prisma";
 import { compareSync } from "bcrypt-ts";
-import { Role } from "../../prisma/genereted/client";
+import { Role } from "@/genereted";
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [

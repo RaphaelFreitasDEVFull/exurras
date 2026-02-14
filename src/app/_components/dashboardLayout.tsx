@@ -1,4 +1,5 @@
-import { Role } from "../../../prisma/genereted/client";
+import { SessionProvider } from "next-auth/react";
+import { Role } from "@/genereted";
 import { SidebarNav } from "./sidebarNav";
 
 interface Props {
@@ -9,9 +10,16 @@ interface Props {
 
 export function DashboardLayout({ children, username, role }: Props) {
   return (
-    <div className="flex min-h-screen">
-      <SidebarNav username={username} role={role} />
-      <main className="flex-1 overflow-y-auto">{children}</main>
-    </div>
+    <SessionProvider>
+      <div className="flex h-screen overflow-hidden">
+        {/* Sidebar fixo */}
+        <div className="h-full">
+          <SidebarNav username={username} role={role} />
+        </div>
+
+        {/* Só o main rola */}
+        <main className="flex-1 overflow-y-auto">{children}</main>
+      </div>
+    </SessionProvider>
   );
 }

@@ -3,8 +3,8 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
-import { Music, Plus, Home, User2, LogOut } from "lucide-react";
-import { Role } from "../../../prisma/genereted/client";
+import { Music, Plus, Home, User2, LogOut, Drum } from "lucide-react";
+import { Role } from "@/genereted";
 import { Button } from "@/components/ui/button";
 import { logout } from "./logout";
 
@@ -34,6 +34,12 @@ const navItems = [
     icon: User2,
     isAdmin: true,
   },
+  {
+    title: "Toques",
+    href: "/toques",
+    icon: Drum,
+    isAdmin: false,
+  },
 ];
 
 interface Props {
@@ -49,7 +55,7 @@ export function SidebarNav({ username, role }: Props) {
   }
 
   return (
-    <div className="flex h-screen w-64 flex-col border-r border-sidebar-border bg-sidebar">
+    <div className="flex  h-screen w-64 flex-col border-r border-sidebar-border bg-sidebar">
       <div className="flex h-16 items-center gap-3 border-b border-sidebar-border px-6">
         <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary">
           <Music className="h-5 w-5 text-primary-foreground" />

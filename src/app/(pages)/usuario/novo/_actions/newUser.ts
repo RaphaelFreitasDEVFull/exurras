@@ -2,7 +2,7 @@
 
 import { prisma } from "@/lib/prisma";
 import { hashSync } from "bcrypt-ts";
-import { Role } from "../../../../../../prisma/genereted";
+import { Role } from "@/genereted";
 import { redirect } from "next/navigation";
 
 export async function newUser(_: unknown, formData: FormData) {

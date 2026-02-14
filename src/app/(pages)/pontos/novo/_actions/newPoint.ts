@@ -1,7 +1,7 @@
 "use server";
 
 import { prisma } from "@/lib/prisma";
-import { Linha } from "../../../../../../prisma/genereted";
+import { Linha } from "@/genereted";
 import { slugify } from "@/utils/slugify";
 import { auth } from "@/lib/auth";
 import { redirect } from "next/navigation";

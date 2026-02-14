@@ -1,6 +1,6 @@
 generator client {
   provider = "prisma-client-js"
-  output   = "./genereted"
+  output   = "../src/genereted"
 }
 
 datasource db {
@@ -67,9 +67,9 @@ model User {
 
   // Relacionamentos
   pointsCreated Point[]
-  sectionAudios SectionAudio[]
-  favorites     Favorite[]
-  approvals     Point[]        @relation("ApprovedBy")
+
+  favorites Favorite[]
+  approvals Point[]    @relation("ApprovedBy")
 
   @@index([username])
 }
@@ -140,47 +140,19 @@ model Section {
   pointId String
   point   Point  @relation(fields: [pointId], references: [id], onDelete: Cascade)
 
-  beats  Beat[]
-  audios SectionAudio[]
+  toqueId String?
+  toque   Toque?  @relation(fields: [toqueId], references: [id], onDelete: Cascade)
 
   @@unique([pointId, order])
   @@index([pointId])
 }
 
-//////////////////////////
-// BEAT (BATIDA)
-//////////////////////////
-
-model Beat {
-  id      String @id @default(cuid())
-  pattern String
-  order   Int
-
-  sectionId String
-  section   Section @relation(fields: [sectionId], references: [id], onDelete: Cascade)
-
-  @@unique([sectionId, order])
-}
-
-//////////////////////////
-// SECTION AUDIO
-//////////////////////////
-
-model SectionAudio {
-  id        String   @id @default(cuid())
-  url       String
-  createdAt DateTime @default(now())
-
-  // Moderação
-  approved Boolean @default(false)
-
-  sectionId String
-  section   Section @relation(fields: [sectionId], references: [id], onDelete: Cascade)
-
-  uploadedById String
-  uploadedBy   User   @relation(fields: [uploadedById], references: [id])
-
-  @@index([sectionId])
+model Toque {
+  id        String    @id @default(cuid())
+  nome      String
+  audio     String
+  createdAt DateTime  @default(now())
+  sections  Section[]
 }
 
 //////////////////////////

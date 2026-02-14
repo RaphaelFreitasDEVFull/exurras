@@ -35,15 +35,10 @@ export type Lines = $Result.DefaultSelection<Prisma.$LinesPayload>
  */
 export type Section = $Result.DefaultSelection<Prisma.$SectionPayload>
 /**
- * Model Beat
+ * Model Toque
  * 
  */
-export type Beat = $Result.DefaultSelection<Prisma.$BeatPayload>
-/**
- * Model SectionAudio
- * 
- */
-export type SectionAudio = $Result.DefaultSelection<Prisma.$SectionAudioPayload>
+export type Toque = $Result.DefaultSelection<Prisma.$ToquePayload>
 /**
  * Model Favorite
  * 
@@ -276,24 +271,14 @@ export class PrismaClient<
   get section(): Prisma.SectionDelegate<ExtArgs, ClientOptions>;
 
   /**
-   * `prisma.beat`: Exposes CRUD operations for the **Beat** model.
+   * `prisma.toque`: Exposes CRUD operations for the **Toque** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more Beats
-    * const beats = await prisma.beat.findMany()
+    * // Fetch zero or more Toques
+    * const toques = await prisma.toque.findMany()
     * ```
     */
-  get beat(): Prisma.BeatDelegate<ExtArgs, ClientOptions>;
-
-  /**
-   * `prisma.sectionAudio`: Exposes CRUD operations for the **SectionAudio** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more SectionAudios
-    * const sectionAudios = await prisma.sectionAudio.findMany()
-    * ```
-    */
-  get sectionAudio(): Prisma.SectionAudioDelegate<ExtArgs, ClientOptions>;
+  get toque(): Prisma.ToqueDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.favorite`: Exposes CRUD operations for the **Favorite** model.
@@ -742,8 +727,7 @@ export namespace Prisma {
     Point: 'Point',
     Lines: 'Lines',
     Section: 'Section',
-    Beat: 'Beat',
-    SectionAudio: 'SectionAudio',
+    Toque: 'Toque',
     Favorite: 'Favorite'
   };
 
@@ -760,7 +744,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "point" | "lines" | "section" | "beat" | "sectionAudio" | "favorite"
+      modelProps: "user" | "point" | "lines" | "section" | "toque" | "favorite"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1060,151 +1044,77 @@ export namespace Prisma {
           }
         }
       }
-      Beat: {
-        payload: Prisma.$BeatPayload<ExtArgs>
-        fields: Prisma.BeatFieldRefs
+      Toque: {
+        payload: Prisma.$ToquePayload<ExtArgs>
+        fields: Prisma.ToqueFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.BeatFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$BeatPayload> | null
+            args: Prisma.ToqueFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ToquePayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.BeatFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$BeatPayload>
+            args: Prisma.ToqueFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ToquePayload>
           }
           findFirst: {
-            args: Prisma.BeatFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$BeatPayload> | null
+            args: Prisma.ToqueFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ToquePayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.BeatFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$BeatPayload>
+            args: Prisma.ToqueFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ToquePayload>
           }
           findMany: {
-            args: Prisma.BeatFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$BeatPayload>[]
+            args: Prisma.ToqueFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ToquePayload>[]
           }
           create: {
-            args: Prisma.BeatCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$BeatPayload>
+            args: Prisma.ToqueCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ToquePayload>
           }
           createMany: {
-            args: Prisma.BeatCreateManyArgs<ExtArgs>
+            args: Prisma.ToqueCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
           createManyAndReturn: {
-            args: Prisma.BeatCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$BeatPayload>[]
+            args: Prisma.ToqueCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ToquePayload>[]
           }
           delete: {
-            args: Prisma.BeatDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$BeatPayload>
+            args: Prisma.ToqueDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ToquePayload>
           }
           update: {
-            args: Prisma.BeatUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$BeatPayload>
+            args: Prisma.ToqueUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ToquePayload>
           }
           deleteMany: {
-            args: Prisma.BeatDeleteManyArgs<ExtArgs>
+            args: Prisma.ToqueDeleteManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateMany: {
-            args: Prisma.BeatUpdateManyArgs<ExtArgs>
+            args: Prisma.ToqueUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateManyAndReturn: {
-            args: Prisma.BeatUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$BeatPayload>[]
+            args: Prisma.ToqueUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ToquePayload>[]
           }
           upsert: {
-            args: Prisma.BeatUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$BeatPayload>
+            args: Prisma.ToqueUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ToquePayload>
           }
           aggregate: {
-            args: Prisma.BeatAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateBeat>
+            args: Prisma.ToqueAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateToque>
           }
           groupBy: {
-            args: Prisma.BeatGroupByArgs<ExtArgs>
-            result: $Utils.Optional<BeatGroupByOutputType>[]
+            args: Prisma.ToqueGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ToqueGroupByOutputType>[]
           }
           count: {
-            args: Prisma.BeatCountArgs<ExtArgs>
-            result: $Utils.Optional<BeatCountAggregateOutputType> | number
-          }
-        }
-      }
-      SectionAudio: {
-        payload: Prisma.$SectionAudioPayload<ExtArgs>
-        fields: Prisma.SectionAudioFieldRefs
-        operations: {
-          findUnique: {
-            args: Prisma.SectionAudioFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$SectionAudioPayload> | null
-          }
-          findUniqueOrThrow: {
-            args: Prisma.SectionAudioFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$SectionAudioPayload>
-          }
-          findFirst: {
-            args: Prisma.SectionAudioFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$SectionAudioPayload> | null
-          }
-          findFirstOrThrow: {
-            args: Prisma.SectionAudioFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$SectionAudioPayload>
-          }
-          findMany: {
-            args: Prisma.SectionAudioFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$SectionAudioPayload>[]
-          }
-          create: {
-            args: Prisma.SectionAudioCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$SectionAudioPayload>
-          }
-          createMany: {
-            args: Prisma.SectionAudioCreateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          createManyAndReturn: {
-            args: Prisma.SectionAudioCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$SectionAudioPayload>[]
-          }
-          delete: {
-            args: Prisma.SectionAudioDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$SectionAudioPayload>
-          }
-          update: {
-            args: Prisma.SectionAudioUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$SectionAudioPayload>
-          }
-          deleteMany: {
-            args: Prisma.SectionAudioDeleteManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateMany: {
-            args: Prisma.SectionAudioUpdateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateManyAndReturn: {
-            args: Prisma.SectionAudioUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$SectionAudioPayload>[]
-          }
-          upsert: {
-            args: Prisma.SectionAudioUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$SectionAudioPayload>
-          }
-          aggregate: {
-            args: Prisma.SectionAudioAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateSectionAudio>
-          }
-          groupBy: {
-            args: Prisma.SectionAudioGroupByArgs<ExtArgs>
-            result: $Utils.Optional<SectionAudioGroupByOutputType>[]
-          }
-          count: {
-            args: Prisma.SectionAudioCountArgs<ExtArgs>
-            result: $Utils.Optional<SectionAudioCountAggregateOutputType> | number
+            args: Prisma.ToqueCountArgs<ExtArgs>
+            result: $Utils.Optional<ToqueCountAggregateOutputType> | number
           }
         }
       }
@@ -1394,8 +1304,7 @@ export namespace Prisma {
     point?: PointOmit
     lines?: LinesOmit
     section?: SectionOmit
-    beat?: BeatOmit
-    sectionAudio?: SectionAudioOmit
+    toque?: ToqueOmit
     favorite?: FavoriteOmit
   }
 
@@ -1478,14 +1387,12 @@ export namespace Prisma {
 
   export type UserCountOutputType = {
     pointsCreated: number
-    sectionAudios: number
     favorites: number
     approvals: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     pointsCreated?: boolean | UserCountOutputTypeCountPointsCreatedArgs
-    sectionAudios?: boolean | UserCountOutputTypeCountSectionAudiosArgs
     favorites?: boolean | UserCountOutputTypeCountFavoritesArgs
     approvals?: boolean | UserCountOutputTypeCountApprovalsArgs
   }
@@ -1506,13 +1413,6 @@ export namespace Prisma {
    */
   export type UserCountOutputTypeCountPointsCreatedArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: PointWhereInput
-  }
-
-  /**
-   * UserCountOutputType without action
-   */
-  export type UserCountOutputTypeCountSectionAudiosArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: SectionAudioWhereInput
   }
 
   /**
@@ -1602,42 +1502,33 @@ export namespace Prisma {
 
 
   /**
-   * Count Type SectionCountOutputType
+   * Count Type ToqueCountOutputType
    */
 
-  export type SectionCountOutputType = {
-    beats: number
-    audios: number
+  export type ToqueCountOutputType = {
+    sections: number
   }
 
-  export type SectionCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    beats?: boolean | SectionCountOutputTypeCountBeatsArgs
-    audios?: boolean | SectionCountOutputTypeCountAudiosArgs
+  export type ToqueCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    sections?: boolean | ToqueCountOutputTypeCountSectionsArgs
   }
 
   // Custom InputTypes
   /**
-   * SectionCountOutputType without action
+   * ToqueCountOutputType without action
    */
-  export type SectionCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ToqueCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the SectionCountOutputType
+     * Select specific fields to fetch from the ToqueCountOutputType
      */
-    select?: SectionCountOutputTypeSelect<ExtArgs> | null
+    select?: ToqueCountOutputTypeSelect<ExtArgs> | null
   }
 
   /**
-   * SectionCountOutputType without action
+   * ToqueCountOutputType without action
    */
-  export type SectionCountOutputTypeCountBeatsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: BeatWhereInput
-  }
-
-  /**
-   * SectionCountOutputType without action
-   */
-  export type SectionCountOutputTypeCountAudiosArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: SectionAudioWhereInput
+  export type ToqueCountOutputTypeCountSectionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: SectionWhereInput
   }
 
 
@@ -1818,7 +1709,6 @@ export namespace Prisma {
     role?: boolean
     createdAt?: boolean
     pointsCreated?: boolean | User$pointsCreatedArgs<ExtArgs>
-    sectionAudios?: boolean | User$sectionAudiosArgs<ExtArgs>
     favorites?: boolean | User$favoritesArgs<ExtArgs>
     approvals?: boolean | User$approvalsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
@@ -1854,7 +1744,6 @@ export namespace Prisma {
   export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "username" | "password" | "role" | "createdAt", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     pointsCreated?: boolean | User$pointsCreatedArgs<ExtArgs>
-    sectionAudios?: boolean | User$sectionAudiosArgs<ExtArgs>
     favorites?: boolean | User$favoritesArgs<ExtArgs>
     approvals?: boolean | User$approvalsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
@@ -1866,7 +1755,6 @@ export namespace Prisma {
     name: "User"
     objects: {
       pointsCreated: Prisma.$PointPayload<ExtArgs>[]
-      sectionAudios: Prisma.$SectionAudioPayload<ExtArgs>[]
       favorites: Prisma.$FavoritePayload<ExtArgs>[]
       approvals: Prisma.$PointPayload<ExtArgs>[]
     }
@@ -2272,7 +2160,6 @@ export namespace Prisma {
   export interface Prisma__UserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     pointsCreated<T extends User$pointsCreatedArgs<ExtArgs> = {}>(args?: Subset<T, User$pointsCreatedArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PointPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    sectionAudios<T extends User$sectionAudiosArgs<ExtArgs> = {}>(args?: Subset<T, User$sectionAudiosArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SectionAudioPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     favorites<T extends User$favoritesArgs<ExtArgs> = {}>(args?: Subset<T, User$favoritesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FavoritePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     approvals<T extends User$approvalsArgs<ExtArgs> = {}>(args?: Subset<T, User$approvalsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PointPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
@@ -2719,30 +2606,6 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: PointScalarFieldEnum | PointScalarFieldEnum[]
-  }
-
-  /**
-   * User.sectionAudios
-   */
-  export type User$sectionAudiosArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the SectionAudio
-     */
-    select?: SectionAudioSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the SectionAudio
-     */
-    omit?: SectionAudioOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: SectionAudioInclude<ExtArgs> | null
-    where?: SectionAudioWhereInput
-    orderBy?: SectionAudioOrderByWithRelationInput | SectionAudioOrderByWithRelationInput[]
-    cursor?: SectionAudioWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: SectionAudioScalarFieldEnum | SectionAudioScalarFieldEnum[]
   }
 
   /**
@@ -5175,6 +5038,7 @@ export namespace Prisma {
     order: number | null
     text: string | null
     pointId: string | null
+    toqueId: string | null
   }
 
   export type SectionMaxAggregateOutputType = {
@@ -5182,6 +5046,7 @@ export namespace Prisma {
     order: number | null
     text: string | null
     pointId: string | null
+    toqueId: string | null
   }
 
   export type SectionCountAggregateOutputType = {
@@ -5189,6 +5054,7 @@ export namespace Prisma {
     order: number
     text: number
     pointId: number
+    toqueId: number
     _all: number
   }
 
@@ -5206,6 +5072,7 @@ export namespace Prisma {
     order?: true
     text?: true
     pointId?: true
+    toqueId?: true
   }
 
   export type SectionMaxAggregateInputType = {
@@ -5213,6 +5080,7 @@ export namespace Prisma {
     order?: true
     text?: true
     pointId?: true
+    toqueId?: true
   }
 
   export type SectionCountAggregateInputType = {
@@ -5220,6 +5088,7 @@ export namespace Prisma {
     order?: true
     text?: true
     pointId?: true
+    toqueId?: true
     _all?: true
   }
 
@@ -5314,6 +5183,7 @@ export namespace Prisma {
     order: number
     text: string
     pointId: string
+    toqueId: string | null
     _count: SectionCountAggregateOutputType | null
     _avg: SectionAvgAggregateOutputType | null
     _sum: SectionSumAggregateOutputType | null
@@ -5340,10 +5210,9 @@ export namespace Prisma {
     order?: boolean
     text?: boolean
     pointId?: boolean
+    toqueId?: boolean
     point?: boolean | PointDefaultArgs<ExtArgs>
-    beats?: boolean | Section$beatsArgs<ExtArgs>
-    audios?: boolean | Section$audiosArgs<ExtArgs>
-    _count?: boolean | SectionCountOutputTypeDefaultArgs<ExtArgs>
+    toque?: boolean | Section$toqueArgs<ExtArgs>
   }, ExtArgs["result"]["section"]>
 
   export type SectionSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -5351,7 +5220,9 @@ export namespace Prisma {
     order?: boolean
     text?: boolean
     pointId?: boolean
+    toqueId?: boolean
     point?: boolean | PointDefaultArgs<ExtArgs>
+    toque?: boolean | Section$toqueArgs<ExtArgs>
   }, ExtArgs["result"]["section"]>
 
   export type SectionSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -5359,7 +5230,9 @@ export namespace Prisma {
     order?: boolean
     text?: boolean
     pointId?: boolean
+    toqueId?: boolean
     point?: boolean | PointDefaultArgs<ExtArgs>
+    toque?: boolean | Section$toqueArgs<ExtArgs>
   }, ExtArgs["result"]["section"]>
 
   export type SectionSelectScalar = {
@@ -5367,34 +5240,35 @@ export namespace Prisma {
     order?: boolean
     text?: boolean
     pointId?: boolean
+    toqueId?: boolean
   }
 
-  export type SectionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "order" | "text" | "pointId", ExtArgs["result"]["section"]>
+  export type SectionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "order" | "text" | "pointId" | "toqueId", ExtArgs["result"]["section"]>
   export type SectionInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     point?: boolean | PointDefaultArgs<ExtArgs>
-    beats?: boolean | Section$beatsArgs<ExtArgs>
-    audios?: boolean | Section$audiosArgs<ExtArgs>
-    _count?: boolean | SectionCountOutputTypeDefaultArgs<ExtArgs>
+    toque?: boolean | Section$toqueArgs<ExtArgs>
   }
   export type SectionIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     point?: boolean | PointDefaultArgs<ExtArgs>
+    toque?: boolean | Section$toqueArgs<ExtArgs>
   }
   export type SectionIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     point?: boolean | PointDefaultArgs<ExtArgs>
+    toque?: boolean | Section$toqueArgs<ExtArgs>
   }
 
   export type $SectionPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Section"
     objects: {
       point: Prisma.$PointPayload<ExtArgs>
-      beats: Prisma.$BeatPayload<ExtArgs>[]
-      audios: Prisma.$SectionAudioPayload<ExtArgs>[]
+      toque: Prisma.$ToquePayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       order: number
       text: string
       pointId: string
+      toqueId: string | null
     }, ExtArgs["result"]["section"]>
     composites: {}
   }
@@ -5790,8 +5664,7 @@ export namespace Prisma {
   export interface Prisma__SectionClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     point<T extends PointDefaultArgs<ExtArgs> = {}>(args?: Subset<T, PointDefaultArgs<ExtArgs>>): Prisma__PointClient<$Result.GetResult<Prisma.$PointPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    beats<T extends Section$beatsArgs<ExtArgs> = {}>(args?: Subset<T, Section$beatsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BeatPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    audios<T extends Section$audiosArgs<ExtArgs> = {}>(args?: Subset<T, Section$audiosArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SectionAudioPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    toque<T extends Section$toqueArgs<ExtArgs> = {}>(args?: Subset<T, Section$toqueArgs<ExtArgs>>): Prisma__ToqueClient<$Result.GetResult<Prisma.$ToquePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -5825,6 +5698,7 @@ export namespace Prisma {
     readonly order: FieldRef<"Section", 'Int'>
     readonly text: FieldRef<"Section", 'String'>
     readonly pointId: FieldRef<"Section", 'String'>
+    readonly toqueId: FieldRef<"Section", 'String'>
   }
     
 
@@ -6221,51 +6095,22 @@ export namespace Prisma {
   }
 
   /**
-   * Section.beats
+   * Section.toque
    */
-  export type Section$beatsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Section$toqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Beat
+     * Select specific fields to fetch from the Toque
      */
-    select?: BeatSelect<ExtArgs> | null
+    select?: ToqueSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Beat
+     * Omit specific fields from the Toque
      */
-    omit?: BeatOmit<ExtArgs> | null
+    omit?: ToqueOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: BeatInclude<ExtArgs> | null
-    where?: BeatWhereInput
-    orderBy?: BeatOrderByWithRelationInput | BeatOrderByWithRelationInput[]
-    cursor?: BeatWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: BeatScalarFieldEnum | BeatScalarFieldEnum[]
-  }
-
-  /**
-   * Section.audios
-   */
-  export type Section$audiosArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the SectionAudio
-     */
-    select?: SectionAudioSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the SectionAudio
-     */
-    omit?: SectionAudioOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: SectionAudioInclude<ExtArgs> | null
-    where?: SectionAudioWhereInput
-    orderBy?: SectionAudioOrderByWithRelationInput | SectionAudioOrderByWithRelationInput[]
-    cursor?: SectionAudioWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: SectionAudioScalarFieldEnum | SectionAudioScalarFieldEnum[]
+    include?: ToqueInclude<ExtArgs> | null
+    where?: ToqueWhereInput
   }
 
   /**
@@ -6288,1448 +6133,334 @@ export namespace Prisma {
 
 
   /**
-   * Model Beat
+   * Model Toque
    */
 
-  export type AggregateBeat = {
-    _count: BeatCountAggregateOutputType | null
-    _avg: BeatAvgAggregateOutputType | null
-    _sum: BeatSumAggregateOutputType | null
-    _min: BeatMinAggregateOutputType | null
-    _max: BeatMaxAggregateOutputType | null
+  export type AggregateToque = {
+    _count: ToqueCountAggregateOutputType | null
+    _min: ToqueMinAggregateOutputType | null
+    _max: ToqueMaxAggregateOutputType | null
   }
 
-  export type BeatAvgAggregateOutputType = {
-    order: number | null
-  }
-
-  export type BeatSumAggregateOutputType = {
-    order: number | null
-  }
-
-  export type BeatMinAggregateOutputType = {
+  export type ToqueMinAggregateOutputType = {
     id: string | null
-    pattern: string | null
-    order: number | null
-    sectionId: string | null
-  }
-
-  export type BeatMaxAggregateOutputType = {
-    id: string | null
-    pattern: string | null
-    order: number | null
-    sectionId: string | null
-  }
-
-  export type BeatCountAggregateOutputType = {
-    id: number
-    pattern: number
-    order: number
-    sectionId: number
-    _all: number
-  }
-
-
-  export type BeatAvgAggregateInputType = {
-    order?: true
-  }
-
-  export type BeatSumAggregateInputType = {
-    order?: true
-  }
-
-  export type BeatMinAggregateInputType = {
-    id?: true
-    pattern?: true
-    order?: true
-    sectionId?: true
-  }
-
-  export type BeatMaxAggregateInputType = {
-    id?: true
-    pattern?: true
-    order?: true
-    sectionId?: true
-  }
-
-  export type BeatCountAggregateInputType = {
-    id?: true
-    pattern?: true
-    order?: true
-    sectionId?: true
-    _all?: true
-  }
-
-  export type BeatAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which Beat to aggregate.
-     */
-    where?: BeatWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Beats to fetch.
-     */
-    orderBy?: BeatOrderByWithRelationInput | BeatOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: BeatWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Beats from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Beats.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned Beats
-    **/
-    _count?: true | BeatCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to average
-    **/
-    _avg?: BeatAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: BeatSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: BeatMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: BeatMaxAggregateInputType
-  }
-
-  export type GetBeatAggregateType<T extends BeatAggregateArgs> = {
-        [P in keyof T & keyof AggregateBeat]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateBeat[P]>
-      : GetScalarType<T[P], AggregateBeat[P]>
-  }
-
-
-
-
-  export type BeatGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: BeatWhereInput
-    orderBy?: BeatOrderByWithAggregationInput | BeatOrderByWithAggregationInput[]
-    by: BeatScalarFieldEnum[] | BeatScalarFieldEnum
-    having?: BeatScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: BeatCountAggregateInputType | true
-    _avg?: BeatAvgAggregateInputType
-    _sum?: BeatSumAggregateInputType
-    _min?: BeatMinAggregateInputType
-    _max?: BeatMaxAggregateInputType
-  }
-
-  export type BeatGroupByOutputType = {
-    id: string
-    pattern: string
-    order: number
-    sectionId: string
-    _count: BeatCountAggregateOutputType | null
-    _avg: BeatAvgAggregateOutputType | null
-    _sum: BeatSumAggregateOutputType | null
-    _min: BeatMinAggregateOutputType | null
-    _max: BeatMaxAggregateOutputType | null
-  }
-
-  type GetBeatGroupByPayload<T extends BeatGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<BeatGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof BeatGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], BeatGroupByOutputType[P]>
-            : GetScalarType<T[P], BeatGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type BeatSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    pattern?: boolean
-    order?: boolean
-    sectionId?: boolean
-    section?: boolean | SectionDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["beat"]>
-
-  export type BeatSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    pattern?: boolean
-    order?: boolean
-    sectionId?: boolean
-    section?: boolean | SectionDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["beat"]>
-
-  export type BeatSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    pattern?: boolean
-    order?: boolean
-    sectionId?: boolean
-    section?: boolean | SectionDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["beat"]>
-
-  export type BeatSelectScalar = {
-    id?: boolean
-    pattern?: boolean
-    order?: boolean
-    sectionId?: boolean
-  }
-
-  export type BeatOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "pattern" | "order" | "sectionId", ExtArgs["result"]["beat"]>
-  export type BeatInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    section?: boolean | SectionDefaultArgs<ExtArgs>
-  }
-  export type BeatIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    section?: boolean | SectionDefaultArgs<ExtArgs>
-  }
-  export type BeatIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    section?: boolean | SectionDefaultArgs<ExtArgs>
-  }
-
-  export type $BeatPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "Beat"
-    objects: {
-      section: Prisma.$SectionPayload<ExtArgs>
-    }
-    scalars: $Extensions.GetPayloadResult<{
-      id: string
-      pattern: string
-      order: number
-      sectionId: string
-    }, ExtArgs["result"]["beat"]>
-    composites: {}
-  }
-
-  type BeatGetPayload<S extends boolean | null | undefined | BeatDefaultArgs> = $Result.GetResult<Prisma.$BeatPayload, S>
-
-  type BeatCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<BeatFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: BeatCountAggregateInputType | true
-    }
-
-  export interface BeatDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Beat'], meta: { name: 'Beat' } }
-    /**
-     * Find zero or one Beat that matches the filter.
-     * @param {BeatFindUniqueArgs} args - Arguments to find a Beat
-     * @example
-     * // Get one Beat
-     * const beat = await prisma.beat.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUnique<T extends BeatFindUniqueArgs>(args: SelectSubset<T, BeatFindUniqueArgs<ExtArgs>>): Prisma__BeatClient<$Result.GetResult<Prisma.$BeatPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find one Beat that matches the filter or throw an error with `error.code='P2025'`
-     * if no matches were found.
-     * @param {BeatFindUniqueOrThrowArgs} args - Arguments to find a Beat
-     * @example
-     * // Get one Beat
-     * const beat = await prisma.beat.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUniqueOrThrow<T extends BeatFindUniqueOrThrowArgs>(args: SelectSubset<T, BeatFindUniqueOrThrowArgs<ExtArgs>>): Prisma__BeatClient<$Result.GetResult<Prisma.$BeatPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first Beat that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {BeatFindFirstArgs} args - Arguments to find a Beat
-     * @example
-     * // Get one Beat
-     * const beat = await prisma.beat.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirst<T extends BeatFindFirstArgs>(args?: SelectSubset<T, BeatFindFirstArgs<ExtArgs>>): Prisma__BeatClient<$Result.GetResult<Prisma.$BeatPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first Beat that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {BeatFindFirstOrThrowArgs} args - Arguments to find a Beat
-     * @example
-     * // Get one Beat
-     * const beat = await prisma.beat.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirstOrThrow<T extends BeatFindFirstOrThrowArgs>(args?: SelectSubset<T, BeatFindFirstOrThrowArgs<ExtArgs>>): Prisma__BeatClient<$Result.GetResult<Prisma.$BeatPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find zero or more Beats that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {BeatFindManyArgs} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all Beats
-     * const beats = await prisma.beat.findMany()
-     * 
-     * // Get first 10 Beats
-     * const beats = await prisma.beat.findMany({ take: 10 })
-     * 
-     * // Only select the `id`
-     * const beatWithIdOnly = await prisma.beat.findMany({ select: { id: true } })
-     * 
-     */
-    findMany<T extends BeatFindManyArgs>(args?: SelectSubset<T, BeatFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BeatPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
-
-    /**
-     * Create a Beat.
-     * @param {BeatCreateArgs} args - Arguments to create a Beat.
-     * @example
-     * // Create one Beat
-     * const Beat = await prisma.beat.create({
-     *   data: {
-     *     // ... data to create a Beat
-     *   }
-     * })
-     * 
-     */
-    create<T extends BeatCreateArgs>(args: SelectSubset<T, BeatCreateArgs<ExtArgs>>): Prisma__BeatClient<$Result.GetResult<Prisma.$BeatPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Create many Beats.
-     * @param {BeatCreateManyArgs} args - Arguments to create many Beats.
-     * @example
-     * // Create many Beats
-     * const beat = await prisma.beat.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *     
-     */
-    createMany<T extends BeatCreateManyArgs>(args?: SelectSubset<T, BeatCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many Beats and returns the data saved in the database.
-     * @param {BeatCreateManyAndReturnArgs} args - Arguments to create many Beats.
-     * @example
-     * // Create many Beats
-     * const beat = await prisma.beat.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many Beats and only return the `id`
-     * const beatWithIdOnly = await prisma.beat.createManyAndReturn({
-     *   select: { id: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    createManyAndReturn<T extends BeatCreateManyAndReturnArgs>(args?: SelectSubset<T, BeatCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BeatPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Delete a Beat.
-     * @param {BeatDeleteArgs} args - Arguments to delete one Beat.
-     * @example
-     * // Delete one Beat
-     * const Beat = await prisma.beat.delete({
-     *   where: {
-     *     // ... filter to delete one Beat
-     *   }
-     * })
-     * 
-     */
-    delete<T extends BeatDeleteArgs>(args: SelectSubset<T, BeatDeleteArgs<ExtArgs>>): Prisma__BeatClient<$Result.GetResult<Prisma.$BeatPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Update one Beat.
-     * @param {BeatUpdateArgs} args - Arguments to update one Beat.
-     * @example
-     * // Update one Beat
-     * const beat = await prisma.beat.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    update<T extends BeatUpdateArgs>(args: SelectSubset<T, BeatUpdateArgs<ExtArgs>>): Prisma__BeatClient<$Result.GetResult<Prisma.$BeatPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Delete zero or more Beats.
-     * @param {BeatDeleteManyArgs} args - Arguments to filter Beats to delete.
-     * @example
-     * // Delete a few Beats
-     * const { count } = await prisma.beat.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-     */
-    deleteMany<T extends BeatDeleteManyArgs>(args?: SelectSubset<T, BeatDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Beats.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {BeatUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many Beats
-     * const beat = await prisma.beat.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    updateMany<T extends BeatUpdateManyArgs>(args: SelectSubset<T, BeatUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Beats and returns the data updated in the database.
-     * @param {BeatUpdateManyAndReturnArgs} args - Arguments to update many Beats.
-     * @example
-     * // Update many Beats
-     * const beat = await prisma.beat.updateManyAndReturn({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Update zero or more Beats and only return the `id`
-     * const beatWithIdOnly = await prisma.beat.updateManyAndReturn({
-     *   select: { id: true },
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    updateManyAndReturn<T extends BeatUpdateManyAndReturnArgs>(args: SelectSubset<T, BeatUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BeatPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Create or update one Beat.
-     * @param {BeatUpsertArgs} args - Arguments to update or create a Beat.
-     * @example
-     * // Update or create a Beat
-     * const beat = await prisma.beat.upsert({
-     *   create: {
-     *     // ... data to create a Beat
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the Beat we want to update
-     *   }
-     * })
-     */
-    upsert<T extends BeatUpsertArgs>(args: SelectSubset<T, BeatUpsertArgs<ExtArgs>>): Prisma__BeatClient<$Result.GetResult<Prisma.$BeatPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-
-    /**
-     * Count the number of Beats.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {BeatCountArgs} args - Arguments to filter Beats to count.
-     * @example
-     * // Count the number of Beats
-     * const count = await prisma.beat.count({
-     *   where: {
-     *     // ... the filter for the Beats we want to count
-     *   }
-     * })
-    **/
-    count<T extends BeatCountArgs>(
-      args?: Subset<T, BeatCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], BeatCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a Beat.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {BeatAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends BeatAggregateArgs>(args: Subset<T, BeatAggregateArgs>): Prisma.PrismaPromise<GetBeatAggregateType<T>>
-
-    /**
-     * Group by Beat.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {BeatGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends BeatGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: BeatGroupByArgs['orderBy'] }
-        : { orderBy?: BeatGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, BeatGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetBeatGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the Beat model
-   */
-  readonly fields: BeatFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for Beat.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__BeatClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: "PrismaPromise"
-    section<T extends SectionDefaultArgs<ExtArgs> = {}>(args?: Subset<T, SectionDefaultArgs<ExtArgs>>): Prisma__SectionClient<$Result.GetResult<Prisma.$SectionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
-  }
-
-
-
-
-  /**
-   * Fields of the Beat model
-   */
-  interface BeatFieldRefs {
-    readonly id: FieldRef<"Beat", 'String'>
-    readonly pattern: FieldRef<"Beat", 'String'>
-    readonly order: FieldRef<"Beat", 'Int'>
-    readonly sectionId: FieldRef<"Beat", 'String'>
-  }
-    
-
-  // Custom InputTypes
-  /**
-   * Beat findUnique
-   */
-  export type BeatFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Beat
-     */
-    select?: BeatSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Beat
-     */
-    omit?: BeatOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: BeatInclude<ExtArgs> | null
-    /**
-     * Filter, which Beat to fetch.
-     */
-    where: BeatWhereUniqueInput
-  }
-
-  /**
-   * Beat findUniqueOrThrow
-   */
-  export type BeatFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Beat
-     */
-    select?: BeatSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Beat
-     */
-    omit?: BeatOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: BeatInclude<ExtArgs> | null
-    /**
-     * Filter, which Beat to fetch.
-     */
-    where: BeatWhereUniqueInput
-  }
-
-  /**
-   * Beat findFirst
-   */
-  export type BeatFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Beat
-     */
-    select?: BeatSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Beat
-     */
-    omit?: BeatOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: BeatInclude<ExtArgs> | null
-    /**
-     * Filter, which Beat to fetch.
-     */
-    where?: BeatWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Beats to fetch.
-     */
-    orderBy?: BeatOrderByWithRelationInput | BeatOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for Beats.
-     */
-    cursor?: BeatWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Beats from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Beats.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of Beats.
-     */
-    distinct?: BeatScalarFieldEnum | BeatScalarFieldEnum[]
-  }
-
-  /**
-   * Beat findFirstOrThrow
-   */
-  export type BeatFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Beat
-     */
-    select?: BeatSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Beat
-     */
-    omit?: BeatOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: BeatInclude<ExtArgs> | null
-    /**
-     * Filter, which Beat to fetch.
-     */
-    where?: BeatWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Beats to fetch.
-     */
-    orderBy?: BeatOrderByWithRelationInput | BeatOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for Beats.
-     */
-    cursor?: BeatWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Beats from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Beats.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of Beats.
-     */
-    distinct?: BeatScalarFieldEnum | BeatScalarFieldEnum[]
-  }
-
-  /**
-   * Beat findMany
-   */
-  export type BeatFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Beat
-     */
-    select?: BeatSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Beat
-     */
-    omit?: BeatOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: BeatInclude<ExtArgs> | null
-    /**
-     * Filter, which Beats to fetch.
-     */
-    where?: BeatWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Beats to fetch.
-     */
-    orderBy?: BeatOrderByWithRelationInput | BeatOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing Beats.
-     */
-    cursor?: BeatWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Beats from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Beats.
-     */
-    skip?: number
-    distinct?: BeatScalarFieldEnum | BeatScalarFieldEnum[]
-  }
-
-  /**
-   * Beat create
-   */
-  export type BeatCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Beat
-     */
-    select?: BeatSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Beat
-     */
-    omit?: BeatOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: BeatInclude<ExtArgs> | null
-    /**
-     * The data needed to create a Beat.
-     */
-    data: XOR<BeatCreateInput, BeatUncheckedCreateInput>
-  }
-
-  /**
-   * Beat createMany
-   */
-  export type BeatCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many Beats.
-     */
-    data: BeatCreateManyInput | BeatCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * Beat createManyAndReturn
-   */
-  export type BeatCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Beat
-     */
-    select?: BeatSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the Beat
-     */
-    omit?: BeatOmit<ExtArgs> | null
-    /**
-     * The data used to create many Beats.
-     */
-    data: BeatCreateManyInput | BeatCreateManyInput[]
-    skipDuplicates?: boolean
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: BeatIncludeCreateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * Beat update
-   */
-  export type BeatUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Beat
-     */
-    select?: BeatSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Beat
-     */
-    omit?: BeatOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: BeatInclude<ExtArgs> | null
-    /**
-     * The data needed to update a Beat.
-     */
-    data: XOR<BeatUpdateInput, BeatUncheckedUpdateInput>
-    /**
-     * Choose, which Beat to update.
-     */
-    where: BeatWhereUniqueInput
-  }
-
-  /**
-   * Beat updateMany
-   */
-  export type BeatUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update Beats.
-     */
-    data: XOR<BeatUpdateManyMutationInput, BeatUncheckedUpdateManyInput>
-    /**
-     * Filter which Beats to update
-     */
-    where?: BeatWhereInput
-    /**
-     * Limit how many Beats to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * Beat updateManyAndReturn
-   */
-  export type BeatUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Beat
-     */
-    select?: BeatSelectUpdateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the Beat
-     */
-    omit?: BeatOmit<ExtArgs> | null
-    /**
-     * The data used to update Beats.
-     */
-    data: XOR<BeatUpdateManyMutationInput, BeatUncheckedUpdateManyInput>
-    /**
-     * Filter which Beats to update
-     */
-    where?: BeatWhereInput
-    /**
-     * Limit how many Beats to update.
-     */
-    limit?: number
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: BeatIncludeUpdateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * Beat upsert
-   */
-  export type BeatUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Beat
-     */
-    select?: BeatSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Beat
-     */
-    omit?: BeatOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: BeatInclude<ExtArgs> | null
-    /**
-     * The filter to search for the Beat to update in case it exists.
-     */
-    where: BeatWhereUniqueInput
-    /**
-     * In case the Beat found by the `where` argument doesn't exist, create a new Beat with this data.
-     */
-    create: XOR<BeatCreateInput, BeatUncheckedCreateInput>
-    /**
-     * In case the Beat was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<BeatUpdateInput, BeatUncheckedUpdateInput>
-  }
-
-  /**
-   * Beat delete
-   */
-  export type BeatDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Beat
-     */
-    select?: BeatSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Beat
-     */
-    omit?: BeatOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: BeatInclude<ExtArgs> | null
-    /**
-     * Filter which Beat to delete.
-     */
-    where: BeatWhereUniqueInput
-  }
-
-  /**
-   * Beat deleteMany
-   */
-  export type BeatDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which Beats to delete
-     */
-    where?: BeatWhereInput
-    /**
-     * Limit how many Beats to delete.
-     */
-    limit?: number
-  }
-
-  /**
-   * Beat without action
-   */
-  export type BeatDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Beat
-     */
-    select?: BeatSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Beat
-     */
-    omit?: BeatOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: BeatInclude<ExtArgs> | null
-  }
-
-
-  /**
-   * Model SectionAudio
-   */
-
-  export type AggregateSectionAudio = {
-    _count: SectionAudioCountAggregateOutputType | null
-    _min: SectionAudioMinAggregateOutputType | null
-    _max: SectionAudioMaxAggregateOutputType | null
-  }
-
-  export type SectionAudioMinAggregateOutputType = {
-    id: string | null
-    url: string | null
+    nome: string | null
+    audio: string | null
     createdAt: Date | null
-    approved: boolean | null
-    sectionId: string | null
-    uploadedById: string | null
   }
 
-  export type SectionAudioMaxAggregateOutputType = {
+  export type ToqueMaxAggregateOutputType = {
     id: string | null
-    url: string | null
+    nome: string | null
+    audio: string | null
     createdAt: Date | null
-    approved: boolean | null
-    sectionId: string | null
-    uploadedById: string | null
   }
 
-  export type SectionAudioCountAggregateOutputType = {
+  export type ToqueCountAggregateOutputType = {
     id: number
-    url: number
+    nome: number
+    audio: number
     createdAt: number
-    approved: number
-    sectionId: number
-    uploadedById: number
     _all: number
   }
 
 
-  export type SectionAudioMinAggregateInputType = {
+  export type ToqueMinAggregateInputType = {
     id?: true
-    url?: true
+    nome?: true
+    audio?: true
     createdAt?: true
-    approved?: true
-    sectionId?: true
-    uploadedById?: true
   }
 
-  export type SectionAudioMaxAggregateInputType = {
+  export type ToqueMaxAggregateInputType = {
     id?: true
-    url?: true
+    nome?: true
+    audio?: true
     createdAt?: true
-    approved?: true
-    sectionId?: true
-    uploadedById?: true
   }
 
-  export type SectionAudioCountAggregateInputType = {
+  export type ToqueCountAggregateInputType = {
     id?: true
-    url?: true
+    nome?: true
+    audio?: true
     createdAt?: true
-    approved?: true
-    sectionId?: true
-    uploadedById?: true
     _all?: true
   }
 
-  export type SectionAudioAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ToqueAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which SectionAudio to aggregate.
+     * Filter which Toque to aggregate.
      */
-    where?: SectionAudioWhereInput
+    where?: ToqueWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of SectionAudios to fetch.
+     * Determine the order of Toques to fetch.
      */
-    orderBy?: SectionAudioOrderByWithRelationInput | SectionAudioOrderByWithRelationInput[]
+    orderBy?: ToqueOrderByWithRelationInput | ToqueOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: SectionAudioWhereUniqueInput
+    cursor?: ToqueWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` SectionAudios from the position of the cursor.
+     * Take `±n` Toques from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` SectionAudios.
+     * Skip the first `n` Toques.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned SectionAudios
+     * Count returned Toques
     **/
-    _count?: true | SectionAudioCountAggregateInputType
+    _count?: true | ToqueCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: SectionAudioMinAggregateInputType
+    _min?: ToqueMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: SectionAudioMaxAggregateInputType
+    _max?: ToqueMaxAggregateInputType
   }
 
-  export type GetSectionAudioAggregateType<T extends SectionAudioAggregateArgs> = {
-        [P in keyof T & keyof AggregateSectionAudio]: P extends '_count' | 'count'
+  export type GetToqueAggregateType<T extends ToqueAggregateArgs> = {
+        [P in keyof T & keyof AggregateToque]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateSectionAudio[P]>
-      : GetScalarType<T[P], AggregateSectionAudio[P]>
+        : GetScalarType<T[P], AggregateToque[P]>
+      : GetScalarType<T[P], AggregateToque[P]>
   }
 
 
 
 
-  export type SectionAudioGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: SectionAudioWhereInput
-    orderBy?: SectionAudioOrderByWithAggregationInput | SectionAudioOrderByWithAggregationInput[]
-    by: SectionAudioScalarFieldEnum[] | SectionAudioScalarFieldEnum
-    having?: SectionAudioScalarWhereWithAggregatesInput
+  export type ToqueGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ToqueWhereInput
+    orderBy?: ToqueOrderByWithAggregationInput | ToqueOrderByWithAggregationInput[]
+    by: ToqueScalarFieldEnum[] | ToqueScalarFieldEnum
+    having?: ToqueScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: SectionAudioCountAggregateInputType | true
-    _min?: SectionAudioMinAggregateInputType
-    _max?: SectionAudioMaxAggregateInputType
+    _count?: ToqueCountAggregateInputType | true
+    _min?: ToqueMinAggregateInputType
+    _max?: ToqueMaxAggregateInputType
   }
 
-  export type SectionAudioGroupByOutputType = {
+  export type ToqueGroupByOutputType = {
     id: string
-    url: string
+    nome: string
+    audio: string
     createdAt: Date
-    approved: boolean
-    sectionId: string
-    uploadedById: string
-    _count: SectionAudioCountAggregateOutputType | null
-    _min: SectionAudioMinAggregateOutputType | null
-    _max: SectionAudioMaxAggregateOutputType | null
+    _count: ToqueCountAggregateOutputType | null
+    _min: ToqueMinAggregateOutputType | null
+    _max: ToqueMaxAggregateOutputType | null
   }
 
-  type GetSectionAudioGroupByPayload<T extends SectionAudioGroupByArgs> = Prisma.PrismaPromise<
+  type GetToqueGroupByPayload<T extends ToqueGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<SectionAudioGroupByOutputType, T['by']> &
+      PickEnumerable<ToqueGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof SectionAudioGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof ToqueGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], SectionAudioGroupByOutputType[P]>
-            : GetScalarType<T[P], SectionAudioGroupByOutputType[P]>
+              : GetScalarType<T[P], ToqueGroupByOutputType[P]>
+            : GetScalarType<T[P], ToqueGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type SectionAudioSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type ToqueSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    url?: boolean
+    nome?: boolean
+    audio?: boolean
     createdAt?: boolean
-    approved?: boolean
-    sectionId?: boolean
-    uploadedById?: boolean
-    section?: boolean | SectionDefaultArgs<ExtArgs>
-    uploadedBy?: boolean | UserDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["sectionAudio"]>
+    sections?: boolean | Toque$sectionsArgs<ExtArgs>
+    _count?: boolean | ToqueCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["toque"]>
 
-  export type SectionAudioSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type ToqueSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    url?: boolean
+    nome?: boolean
+    audio?: boolean
     createdAt?: boolean
-    approved?: boolean
-    sectionId?: boolean
-    uploadedById?: boolean
-    section?: boolean | SectionDefaultArgs<ExtArgs>
-    uploadedBy?: boolean | UserDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["sectionAudio"]>
+  }, ExtArgs["result"]["toque"]>
 
-  export type SectionAudioSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type ToqueSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    url?: boolean
+    nome?: boolean
+    audio?: boolean
     createdAt?: boolean
-    approved?: boolean
-    sectionId?: boolean
-    uploadedById?: boolean
-    section?: boolean | SectionDefaultArgs<ExtArgs>
-    uploadedBy?: boolean | UserDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["sectionAudio"]>
+  }, ExtArgs["result"]["toque"]>
 
-  export type SectionAudioSelectScalar = {
+  export type ToqueSelectScalar = {
     id?: boolean
-    url?: boolean
+    nome?: boolean
+    audio?: boolean
     createdAt?: boolean
-    approved?: boolean
-    sectionId?: boolean
-    uploadedById?: boolean
   }
 
-  export type SectionAudioOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "url" | "createdAt" | "approved" | "sectionId" | "uploadedById", ExtArgs["result"]["sectionAudio"]>
-  export type SectionAudioInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    section?: boolean | SectionDefaultArgs<ExtArgs>
-    uploadedBy?: boolean | UserDefaultArgs<ExtArgs>
+  export type ToqueOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "nome" | "audio" | "createdAt", ExtArgs["result"]["toque"]>
+  export type ToqueInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    sections?: boolean | Toque$sectionsArgs<ExtArgs>
+    _count?: boolean | ToqueCountOutputTypeDefaultArgs<ExtArgs>
   }
-  export type SectionAudioIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    section?: boolean | SectionDefaultArgs<ExtArgs>
-    uploadedBy?: boolean | UserDefaultArgs<ExtArgs>
-  }
-  export type SectionAudioIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    section?: boolean | SectionDefaultArgs<ExtArgs>
-    uploadedBy?: boolean | UserDefaultArgs<ExtArgs>
-  }
+  export type ToqueIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type ToqueIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
 
-  export type $SectionAudioPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "SectionAudio"
+  export type $ToquePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Toque"
     objects: {
-      section: Prisma.$SectionPayload<ExtArgs>
-      uploadedBy: Prisma.$UserPayload<ExtArgs>
+      sections: Prisma.$SectionPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      url: string
+      nome: string
+      audio: string
       createdAt: Date
-      approved: boolean
-      sectionId: string
-      uploadedById: string
-    }, ExtArgs["result"]["sectionAudio"]>
+    }, ExtArgs["result"]["toque"]>
     composites: {}
   }
 
-  type SectionAudioGetPayload<S extends boolean | null | undefined | SectionAudioDefaultArgs> = $Result.GetResult<Prisma.$SectionAudioPayload, S>
+  type ToqueGetPayload<S extends boolean | null | undefined | ToqueDefaultArgs> = $Result.GetResult<Prisma.$ToquePayload, S>
 
-  type SectionAudioCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<SectionAudioFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: SectionAudioCountAggregateInputType | true
+  type ToqueCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ToqueFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ToqueCountAggregateInputType | true
     }
 
-  export interface SectionAudioDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['SectionAudio'], meta: { name: 'SectionAudio' } }
+  export interface ToqueDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Toque'], meta: { name: 'Toque' } }
     /**
-     * Find zero or one SectionAudio that matches the filter.
-     * @param {SectionAudioFindUniqueArgs} args - Arguments to find a SectionAudio
+     * Find zero or one Toque that matches the filter.
+     * @param {ToqueFindUniqueArgs} args - Arguments to find a Toque
      * @example
-     * // Get one SectionAudio
-     * const sectionAudio = await prisma.sectionAudio.findUnique({
+     * // Get one Toque
+     * const toque = await prisma.toque.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUnique<T extends SectionAudioFindUniqueArgs>(args: SelectSubset<T, SectionAudioFindUniqueArgs<ExtArgs>>): Prisma__SectionAudioClient<$Result.GetResult<Prisma.$SectionAudioPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends ToqueFindUniqueArgs>(args: SelectSubset<T, ToqueFindUniqueArgs<ExtArgs>>): Prisma__ToqueClient<$Result.GetResult<Prisma.$ToquePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find one SectionAudio that matches the filter or throw an error with `error.code='P2025'`
+     * Find one Toque that matches the filter or throw an error with `error.code='P2025'`
      * if no matches were found.
-     * @param {SectionAudioFindUniqueOrThrowArgs} args - Arguments to find a SectionAudio
+     * @param {ToqueFindUniqueOrThrowArgs} args - Arguments to find a Toque
      * @example
-     * // Get one SectionAudio
-     * const sectionAudio = await prisma.sectionAudio.findUniqueOrThrow({
+     * // Get one Toque
+     * const toque = await prisma.toque.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUniqueOrThrow<T extends SectionAudioFindUniqueOrThrowArgs>(args: SelectSubset<T, SectionAudioFindUniqueOrThrowArgs<ExtArgs>>): Prisma__SectionAudioClient<$Result.GetResult<Prisma.$SectionAudioPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends ToqueFindUniqueOrThrowArgs>(args: SelectSubset<T, ToqueFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ToqueClient<$Result.GetResult<Prisma.$ToquePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first SectionAudio that matches the filter.
+     * Find the first Toque that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {SectionAudioFindFirstArgs} args - Arguments to find a SectionAudio
+     * @param {ToqueFindFirstArgs} args - Arguments to find a Toque
      * @example
-     * // Get one SectionAudio
-     * const sectionAudio = await prisma.sectionAudio.findFirst({
+     * // Get one Toque
+     * const toque = await prisma.toque.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirst<T extends SectionAudioFindFirstArgs>(args?: SelectSubset<T, SectionAudioFindFirstArgs<ExtArgs>>): Prisma__SectionAudioClient<$Result.GetResult<Prisma.$SectionAudioPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends ToqueFindFirstArgs>(args?: SelectSubset<T, ToqueFindFirstArgs<ExtArgs>>): Prisma__ToqueClient<$Result.GetResult<Prisma.$ToquePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first SectionAudio that matches the filter or
+     * Find the first Toque that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {SectionAudioFindFirstOrThrowArgs} args - Arguments to find a SectionAudio
+     * @param {ToqueFindFirstOrThrowArgs} args - Arguments to find a Toque
      * @example
-     * // Get one SectionAudio
-     * const sectionAudio = await prisma.sectionAudio.findFirstOrThrow({
+     * // Get one Toque
+     * const toque = await prisma.toque.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirstOrThrow<T extends SectionAudioFindFirstOrThrowArgs>(args?: SelectSubset<T, SectionAudioFindFirstOrThrowArgs<ExtArgs>>): Prisma__SectionAudioClient<$Result.GetResult<Prisma.$SectionAudioPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends ToqueFindFirstOrThrowArgs>(args?: SelectSubset<T, ToqueFindFirstOrThrowArgs<ExtArgs>>): Prisma__ToqueClient<$Result.GetResult<Prisma.$ToquePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find zero or more SectionAudios that matches the filter.
+     * Find zero or more Toques that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {SectionAudioFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {ToqueFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all SectionAudios
-     * const sectionAudios = await prisma.sectionAudio.findMany()
+     * // Get all Toques
+     * const toques = await prisma.toque.findMany()
      * 
-     * // Get first 10 SectionAudios
-     * const sectionAudios = await prisma.sectionAudio.findMany({ take: 10 })
+     * // Get first 10 Toques
+     * const toques = await prisma.toque.findMany({ take: 10 })
      * 
      * // Only select the `id`
-     * const sectionAudioWithIdOnly = await prisma.sectionAudio.findMany({ select: { id: true } })
+     * const toqueWithIdOnly = await prisma.toque.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends SectionAudioFindManyArgs>(args?: SelectSubset<T, SectionAudioFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SectionAudioPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends ToqueFindManyArgs>(args?: SelectSubset<T, ToqueFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ToquePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
     /**
-     * Create a SectionAudio.
-     * @param {SectionAudioCreateArgs} args - Arguments to create a SectionAudio.
+     * Create a Toque.
+     * @param {ToqueCreateArgs} args - Arguments to create a Toque.
      * @example
-     * // Create one SectionAudio
-     * const SectionAudio = await prisma.sectionAudio.create({
+     * // Create one Toque
+     * const Toque = await prisma.toque.create({
      *   data: {
-     *     // ... data to create a SectionAudio
+     *     // ... data to create a Toque
      *   }
      * })
      * 
      */
-    create<T extends SectionAudioCreateArgs>(args: SelectSubset<T, SectionAudioCreateArgs<ExtArgs>>): Prisma__SectionAudioClient<$Result.GetResult<Prisma.$SectionAudioPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends ToqueCreateArgs>(args: SelectSubset<T, ToqueCreateArgs<ExtArgs>>): Prisma__ToqueClient<$Result.GetResult<Prisma.$ToquePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Create many SectionAudios.
-     * @param {SectionAudioCreateManyArgs} args - Arguments to create many SectionAudios.
+     * Create many Toques.
+     * @param {ToqueCreateManyArgs} args - Arguments to create many Toques.
      * @example
-     * // Create many SectionAudios
-     * const sectionAudio = await prisma.sectionAudio.createMany({
+     * // Create many Toques
+     * const toque = await prisma.toque.createMany({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      *     
      */
-    createMany<T extends SectionAudioCreateManyArgs>(args?: SelectSubset<T, SectionAudioCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    createMany<T extends ToqueCreateManyArgs>(args?: SelectSubset<T, ToqueCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create many SectionAudios and returns the data saved in the database.
-     * @param {SectionAudioCreateManyAndReturnArgs} args - Arguments to create many SectionAudios.
+     * Create many Toques and returns the data saved in the database.
+     * @param {ToqueCreateManyAndReturnArgs} args - Arguments to create many Toques.
      * @example
-     * // Create many SectionAudios
-     * const sectionAudio = await prisma.sectionAudio.createManyAndReturn({
+     * // Create many Toques
+     * const toque = await prisma.toque.createManyAndReturn({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      * 
-     * // Create many SectionAudios and only return the `id`
-     * const sectionAudioWithIdOnly = await prisma.sectionAudio.createManyAndReturn({
+     * // Create many Toques and only return the `id`
+     * const toqueWithIdOnly = await prisma.toque.createManyAndReturn({
      *   select: { id: true },
      *   data: [
      *     // ... provide data here
@@ -7739,28 +6470,28 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    createManyAndReturn<T extends SectionAudioCreateManyAndReturnArgs>(args?: SelectSubset<T, SectionAudioCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SectionAudioPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+    createManyAndReturn<T extends ToqueCreateManyAndReturnArgs>(args?: SelectSubset<T, ToqueCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ToquePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Delete a SectionAudio.
-     * @param {SectionAudioDeleteArgs} args - Arguments to delete one SectionAudio.
+     * Delete a Toque.
+     * @param {ToqueDeleteArgs} args - Arguments to delete one Toque.
      * @example
-     * // Delete one SectionAudio
-     * const SectionAudio = await prisma.sectionAudio.delete({
+     * // Delete one Toque
+     * const Toque = await prisma.toque.delete({
      *   where: {
-     *     // ... filter to delete one SectionAudio
+     *     // ... filter to delete one Toque
      *   }
      * })
      * 
      */
-    delete<T extends SectionAudioDeleteArgs>(args: SelectSubset<T, SectionAudioDeleteArgs<ExtArgs>>): Prisma__SectionAudioClient<$Result.GetResult<Prisma.$SectionAudioPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends ToqueDeleteArgs>(args: SelectSubset<T, ToqueDeleteArgs<ExtArgs>>): Prisma__ToqueClient<$Result.GetResult<Prisma.$ToquePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Update one SectionAudio.
-     * @param {SectionAudioUpdateArgs} args - Arguments to update one SectionAudio.
+     * Update one Toque.
+     * @param {ToqueUpdateArgs} args - Arguments to update one Toque.
      * @example
-     * // Update one SectionAudio
-     * const sectionAudio = await prisma.sectionAudio.update({
+     * // Update one Toque
+     * const toque = await prisma.toque.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -7770,30 +6501,30 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends SectionAudioUpdateArgs>(args: SelectSubset<T, SectionAudioUpdateArgs<ExtArgs>>): Prisma__SectionAudioClient<$Result.GetResult<Prisma.$SectionAudioPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends ToqueUpdateArgs>(args: SelectSubset<T, ToqueUpdateArgs<ExtArgs>>): Prisma__ToqueClient<$Result.GetResult<Prisma.$ToquePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Delete zero or more SectionAudios.
-     * @param {SectionAudioDeleteManyArgs} args - Arguments to filter SectionAudios to delete.
+     * Delete zero or more Toques.
+     * @param {ToqueDeleteManyArgs} args - Arguments to filter Toques to delete.
      * @example
-     * // Delete a few SectionAudios
-     * const { count } = await prisma.sectionAudio.deleteMany({
+     * // Delete a few Toques
+     * const { count } = await prisma.toque.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
      */
-    deleteMany<T extends SectionAudioDeleteManyArgs>(args?: SelectSubset<T, SectionAudioDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    deleteMany<T extends ToqueDeleteManyArgs>(args?: SelectSubset<T, ToqueDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more SectionAudios.
+     * Update zero or more Toques.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {SectionAudioUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {ToqueUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many SectionAudios
-     * const sectionAudio = await prisma.sectionAudio.updateMany({
+     * // Update many Toques
+     * const toque = await prisma.toque.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -7803,14 +6534,14 @@ export namespace Prisma {
      * })
      * 
      */
-    updateMany<T extends SectionAudioUpdateManyArgs>(args: SelectSubset<T, SectionAudioUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    updateMany<T extends ToqueUpdateManyArgs>(args: SelectSubset<T, ToqueUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more SectionAudios and returns the data updated in the database.
-     * @param {SectionAudioUpdateManyAndReturnArgs} args - Arguments to update many SectionAudios.
+     * Update zero or more Toques and returns the data updated in the database.
+     * @param {ToqueUpdateManyAndReturnArgs} args - Arguments to update many Toques.
      * @example
-     * // Update many SectionAudios
-     * const sectionAudio = await prisma.sectionAudio.updateManyAndReturn({
+     * // Update many Toques
+     * const toque = await prisma.toque.updateManyAndReturn({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -7819,8 +6550,8 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Update zero or more SectionAudios and only return the `id`
-     * const sectionAudioWithIdOnly = await prisma.sectionAudio.updateManyAndReturn({
+     * // Update zero or more Toques and only return the `id`
+     * const toqueWithIdOnly = await prisma.toque.updateManyAndReturn({
      *   select: { id: true },
      *   where: {
      *     // ... provide filter here
@@ -7833,56 +6564,56 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    updateManyAndReturn<T extends SectionAudioUpdateManyAndReturnArgs>(args: SelectSubset<T, SectionAudioUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SectionAudioPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+    updateManyAndReturn<T extends ToqueUpdateManyAndReturnArgs>(args: SelectSubset<T, ToqueUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ToquePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Create or update one SectionAudio.
-     * @param {SectionAudioUpsertArgs} args - Arguments to update or create a SectionAudio.
+     * Create or update one Toque.
+     * @param {ToqueUpsertArgs} args - Arguments to update or create a Toque.
      * @example
-     * // Update or create a SectionAudio
-     * const sectionAudio = await prisma.sectionAudio.upsert({
+     * // Update or create a Toque
+     * const toque = await prisma.toque.upsert({
      *   create: {
-     *     // ... data to create a SectionAudio
+     *     // ... data to create a Toque
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the SectionAudio we want to update
+     *     // ... the filter for the Toque we want to update
      *   }
      * })
      */
-    upsert<T extends SectionAudioUpsertArgs>(args: SelectSubset<T, SectionAudioUpsertArgs<ExtArgs>>): Prisma__SectionAudioClient<$Result.GetResult<Prisma.$SectionAudioPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends ToqueUpsertArgs>(args: SelectSubset<T, ToqueUpsertArgs<ExtArgs>>): Prisma__ToqueClient<$Result.GetResult<Prisma.$ToquePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
     /**
-     * Count the number of SectionAudios.
+     * Count the number of Toques.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {SectionAudioCountArgs} args - Arguments to filter SectionAudios to count.
+     * @param {ToqueCountArgs} args - Arguments to filter Toques to count.
      * @example
-     * // Count the number of SectionAudios
-     * const count = await prisma.sectionAudio.count({
+     * // Count the number of Toques
+     * const count = await prisma.toque.count({
      *   where: {
-     *     // ... the filter for the SectionAudios we want to count
+     *     // ... the filter for the Toques we want to count
      *   }
      * })
     **/
-    count<T extends SectionAudioCountArgs>(
-      args?: Subset<T, SectionAudioCountArgs>,
+    count<T extends ToqueCountArgs>(
+      args?: Subset<T, ToqueCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], SectionAudioCountAggregateOutputType>
+          : GetScalarType<T['select'], ToqueCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a SectionAudio.
+     * Allows you to perform aggregations operations on a Toque.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {SectionAudioAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {ToqueAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -7902,13 +6633,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends SectionAudioAggregateArgs>(args: Subset<T, SectionAudioAggregateArgs>): Prisma.PrismaPromise<GetSectionAudioAggregateType<T>>
+    aggregate<T extends ToqueAggregateArgs>(args: Subset<T, ToqueAggregateArgs>): Prisma.PrismaPromise<GetToqueAggregateType<T>>
 
     /**
-     * Group by SectionAudio.
+     * Group by Toque.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {SectionAudioGroupByArgs} args - Group by arguments.
+     * @param {ToqueGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -7923,14 +6654,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends SectionAudioGroupByArgs,
+      T extends ToqueGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: SectionAudioGroupByArgs['orderBy'] }
-        : { orderBy?: SectionAudioGroupByArgs['orderBy'] },
+        ? { orderBy: ToqueGroupByArgs['orderBy'] }
+        : { orderBy?: ToqueGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -7979,23 +6710,22 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, SectionAudioGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetSectionAudioGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, ToqueGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetToqueGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the SectionAudio model
+   * Fields of the Toque model
    */
-  readonly fields: SectionAudioFieldRefs;
+  readonly fields: ToqueFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for SectionAudio.
+   * The delegate class that acts as a "Promise-like" for Toque.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__SectionAudioClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__ToqueClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    section<T extends SectionDefaultArgs<ExtArgs> = {}>(args?: Subset<T, SectionDefaultArgs<ExtArgs>>): Prisma__SectionClient<$Result.GetResult<Prisma.$SectionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    uploadedBy<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    sections<T extends Toque$sectionsArgs<ExtArgs> = {}>(args?: Subset<T, Toque$sectionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SectionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -8022,426 +6752,440 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the SectionAudio model
+   * Fields of the Toque model
    */
-  interface SectionAudioFieldRefs {
-    readonly id: FieldRef<"SectionAudio", 'String'>
-    readonly url: FieldRef<"SectionAudio", 'String'>
-    readonly createdAt: FieldRef<"SectionAudio", 'DateTime'>
-    readonly approved: FieldRef<"SectionAudio", 'Boolean'>
-    readonly sectionId: FieldRef<"SectionAudio", 'String'>
-    readonly uploadedById: FieldRef<"SectionAudio", 'String'>
+  interface ToqueFieldRefs {
+    readonly id: FieldRef<"Toque", 'String'>
+    readonly nome: FieldRef<"Toque", 'String'>
+    readonly audio: FieldRef<"Toque", 'String'>
+    readonly createdAt: FieldRef<"Toque", 'DateTime'>
   }
     
 
   // Custom InputTypes
   /**
-   * SectionAudio findUnique
+   * Toque findUnique
    */
-  export type SectionAudioFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ToqueFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the SectionAudio
+     * Select specific fields to fetch from the Toque
      */
-    select?: SectionAudioSelect<ExtArgs> | null
+    select?: ToqueSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the SectionAudio
+     * Omit specific fields from the Toque
      */
-    omit?: SectionAudioOmit<ExtArgs> | null
+    omit?: ToqueOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: SectionAudioInclude<ExtArgs> | null
+    include?: ToqueInclude<ExtArgs> | null
     /**
-     * Filter, which SectionAudio to fetch.
+     * Filter, which Toque to fetch.
      */
-    where: SectionAudioWhereUniqueInput
+    where: ToqueWhereUniqueInput
   }
 
   /**
-   * SectionAudio findUniqueOrThrow
+   * Toque findUniqueOrThrow
    */
-  export type SectionAudioFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ToqueFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the SectionAudio
+     * Select specific fields to fetch from the Toque
      */
-    select?: SectionAudioSelect<ExtArgs> | null
+    select?: ToqueSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the SectionAudio
+     * Omit specific fields from the Toque
      */
-    omit?: SectionAudioOmit<ExtArgs> | null
+    omit?: ToqueOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: SectionAudioInclude<ExtArgs> | null
+    include?: ToqueInclude<ExtArgs> | null
     /**
-     * Filter, which SectionAudio to fetch.
+     * Filter, which Toque to fetch.
      */
-    where: SectionAudioWhereUniqueInput
+    where: ToqueWhereUniqueInput
   }
 
   /**
-   * SectionAudio findFirst
+   * Toque findFirst
    */
-  export type SectionAudioFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ToqueFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the SectionAudio
+     * Select specific fields to fetch from the Toque
      */
-    select?: SectionAudioSelect<ExtArgs> | null
+    select?: ToqueSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the SectionAudio
+     * Omit specific fields from the Toque
      */
-    omit?: SectionAudioOmit<ExtArgs> | null
+    omit?: ToqueOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: SectionAudioInclude<ExtArgs> | null
+    include?: ToqueInclude<ExtArgs> | null
     /**
-     * Filter, which SectionAudio to fetch.
+     * Filter, which Toque to fetch.
      */
-    where?: SectionAudioWhereInput
+    where?: ToqueWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of SectionAudios to fetch.
+     * Determine the order of Toques to fetch.
      */
-    orderBy?: SectionAudioOrderByWithRelationInput | SectionAudioOrderByWithRelationInput[]
+    orderBy?: ToqueOrderByWithRelationInput | ToqueOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for SectionAudios.
+     * Sets the position for searching for Toques.
      */
-    cursor?: SectionAudioWhereUniqueInput
+    cursor?: ToqueWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` SectionAudios from the position of the cursor.
+     * Take `±n` Toques from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` SectionAudios.
+     * Skip the first `n` Toques.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of SectionAudios.
+     * Filter by unique combinations of Toques.
      */
-    distinct?: SectionAudioScalarFieldEnum | SectionAudioScalarFieldEnum[]
+    distinct?: ToqueScalarFieldEnum | ToqueScalarFieldEnum[]
   }
 
   /**
-   * SectionAudio findFirstOrThrow
+   * Toque findFirstOrThrow
    */
-  export type SectionAudioFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ToqueFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the SectionAudio
+     * Select specific fields to fetch from the Toque
      */
-    select?: SectionAudioSelect<ExtArgs> | null
+    select?: ToqueSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the SectionAudio
+     * Omit specific fields from the Toque
      */
-    omit?: SectionAudioOmit<ExtArgs> | null
+    omit?: ToqueOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: SectionAudioInclude<ExtArgs> | null
+    include?: ToqueInclude<ExtArgs> | null
     /**
-     * Filter, which SectionAudio to fetch.
+     * Filter, which Toque to fetch.
      */
-    where?: SectionAudioWhereInput
+    where?: ToqueWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of SectionAudios to fetch.
+     * Determine the order of Toques to fetch.
      */
-    orderBy?: SectionAudioOrderByWithRelationInput | SectionAudioOrderByWithRelationInput[]
+    orderBy?: ToqueOrderByWithRelationInput | ToqueOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for SectionAudios.
+     * Sets the position for searching for Toques.
      */
-    cursor?: SectionAudioWhereUniqueInput
+    cursor?: ToqueWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` SectionAudios from the position of the cursor.
+     * Take `±n` Toques from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` SectionAudios.
+     * Skip the first `n` Toques.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of SectionAudios.
+     * Filter by unique combinations of Toques.
      */
-    distinct?: SectionAudioScalarFieldEnum | SectionAudioScalarFieldEnum[]
+    distinct?: ToqueScalarFieldEnum | ToqueScalarFieldEnum[]
   }
 
   /**
-   * SectionAudio findMany
+   * Toque findMany
    */
-  export type SectionAudioFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ToqueFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the SectionAudio
+     * Select specific fields to fetch from the Toque
      */
-    select?: SectionAudioSelect<ExtArgs> | null
+    select?: ToqueSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the SectionAudio
+     * Omit specific fields from the Toque
      */
-    omit?: SectionAudioOmit<ExtArgs> | null
+    omit?: ToqueOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: SectionAudioInclude<ExtArgs> | null
+    include?: ToqueInclude<ExtArgs> | null
     /**
-     * Filter, which SectionAudios to fetch.
+     * Filter, which Toques to fetch.
      */
-    where?: SectionAudioWhereInput
+    where?: ToqueWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of SectionAudios to fetch.
+     * Determine the order of Toques to fetch.
      */
-    orderBy?: SectionAudioOrderByWithRelationInput | SectionAudioOrderByWithRelationInput[]
+    orderBy?: ToqueOrderByWithRelationInput | ToqueOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing SectionAudios.
+     * Sets the position for listing Toques.
      */
-    cursor?: SectionAudioWhereUniqueInput
+    cursor?: ToqueWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` SectionAudios from the position of the cursor.
+     * Take `±n` Toques from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` SectionAudios.
+     * Skip the first `n` Toques.
      */
     skip?: number
-    distinct?: SectionAudioScalarFieldEnum | SectionAudioScalarFieldEnum[]
+    distinct?: ToqueScalarFieldEnum | ToqueScalarFieldEnum[]
   }
 
   /**
-   * SectionAudio create
+   * Toque create
    */
-  export type SectionAudioCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ToqueCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the SectionAudio
+     * Select specific fields to fetch from the Toque
      */
-    select?: SectionAudioSelect<ExtArgs> | null
+    select?: ToqueSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the SectionAudio
+     * Omit specific fields from the Toque
      */
-    omit?: SectionAudioOmit<ExtArgs> | null
+    omit?: ToqueOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: SectionAudioInclude<ExtArgs> | null
+    include?: ToqueInclude<ExtArgs> | null
     /**
-     * The data needed to create a SectionAudio.
+     * The data needed to create a Toque.
      */
-    data: XOR<SectionAudioCreateInput, SectionAudioUncheckedCreateInput>
+    data: XOR<ToqueCreateInput, ToqueUncheckedCreateInput>
   }
 
   /**
-   * SectionAudio createMany
+   * Toque createMany
    */
-  export type SectionAudioCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ToqueCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many SectionAudios.
+     * The data used to create many Toques.
      */
-    data: SectionAudioCreateManyInput | SectionAudioCreateManyInput[]
+    data: ToqueCreateManyInput | ToqueCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * SectionAudio createManyAndReturn
+   * Toque createManyAndReturn
    */
-  export type SectionAudioCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ToqueCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the SectionAudio
+     * Select specific fields to fetch from the Toque
      */
-    select?: SectionAudioSelectCreateManyAndReturn<ExtArgs> | null
+    select?: ToqueSelectCreateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the SectionAudio
+     * Omit specific fields from the Toque
      */
-    omit?: SectionAudioOmit<ExtArgs> | null
+    omit?: ToqueOmit<ExtArgs> | null
     /**
-     * The data used to create many SectionAudios.
+     * The data used to create many Toques.
      */
-    data: SectionAudioCreateManyInput | SectionAudioCreateManyInput[]
+    data: ToqueCreateManyInput | ToqueCreateManyInput[]
     skipDuplicates?: boolean
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: SectionAudioIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
-   * SectionAudio update
+   * Toque update
    */
-  export type SectionAudioUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ToqueUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the SectionAudio
+     * Select specific fields to fetch from the Toque
      */
-    select?: SectionAudioSelect<ExtArgs> | null
+    select?: ToqueSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the SectionAudio
+     * Omit specific fields from the Toque
      */
-    omit?: SectionAudioOmit<ExtArgs> | null
+    omit?: ToqueOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: SectionAudioInclude<ExtArgs> | null
+    include?: ToqueInclude<ExtArgs> | null
     /**
-     * The data needed to update a SectionAudio.
+     * The data needed to update a Toque.
      */
-    data: XOR<SectionAudioUpdateInput, SectionAudioUncheckedUpdateInput>
+    data: XOR<ToqueUpdateInput, ToqueUncheckedUpdateInput>
     /**
-     * Choose, which SectionAudio to update.
+     * Choose, which Toque to update.
      */
-    where: SectionAudioWhereUniqueInput
+    where: ToqueWhereUniqueInput
   }
 
   /**
-   * SectionAudio updateMany
+   * Toque updateMany
    */
-  export type SectionAudioUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ToqueUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update SectionAudios.
+     * The data used to update Toques.
      */
-    data: XOR<SectionAudioUpdateManyMutationInput, SectionAudioUncheckedUpdateManyInput>
+    data: XOR<ToqueUpdateManyMutationInput, ToqueUncheckedUpdateManyInput>
     /**
-     * Filter which SectionAudios to update
+     * Filter which Toques to update
      */
-    where?: SectionAudioWhereInput
+    where?: ToqueWhereInput
     /**
-     * Limit how many SectionAudios to update.
+     * Limit how many Toques to update.
      */
     limit?: number
   }
 
   /**
-   * SectionAudio updateManyAndReturn
+   * Toque updateManyAndReturn
    */
-  export type SectionAudioUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ToqueUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the SectionAudio
+     * Select specific fields to fetch from the Toque
      */
-    select?: SectionAudioSelectUpdateManyAndReturn<ExtArgs> | null
+    select?: ToqueSelectUpdateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the SectionAudio
+     * Omit specific fields from the Toque
      */
-    omit?: SectionAudioOmit<ExtArgs> | null
+    omit?: ToqueOmit<ExtArgs> | null
     /**
-     * The data used to update SectionAudios.
+     * The data used to update Toques.
      */
-    data: XOR<SectionAudioUpdateManyMutationInput, SectionAudioUncheckedUpdateManyInput>
+    data: XOR<ToqueUpdateManyMutationInput, ToqueUncheckedUpdateManyInput>
     /**
-     * Filter which SectionAudios to update
+     * Filter which Toques to update
      */
-    where?: SectionAudioWhereInput
+    where?: ToqueWhereInput
     /**
-     * Limit how many SectionAudios to update.
-     */
-    limit?: number
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: SectionAudioIncludeUpdateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * SectionAudio upsert
-   */
-  export type SectionAudioUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the SectionAudio
-     */
-    select?: SectionAudioSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the SectionAudio
-     */
-    omit?: SectionAudioOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: SectionAudioInclude<ExtArgs> | null
-    /**
-     * The filter to search for the SectionAudio to update in case it exists.
-     */
-    where: SectionAudioWhereUniqueInput
-    /**
-     * In case the SectionAudio found by the `where` argument doesn't exist, create a new SectionAudio with this data.
-     */
-    create: XOR<SectionAudioCreateInput, SectionAudioUncheckedCreateInput>
-    /**
-     * In case the SectionAudio was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<SectionAudioUpdateInput, SectionAudioUncheckedUpdateInput>
-  }
-
-  /**
-   * SectionAudio delete
-   */
-  export type SectionAudioDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the SectionAudio
-     */
-    select?: SectionAudioSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the SectionAudio
-     */
-    omit?: SectionAudioOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: SectionAudioInclude<ExtArgs> | null
-    /**
-     * Filter which SectionAudio to delete.
-     */
-    where: SectionAudioWhereUniqueInput
-  }
-
-  /**
-   * SectionAudio deleteMany
-   */
-  export type SectionAudioDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which SectionAudios to delete
-     */
-    where?: SectionAudioWhereInput
-    /**
-     * Limit how many SectionAudios to delete.
+     * Limit how many Toques to update.
      */
     limit?: number
   }
 
   /**
-   * SectionAudio without action
+   * Toque upsert
    */
-  export type SectionAudioDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ToqueUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the SectionAudio
+     * Select specific fields to fetch from the Toque
      */
-    select?: SectionAudioSelect<ExtArgs> | null
+    select?: ToqueSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the SectionAudio
+     * Omit specific fields from the Toque
      */
-    omit?: SectionAudioOmit<ExtArgs> | null
+    omit?: ToqueOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: SectionAudioInclude<ExtArgs> | null
+    include?: ToqueInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Toque to update in case it exists.
+     */
+    where: ToqueWhereUniqueInput
+    /**
+     * In case the Toque found by the `where` argument doesn't exist, create a new Toque with this data.
+     */
+    create: XOR<ToqueCreateInput, ToqueUncheckedCreateInput>
+    /**
+     * In case the Toque was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ToqueUpdateInput, ToqueUncheckedUpdateInput>
+  }
+
+  /**
+   * Toque delete
+   */
+  export type ToqueDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Toque
+     */
+    select?: ToqueSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Toque
+     */
+    omit?: ToqueOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ToqueInclude<ExtArgs> | null
+    /**
+     * Filter which Toque to delete.
+     */
+    where: ToqueWhereUniqueInput
+  }
+
+  /**
+   * Toque deleteMany
+   */
+  export type ToqueDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Toques to delete
+     */
+    where?: ToqueWhereInput
+    /**
+     * Limit how many Toques to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Toque.sections
+   */
+  export type Toque$sectionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Section
+     */
+    select?: SectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Section
+     */
+    omit?: SectionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SectionInclude<ExtArgs> | null
+    where?: SectionWhereInput
+    orderBy?: SectionOrderByWithRelationInput | SectionOrderByWithRelationInput[]
+    cursor?: SectionWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: SectionScalarFieldEnum | SectionScalarFieldEnum[]
+  }
+
+  /**
+   * Toque without action
+   */
+  export type ToqueDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Toque
+     */
+    select?: ToqueSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Toque
+     */
+    omit?: ToqueOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ToqueInclude<ExtArgs> | null
   }
 
 
@@ -9546,32 +8290,21 @@ export namespace Prisma {
     id: 'id',
     order: 'order',
     text: 'text',
-    pointId: 'pointId'
+    pointId: 'pointId',
+    toqueId: 'toqueId'
   };
 
   export type SectionScalarFieldEnum = (typeof SectionScalarFieldEnum)[keyof typeof SectionScalarFieldEnum]
 
 
-  export const BeatScalarFieldEnum: {
+  export const ToqueScalarFieldEnum: {
     id: 'id',
-    pattern: 'pattern',
-    order: 'order',
-    sectionId: 'sectionId'
+    nome: 'nome',
+    audio: 'audio',
+    createdAt: 'createdAt'
   };
 
-  export type BeatScalarFieldEnum = (typeof BeatScalarFieldEnum)[keyof typeof BeatScalarFieldEnum]
-
-
-  export const SectionAudioScalarFieldEnum: {
-    id: 'id',
-    url: 'url',
-    createdAt: 'createdAt',
-    approved: 'approved',
-    sectionId: 'sectionId',
-    uploadedById: 'uploadedById'
-  };
-
-  export type SectionAudioScalarFieldEnum = (typeof SectionAudioScalarFieldEnum)[keyof typeof SectionAudioScalarFieldEnum]
+  export type ToqueScalarFieldEnum = (typeof ToqueScalarFieldEnum)[keyof typeof ToqueScalarFieldEnum]
 
 
   export const FavoriteScalarFieldEnum: {
@@ -9731,7 +8464,6 @@ export namespace Prisma {
     role?: EnumRoleFilter<"User"> | $Enums.Role
     createdAt?: DateTimeFilter<"User"> | Date | string
     pointsCreated?: PointListRelationFilter
-    sectionAudios?: SectionAudioListRelationFilter
     favorites?: FavoriteListRelationFilter
     approvals?: PointListRelationFilter
   }
@@ -9744,7 +8476,6 @@ export namespace Prisma {
     role?: SortOrder
     createdAt?: SortOrder
     pointsCreated?: PointOrderByRelationAggregateInput
-    sectionAudios?: SectionAudioOrderByRelationAggregateInput
     favorites?: FavoriteOrderByRelationAggregateInput
     approvals?: PointOrderByRelationAggregateInput
   }
@@ -9760,7 +8491,6 @@ export namespace Prisma {
     role?: EnumRoleFilter<"User"> | $Enums.Role
     createdAt?: DateTimeFilter<"User"> | Date | string
     pointsCreated?: PointListRelationFilter
-    sectionAudios?: SectionAudioListRelationFilter
     favorites?: FavoriteListRelationFilter
     approvals?: PointListRelationFilter
   }, "id" | "username">
@@ -9964,9 +8694,9 @@ export namespace Prisma {
     order?: IntFilter<"Section"> | number
     text?: StringFilter<"Section"> | string
     pointId?: StringFilter<"Section"> | string
+    toqueId?: StringNullableFilter<"Section"> | string | null
     point?: XOR<PointScalarRelationFilter, PointWhereInput>
-    beats?: BeatListRelationFilter
-    audios?: SectionAudioListRelationFilter
+    toque?: XOR<ToqueNullableScalarRelationFilter, ToqueWhereInput> | null
   }
 
   export type SectionOrderByWithRelationInput = {
@@ -9974,9 +8704,9 @@ export namespace Prisma {
     order?: SortOrder
     text?: SortOrder
     pointId?: SortOrder
+    toqueId?: SortOrderInput | SortOrder
     point?: PointOrderByWithRelationInput
-    beats?: BeatOrderByRelationAggregateInput
-    audios?: SectionAudioOrderByRelationAggregateInput
+    toque?: ToqueOrderByWithRelationInput
   }
 
   export type SectionWhereUniqueInput = Prisma.AtLeast<{
@@ -9988,9 +8718,9 @@ export namespace Prisma {
     order?: IntFilter<"Section"> | number
     text?: StringFilter<"Section"> | string
     pointId?: StringFilter<"Section"> | string
+    toqueId?: StringNullableFilter<"Section"> | string | null
     point?: XOR<PointScalarRelationFilter, PointWhereInput>
-    beats?: BeatListRelationFilter
-    audios?: SectionAudioListRelationFilter
+    toque?: XOR<ToqueNullableScalarRelationFilter, ToqueWhereInput> | null
   }, "id" | "pointId_order">
 
   export type SectionOrderByWithAggregationInput = {
@@ -9998,6 +8728,7 @@ export namespace Prisma {
     order?: SortOrder
     text?: SortOrder
     pointId?: SortOrder
+    toqueId?: SortOrderInput | SortOrder
     _count?: SectionCountOrderByAggregateInput
     _avg?: SectionAvgOrderByAggregateInput
     _max?: SectionMaxOrderByAggregateInput
@@ -10013,122 +8744,57 @@ export namespace Prisma {
     order?: IntWithAggregatesFilter<"Section"> | number
     text?: StringWithAggregatesFilter<"Section"> | string
     pointId?: StringWithAggregatesFilter<"Section"> | string
+    toqueId?: StringNullableWithAggregatesFilter<"Section"> | string | null
   }
 
-  export type BeatWhereInput = {
-    AND?: BeatWhereInput | BeatWhereInput[]
-    OR?: BeatWhereInput[]
-    NOT?: BeatWhereInput | BeatWhereInput[]
-    id?: StringFilter<"Beat"> | string
-    pattern?: StringFilter<"Beat"> | string
-    order?: IntFilter<"Beat"> | number
-    sectionId?: StringFilter<"Beat"> | string
-    section?: XOR<SectionScalarRelationFilter, SectionWhereInput>
+  export type ToqueWhereInput = {
+    AND?: ToqueWhereInput | ToqueWhereInput[]
+    OR?: ToqueWhereInput[]
+    NOT?: ToqueWhereInput | ToqueWhereInput[]
+    id?: StringFilter<"Toque"> | string
+    nome?: StringFilter<"Toque"> | string
+    audio?: StringFilter<"Toque"> | string
+    createdAt?: DateTimeFilter<"Toque"> | Date | string
+    sections?: SectionListRelationFilter
   }
 
-  export type BeatOrderByWithRelationInput = {
+  export type ToqueOrderByWithRelationInput = {
     id?: SortOrder
-    pattern?: SortOrder
-    order?: SortOrder
-    sectionId?: SortOrder
-    section?: SectionOrderByWithRelationInput
-  }
-
-  export type BeatWhereUniqueInput = Prisma.AtLeast<{
-    id?: string
-    sectionId_order?: BeatSectionIdOrderCompoundUniqueInput
-    AND?: BeatWhereInput | BeatWhereInput[]
-    OR?: BeatWhereInput[]
-    NOT?: BeatWhereInput | BeatWhereInput[]
-    pattern?: StringFilter<"Beat"> | string
-    order?: IntFilter<"Beat"> | number
-    sectionId?: StringFilter<"Beat"> | string
-    section?: XOR<SectionScalarRelationFilter, SectionWhereInput>
-  }, "id" | "sectionId_order">
-
-  export type BeatOrderByWithAggregationInput = {
-    id?: SortOrder
-    pattern?: SortOrder
-    order?: SortOrder
-    sectionId?: SortOrder
-    _count?: BeatCountOrderByAggregateInput
-    _avg?: BeatAvgOrderByAggregateInput
-    _max?: BeatMaxOrderByAggregateInput
-    _min?: BeatMinOrderByAggregateInput
-    _sum?: BeatSumOrderByAggregateInput
-  }
-
-  export type BeatScalarWhereWithAggregatesInput = {
-    AND?: BeatScalarWhereWithAggregatesInput | BeatScalarWhereWithAggregatesInput[]
-    OR?: BeatScalarWhereWithAggregatesInput[]
-    NOT?: BeatScalarWhereWithAggregatesInput | BeatScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"Beat"> | string
-    pattern?: StringWithAggregatesFilter<"Beat"> | string
-    order?: IntWithAggregatesFilter<"Beat"> | number
-    sectionId?: StringWithAggregatesFilter<"Beat"> | string
-  }
-
-  export type SectionAudioWhereInput = {
-    AND?: SectionAudioWhereInput | SectionAudioWhereInput[]
-    OR?: SectionAudioWhereInput[]
-    NOT?: SectionAudioWhereInput | SectionAudioWhereInput[]
-    id?: StringFilter<"SectionAudio"> | string
-    url?: StringFilter<"SectionAudio"> | string
-    createdAt?: DateTimeFilter<"SectionAudio"> | Date | string
-    approved?: BoolFilter<"SectionAudio"> | boolean
-    sectionId?: StringFilter<"SectionAudio"> | string
-    uploadedById?: StringFilter<"SectionAudio"> | string
-    section?: XOR<SectionScalarRelationFilter, SectionWhereInput>
-    uploadedBy?: XOR<UserScalarRelationFilter, UserWhereInput>
-  }
-
-  export type SectionAudioOrderByWithRelationInput = {
-    id?: SortOrder
-    url?: SortOrder
+    nome?: SortOrder
+    audio?: SortOrder
     createdAt?: SortOrder
-    approved?: SortOrder
-    sectionId?: SortOrder
-    uploadedById?: SortOrder
-    section?: SectionOrderByWithRelationInput
-    uploadedBy?: UserOrderByWithRelationInput
+    sections?: SectionOrderByRelationAggregateInput
   }
 
-  export type SectionAudioWhereUniqueInput = Prisma.AtLeast<{
+  export type ToqueWhereUniqueInput = Prisma.AtLeast<{
     id?: string
-    AND?: SectionAudioWhereInput | SectionAudioWhereInput[]
-    OR?: SectionAudioWhereInput[]
-    NOT?: SectionAudioWhereInput | SectionAudioWhereInput[]
-    url?: StringFilter<"SectionAudio"> | string
-    createdAt?: DateTimeFilter<"SectionAudio"> | Date | string
-    approved?: BoolFilter<"SectionAudio"> | boolean
-    sectionId?: StringFilter<"SectionAudio"> | string
-    uploadedById?: StringFilter<"SectionAudio"> | string
-    section?: XOR<SectionScalarRelationFilter, SectionWhereInput>
-    uploadedBy?: XOR<UserScalarRelationFilter, UserWhereInput>
+    AND?: ToqueWhereInput | ToqueWhereInput[]
+    OR?: ToqueWhereInput[]
+    NOT?: ToqueWhereInput | ToqueWhereInput[]
+    nome?: StringFilter<"Toque"> | string
+    audio?: StringFilter<"Toque"> | string
+    createdAt?: DateTimeFilter<"Toque"> | Date | string
+    sections?: SectionListRelationFilter
   }, "id">
 
-  export type SectionAudioOrderByWithAggregationInput = {
+  export type ToqueOrderByWithAggregationInput = {
     id?: SortOrder
-    url?: SortOrder
+    nome?: SortOrder
+    audio?: SortOrder
     createdAt?: SortOrder
-    approved?: SortOrder
-    sectionId?: SortOrder
-    uploadedById?: SortOrder
-    _count?: SectionAudioCountOrderByAggregateInput
-    _max?: SectionAudioMaxOrderByAggregateInput
-    _min?: SectionAudioMinOrderByAggregateInput
+    _count?: ToqueCountOrderByAggregateInput
+    _max?: ToqueMaxOrderByAggregateInput
+    _min?: ToqueMinOrderByAggregateInput
   }
 
-  export type SectionAudioScalarWhereWithAggregatesInput = {
-    AND?: SectionAudioScalarWhereWithAggregatesInput | SectionAudioScalarWhereWithAggregatesInput[]
-    OR?: SectionAudioScalarWhereWithAggregatesInput[]
-    NOT?: SectionAudioScalarWhereWithAggregatesInput | SectionAudioScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"SectionAudio"> | string
-    url?: StringWithAggregatesFilter<"SectionAudio"> | string
-    createdAt?: DateTimeWithAggregatesFilter<"SectionAudio"> | Date | string
-    approved?: BoolWithAggregatesFilter<"SectionAudio"> | boolean
-    sectionId?: StringWithAggregatesFilter<"SectionAudio"> | string
-    uploadedById?: StringWithAggregatesFilter<"SectionAudio"> | string
+  export type ToqueScalarWhereWithAggregatesInput = {
+    AND?: ToqueScalarWhereWithAggregatesInput | ToqueScalarWhereWithAggregatesInput[]
+    OR?: ToqueScalarWhereWithAggregatesInput[]
+    NOT?: ToqueScalarWhereWithAggregatesInput | ToqueScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Toque"> | string
+    nome?: StringWithAggregatesFilter<"Toque"> | string
+    audio?: StringWithAggregatesFilter<"Toque"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"Toque"> | Date | string
   }
 
   export type FavoriteWhereInput = {
@@ -10188,7 +8854,6 @@ export namespace Prisma {
     role?: $Enums.Role
     createdAt?: Date | string
     pointsCreated?: PointCreateNestedManyWithoutCreatedByInput
-    sectionAudios?: SectionAudioCreateNestedManyWithoutUploadedByInput
     favorites?: FavoriteCreateNestedManyWithoutUserInput
     approvals?: PointCreateNestedManyWithoutApprovedByInput
   }
@@ -10201,7 +8866,6 @@ export namespace Prisma {
     role?: $Enums.Role
     createdAt?: Date | string
     pointsCreated?: PointUncheckedCreateNestedManyWithoutCreatedByInput
-    sectionAudios?: SectionAudioUncheckedCreateNestedManyWithoutUploadedByInput
     favorites?: FavoriteUncheckedCreateNestedManyWithoutUserInput
     approvals?: PointUncheckedCreateNestedManyWithoutApprovedByInput
   }
@@ -10214,7 +8878,6 @@ export namespace Prisma {
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     pointsCreated?: PointUpdateManyWithoutCreatedByNestedInput
-    sectionAudios?: SectionAudioUpdateManyWithoutUploadedByNestedInput
     favorites?: FavoriteUpdateManyWithoutUserNestedInput
     approvals?: PointUpdateManyWithoutApprovedByNestedInput
   }
@@ -10227,7 +8890,6 @@ export namespace Prisma {
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     pointsCreated?: PointUncheckedUpdateManyWithoutCreatedByNestedInput
-    sectionAudios?: SectionAudioUncheckedUpdateManyWithoutUploadedByNestedInput
     favorites?: FavoriteUncheckedUpdateManyWithoutUserNestedInput
     approvals?: PointUncheckedUpdateManyWithoutApprovedByNestedInput
   }
@@ -10448,8 +9110,7 @@ export namespace Prisma {
     order: number
     text: string
     point: PointCreateNestedOneWithoutSectionsInput
-    beats?: BeatCreateNestedManyWithoutSectionInput
-    audios?: SectionAudioCreateNestedManyWithoutSectionInput
+    toque?: ToqueCreateNestedOneWithoutSectionsInput
   }
 
   export type SectionUncheckedCreateInput = {
@@ -10457,8 +9118,7 @@ export namespace Prisma {
     order: number
     text: string
     pointId: string
-    beats?: BeatUncheckedCreateNestedManyWithoutSectionInput
-    audios?: SectionAudioUncheckedCreateNestedManyWithoutSectionInput
+    toqueId?: string | null
   }
 
   export type SectionUpdateInput = {
@@ -10466,8 +9126,7 @@ export namespace Prisma {
     order?: IntFieldUpdateOperationsInput | number
     text?: StringFieldUpdateOperationsInput | string
     point?: PointUpdateOneRequiredWithoutSectionsNestedInput
-    beats?: BeatUpdateManyWithoutSectionNestedInput
-    audios?: SectionAudioUpdateManyWithoutSectionNestedInput
+    toque?: ToqueUpdateOneWithoutSectionsNestedInput
   }
 
   export type SectionUncheckedUpdateInput = {
@@ -10475,8 +9134,7 @@ export namespace Prisma {
     order?: IntFieldUpdateOperationsInput | number
     text?: StringFieldUpdateOperationsInput | string
     pointId?: StringFieldUpdateOperationsInput | string
-    beats?: BeatUncheckedUpdateManyWithoutSectionNestedInput
-    audios?: SectionAudioUncheckedUpdateManyWithoutSectionNestedInput
+    toqueId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type SectionCreateManyInput = {
@@ -10484,6 +9142,7 @@ export namespace Prisma {
     order: number
     text: string
     pointId: string
+    toqueId?: string | null
   }
 
   export type SectionUpdateManyMutationInput = {
@@ -10497,115 +9156,60 @@ export namespace Prisma {
     order?: IntFieldUpdateOperationsInput | number
     text?: StringFieldUpdateOperationsInput | string
     pointId?: StringFieldUpdateOperationsInput | string
+    toqueId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
-  export type BeatCreateInput = {
+  export type ToqueCreateInput = {
     id?: string
-    pattern: string
-    order: number
-    section: SectionCreateNestedOneWithoutBeatsInput
-  }
-
-  export type BeatUncheckedCreateInput = {
-    id?: string
-    pattern: string
-    order: number
-    sectionId: string
-  }
-
-  export type BeatUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    pattern?: StringFieldUpdateOperationsInput | string
-    order?: IntFieldUpdateOperationsInput | number
-    section?: SectionUpdateOneRequiredWithoutBeatsNestedInput
-  }
-
-  export type BeatUncheckedUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    pattern?: StringFieldUpdateOperationsInput | string
-    order?: IntFieldUpdateOperationsInput | number
-    sectionId?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type BeatCreateManyInput = {
-    id?: string
-    pattern: string
-    order: number
-    sectionId: string
-  }
-
-  export type BeatUpdateManyMutationInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    pattern?: StringFieldUpdateOperationsInput | string
-    order?: IntFieldUpdateOperationsInput | number
-  }
-
-  export type BeatUncheckedUpdateManyInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    pattern?: StringFieldUpdateOperationsInput | string
-    order?: IntFieldUpdateOperationsInput | number
-    sectionId?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type SectionAudioCreateInput = {
-    id?: string
-    url: string
+    nome: string
+    audio: string
     createdAt?: Date | string
-    approved?: boolean
-    section: SectionCreateNestedOneWithoutAudiosInput
-    uploadedBy: UserCreateNestedOneWithoutSectionAudiosInput
+    sections?: SectionCreateNestedManyWithoutToqueInput
   }
 
-  export type SectionAudioUncheckedCreateInput = {
+  export type ToqueUncheckedCreateInput = {
     id?: string
-    url: string
+    nome: string
+    audio: string
     createdAt?: Date | string
-    approved?: boolean
-    sectionId: string
-    uploadedById: string
+    sections?: SectionUncheckedCreateNestedManyWithoutToqueInput
   }
 
-  export type SectionAudioUpdateInput = {
+  export type ToqueUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    url?: StringFieldUpdateOperationsInput | string
+    nome?: StringFieldUpdateOperationsInput | string
+    audio?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    approved?: BoolFieldUpdateOperationsInput | boolean
-    section?: SectionUpdateOneRequiredWithoutAudiosNestedInput
-    uploadedBy?: UserUpdateOneRequiredWithoutSectionAudiosNestedInput
+    sections?: SectionUpdateManyWithoutToqueNestedInput
   }
 
-  export type SectionAudioUncheckedUpdateInput = {
+  export type ToqueUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    url?: StringFieldUpdateOperationsInput | string
+    nome?: StringFieldUpdateOperationsInput | string
+    audio?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    approved?: BoolFieldUpdateOperationsInput | boolean
-    sectionId?: StringFieldUpdateOperationsInput | string
-    uploadedById?: StringFieldUpdateOperationsInput | string
+    sections?: SectionUncheckedUpdateManyWithoutToqueNestedInput
   }
 
-  export type SectionAudioCreateManyInput = {
+  export type ToqueCreateManyInput = {
     id?: string
-    url: string
+    nome: string
+    audio: string
     createdAt?: Date | string
-    approved?: boolean
-    sectionId: string
-    uploadedById: string
   }
 
-  export type SectionAudioUpdateManyMutationInput = {
+  export type ToqueUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    url?: StringFieldUpdateOperationsInput | string
+    nome?: StringFieldUpdateOperationsInput | string
+    audio?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    approved?: BoolFieldUpdateOperationsInput | boolean
   }
 
-  export type SectionAudioUncheckedUpdateManyInput = {
+  export type ToqueUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    url?: StringFieldUpdateOperationsInput | string
+    nome?: StringFieldUpdateOperationsInput | string
+    audio?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    approved?: BoolFieldUpdateOperationsInput | boolean
-    sectionId?: StringFieldUpdateOperationsInput | string
-    uploadedById?: StringFieldUpdateOperationsInput | string
   }
 
   export type FavoriteCreateInput = {
@@ -10702,12 +9306,6 @@ export namespace Prisma {
     none?: PointWhereInput
   }
 
-  export type SectionAudioListRelationFilter = {
-    every?: SectionAudioWhereInput
-    some?: SectionAudioWhereInput
-    none?: SectionAudioWhereInput
-  }
-
   export type FavoriteListRelationFilter = {
     every?: FavoriteWhereInput
     some?: FavoriteWhereInput
@@ -10720,10 +9318,6 @@ export namespace Prisma {
   }
 
   export type PointOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
-  export type SectionAudioOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -11006,14 +9600,9 @@ export namespace Prisma {
     isNot?: PointWhereInput
   }
 
-  export type BeatListRelationFilter = {
-    every?: BeatWhereInput
-    some?: BeatWhereInput
-    none?: BeatWhereInput
-  }
-
-  export type BeatOrderByRelationAggregateInput = {
-    _count?: SortOrder
+  export type ToqueNullableScalarRelationFilter = {
+    is?: ToqueWhereInput | null
+    isNot?: ToqueWhereInput | null
   }
 
   export type SectionPointIdOrderCompoundUniqueInput = {
@@ -11026,6 +9615,7 @@ export namespace Prisma {
     order?: SortOrder
     text?: SortOrder
     pointId?: SortOrder
+    toqueId?: SortOrder
   }
 
   export type SectionAvgOrderByAggregateInput = {
@@ -11037,6 +9627,7 @@ export namespace Prisma {
     order?: SortOrder
     text?: SortOrder
     pointId?: SortOrder
+    toqueId?: SortOrder
   }
 
   export type SectionMinOrderByAggregateInput = {
@@ -11044,6 +9635,7 @@ export namespace Prisma {
     order?: SortOrder
     text?: SortOrder
     pointId?: SortOrder
+    toqueId?: SortOrder
   }
 
   export type SectionSumOrderByAggregateInput = {
@@ -11066,70 +9658,25 @@ export namespace Prisma {
     _max?: NestedIntFilter<$PrismaModel>
   }
 
-  export type SectionScalarRelationFilter = {
-    is?: SectionWhereInput
-    isNot?: SectionWhereInput
-  }
-
-  export type BeatSectionIdOrderCompoundUniqueInput = {
-    sectionId: string
-    order: number
-  }
-
-  export type BeatCountOrderByAggregateInput = {
+  export type ToqueCountOrderByAggregateInput = {
     id?: SortOrder
-    pattern?: SortOrder
-    order?: SortOrder
-    sectionId?: SortOrder
-  }
-
-  export type BeatAvgOrderByAggregateInput = {
-    order?: SortOrder
-  }
-
-  export type BeatMaxOrderByAggregateInput = {
-    id?: SortOrder
-    pattern?: SortOrder
-    order?: SortOrder
-    sectionId?: SortOrder
-  }
-
-  export type BeatMinOrderByAggregateInput = {
-    id?: SortOrder
-    pattern?: SortOrder
-    order?: SortOrder
-    sectionId?: SortOrder
-  }
-
-  export type BeatSumOrderByAggregateInput = {
-    order?: SortOrder
-  }
-
-  export type SectionAudioCountOrderByAggregateInput = {
-    id?: SortOrder
-    url?: SortOrder
+    nome?: SortOrder
+    audio?: SortOrder
     createdAt?: SortOrder
-    approved?: SortOrder
-    sectionId?: SortOrder
-    uploadedById?: SortOrder
   }
 
-  export type SectionAudioMaxOrderByAggregateInput = {
+  export type ToqueMaxOrderByAggregateInput = {
     id?: SortOrder
-    url?: SortOrder
+    nome?: SortOrder
+    audio?: SortOrder
     createdAt?: SortOrder
-    approved?: SortOrder
-    sectionId?: SortOrder
-    uploadedById?: SortOrder
   }
 
-  export type SectionAudioMinOrderByAggregateInput = {
+  export type ToqueMinOrderByAggregateInput = {
     id?: SortOrder
-    url?: SortOrder
+    nome?: SortOrder
+    audio?: SortOrder
     createdAt?: SortOrder
-    approved?: SortOrder
-    sectionId?: SortOrder
-    uploadedById?: SortOrder
   }
 
   export type FavoriteUserIdPointIdCompoundUniqueInput = {
@@ -11162,13 +9709,6 @@ export namespace Prisma {
     connect?: PointWhereUniqueInput | PointWhereUniqueInput[]
   }
 
-  export type SectionAudioCreateNestedManyWithoutUploadedByInput = {
-    create?: XOR<SectionAudioCreateWithoutUploadedByInput, SectionAudioUncheckedCreateWithoutUploadedByInput> | SectionAudioCreateWithoutUploadedByInput[] | SectionAudioUncheckedCreateWithoutUploadedByInput[]
-    connectOrCreate?: SectionAudioCreateOrConnectWithoutUploadedByInput | SectionAudioCreateOrConnectWithoutUploadedByInput[]
-    createMany?: SectionAudioCreateManyUploadedByInputEnvelope
-    connect?: SectionAudioWhereUniqueInput | SectionAudioWhereUniqueInput[]
-  }
-
   export type FavoriteCreateNestedManyWithoutUserInput = {
     create?: XOR<FavoriteCreateWithoutUserInput, FavoriteUncheckedCreateWithoutUserInput> | FavoriteCreateWithoutUserInput[] | FavoriteUncheckedCreateWithoutUserInput[]
     connectOrCreate?: FavoriteCreateOrConnectWithoutUserInput | FavoriteCreateOrConnectWithoutUserInput[]
@@ -11188,13 +9728,6 @@ export namespace Prisma {
     connectOrCreate?: PointCreateOrConnectWithoutCreatedByInput | PointCreateOrConnectWithoutCreatedByInput[]
     createMany?: PointCreateManyCreatedByInputEnvelope
     connect?: PointWhereUniqueInput | PointWhereUniqueInput[]
-  }
-
-  export type SectionAudioUncheckedCreateNestedManyWithoutUploadedByInput = {
-    create?: XOR<SectionAudioCreateWithoutUploadedByInput, SectionAudioUncheckedCreateWithoutUploadedByInput> | SectionAudioCreateWithoutUploadedByInput[] | SectionAudioUncheckedCreateWithoutUploadedByInput[]
-    connectOrCreate?: SectionAudioCreateOrConnectWithoutUploadedByInput | SectionAudioCreateOrConnectWithoutUploadedByInput[]
-    createMany?: SectionAudioCreateManyUploadedByInputEnvelope
-    connect?: SectionAudioWhereUniqueInput | SectionAudioWhereUniqueInput[]
   }
 
   export type FavoriteUncheckedCreateNestedManyWithoutUserInput = {
@@ -11241,20 +9774,6 @@ export namespace Prisma {
     deleteMany?: PointScalarWhereInput | PointScalarWhereInput[]
   }
 
-  export type SectionAudioUpdateManyWithoutUploadedByNestedInput = {
-    create?: XOR<SectionAudioCreateWithoutUploadedByInput, SectionAudioUncheckedCreateWithoutUploadedByInput> | SectionAudioCreateWithoutUploadedByInput[] | SectionAudioUncheckedCreateWithoutUploadedByInput[]
-    connectOrCreate?: SectionAudioCreateOrConnectWithoutUploadedByInput | SectionAudioCreateOrConnectWithoutUploadedByInput[]
-    upsert?: SectionAudioUpsertWithWhereUniqueWithoutUploadedByInput | SectionAudioUpsertWithWhereUniqueWithoutUploadedByInput[]
-    createMany?: SectionAudioCreateManyUploadedByInputEnvelope
-    set?: SectionAudioWhereUniqueInput | SectionAudioWhereUniqueInput[]
-    disconnect?: SectionAudioWhereUniqueInput | SectionAudioWhereUniqueInput[]
-    delete?: SectionAudioWhereUniqueInput | SectionAudioWhereUniqueInput[]
-    connect?: SectionAudioWhereUniqueInput | SectionAudioWhereUniqueInput[]
-    update?: SectionAudioUpdateWithWhereUniqueWithoutUploadedByInput | SectionAudioUpdateWithWhereUniqueWithoutUploadedByInput[]
-    updateMany?: SectionAudioUpdateManyWithWhereWithoutUploadedByInput | SectionAudioUpdateManyWithWhereWithoutUploadedByInput[]
-    deleteMany?: SectionAudioScalarWhereInput | SectionAudioScalarWhereInput[]
-  }
-
   export type FavoriteUpdateManyWithoutUserNestedInput = {
     create?: XOR<FavoriteCreateWithoutUserInput, FavoriteUncheckedCreateWithoutUserInput> | FavoriteCreateWithoutUserInput[] | FavoriteUncheckedCreateWithoutUserInput[]
     connectOrCreate?: FavoriteCreateOrConnectWithoutUserInput | FavoriteCreateOrConnectWithoutUserInput[]
@@ -11295,20 +9814,6 @@ export namespace Prisma {
     update?: PointUpdateWithWhereUniqueWithoutCreatedByInput | PointUpdateWithWhereUniqueWithoutCreatedByInput[]
     updateMany?: PointUpdateManyWithWhereWithoutCreatedByInput | PointUpdateManyWithWhereWithoutCreatedByInput[]
     deleteMany?: PointScalarWhereInput | PointScalarWhereInput[]
-  }
-
-  export type SectionAudioUncheckedUpdateManyWithoutUploadedByNestedInput = {
-    create?: XOR<SectionAudioCreateWithoutUploadedByInput, SectionAudioUncheckedCreateWithoutUploadedByInput> | SectionAudioCreateWithoutUploadedByInput[] | SectionAudioUncheckedCreateWithoutUploadedByInput[]
-    connectOrCreate?: SectionAudioCreateOrConnectWithoutUploadedByInput | SectionAudioCreateOrConnectWithoutUploadedByInput[]
-    upsert?: SectionAudioUpsertWithWhereUniqueWithoutUploadedByInput | SectionAudioUpsertWithWhereUniqueWithoutUploadedByInput[]
-    createMany?: SectionAudioCreateManyUploadedByInputEnvelope
-    set?: SectionAudioWhereUniqueInput | SectionAudioWhereUniqueInput[]
-    disconnect?: SectionAudioWhereUniqueInput | SectionAudioWhereUniqueInput[]
-    delete?: SectionAudioWhereUniqueInput | SectionAudioWhereUniqueInput[]
-    connect?: SectionAudioWhereUniqueInput | SectionAudioWhereUniqueInput[]
-    update?: SectionAudioUpdateWithWhereUniqueWithoutUploadedByInput | SectionAudioUpdateWithWhereUniqueWithoutUploadedByInput[]
-    updateMany?: SectionAudioUpdateManyWithWhereWithoutUploadedByInput | SectionAudioUpdateManyWithWhereWithoutUploadedByInput[]
-    deleteMany?: SectionAudioScalarWhereInput | SectionAudioScalarWhereInput[]
   }
 
   export type FavoriteUncheckedUpdateManyWithoutUserNestedInput = {
@@ -11531,32 +10036,10 @@ export namespace Prisma {
     connect?: PointWhereUniqueInput
   }
 
-  export type BeatCreateNestedManyWithoutSectionInput = {
-    create?: XOR<BeatCreateWithoutSectionInput, BeatUncheckedCreateWithoutSectionInput> | BeatCreateWithoutSectionInput[] | BeatUncheckedCreateWithoutSectionInput[]
-    connectOrCreate?: BeatCreateOrConnectWithoutSectionInput | BeatCreateOrConnectWithoutSectionInput[]
-    createMany?: BeatCreateManySectionInputEnvelope
-    connect?: BeatWhereUniqueInput | BeatWhereUniqueInput[]
-  }
-
-  export type SectionAudioCreateNestedManyWithoutSectionInput = {
-    create?: XOR<SectionAudioCreateWithoutSectionInput, SectionAudioUncheckedCreateWithoutSectionInput> | SectionAudioCreateWithoutSectionInput[] | SectionAudioUncheckedCreateWithoutSectionInput[]
-    connectOrCreate?: SectionAudioCreateOrConnectWithoutSectionInput | SectionAudioCreateOrConnectWithoutSectionInput[]
-    createMany?: SectionAudioCreateManySectionInputEnvelope
-    connect?: SectionAudioWhereUniqueInput | SectionAudioWhereUniqueInput[]
-  }
-
-  export type BeatUncheckedCreateNestedManyWithoutSectionInput = {
-    create?: XOR<BeatCreateWithoutSectionInput, BeatUncheckedCreateWithoutSectionInput> | BeatCreateWithoutSectionInput[] | BeatUncheckedCreateWithoutSectionInput[]
-    connectOrCreate?: BeatCreateOrConnectWithoutSectionInput | BeatCreateOrConnectWithoutSectionInput[]
-    createMany?: BeatCreateManySectionInputEnvelope
-    connect?: BeatWhereUniqueInput | BeatWhereUniqueInput[]
-  }
-
-  export type SectionAudioUncheckedCreateNestedManyWithoutSectionInput = {
-    create?: XOR<SectionAudioCreateWithoutSectionInput, SectionAudioUncheckedCreateWithoutSectionInput> | SectionAudioCreateWithoutSectionInput[] | SectionAudioUncheckedCreateWithoutSectionInput[]
-    connectOrCreate?: SectionAudioCreateOrConnectWithoutSectionInput | SectionAudioCreateOrConnectWithoutSectionInput[]
-    createMany?: SectionAudioCreateManySectionInputEnvelope
-    connect?: SectionAudioWhereUniqueInput | SectionAudioWhereUniqueInput[]
+  export type ToqueCreateNestedOneWithoutSectionsInput = {
+    create?: XOR<ToqueCreateWithoutSectionsInput, ToqueUncheckedCreateWithoutSectionsInput>
+    connectOrCreate?: ToqueCreateOrConnectWithoutSectionsInput
+    connect?: ToqueWhereUniqueInput
   }
 
   export type IntFieldUpdateOperationsInput = {
@@ -11575,102 +10058,56 @@ export namespace Prisma {
     update?: XOR<XOR<PointUpdateToOneWithWhereWithoutSectionsInput, PointUpdateWithoutSectionsInput>, PointUncheckedUpdateWithoutSectionsInput>
   }
 
-  export type BeatUpdateManyWithoutSectionNestedInput = {
-    create?: XOR<BeatCreateWithoutSectionInput, BeatUncheckedCreateWithoutSectionInput> | BeatCreateWithoutSectionInput[] | BeatUncheckedCreateWithoutSectionInput[]
-    connectOrCreate?: BeatCreateOrConnectWithoutSectionInput | BeatCreateOrConnectWithoutSectionInput[]
-    upsert?: BeatUpsertWithWhereUniqueWithoutSectionInput | BeatUpsertWithWhereUniqueWithoutSectionInput[]
-    createMany?: BeatCreateManySectionInputEnvelope
-    set?: BeatWhereUniqueInput | BeatWhereUniqueInput[]
-    disconnect?: BeatWhereUniqueInput | BeatWhereUniqueInput[]
-    delete?: BeatWhereUniqueInput | BeatWhereUniqueInput[]
-    connect?: BeatWhereUniqueInput | BeatWhereUniqueInput[]
-    update?: BeatUpdateWithWhereUniqueWithoutSectionInput | BeatUpdateWithWhereUniqueWithoutSectionInput[]
-    updateMany?: BeatUpdateManyWithWhereWithoutSectionInput | BeatUpdateManyWithWhereWithoutSectionInput[]
-    deleteMany?: BeatScalarWhereInput | BeatScalarWhereInput[]
+  export type ToqueUpdateOneWithoutSectionsNestedInput = {
+    create?: XOR<ToqueCreateWithoutSectionsInput, ToqueUncheckedCreateWithoutSectionsInput>
+    connectOrCreate?: ToqueCreateOrConnectWithoutSectionsInput
+    upsert?: ToqueUpsertWithoutSectionsInput
+    disconnect?: ToqueWhereInput | boolean
+    delete?: ToqueWhereInput | boolean
+    connect?: ToqueWhereUniqueInput
+    update?: XOR<XOR<ToqueUpdateToOneWithWhereWithoutSectionsInput, ToqueUpdateWithoutSectionsInput>, ToqueUncheckedUpdateWithoutSectionsInput>
   }
 
-  export type SectionAudioUpdateManyWithoutSectionNestedInput = {
-    create?: XOR<SectionAudioCreateWithoutSectionInput, SectionAudioUncheckedCreateWithoutSectionInput> | SectionAudioCreateWithoutSectionInput[] | SectionAudioUncheckedCreateWithoutSectionInput[]
-    connectOrCreate?: SectionAudioCreateOrConnectWithoutSectionInput | SectionAudioCreateOrConnectWithoutSectionInput[]
-    upsert?: SectionAudioUpsertWithWhereUniqueWithoutSectionInput | SectionAudioUpsertWithWhereUniqueWithoutSectionInput[]
-    createMany?: SectionAudioCreateManySectionInputEnvelope
-    set?: SectionAudioWhereUniqueInput | SectionAudioWhereUniqueInput[]
-    disconnect?: SectionAudioWhereUniqueInput | SectionAudioWhereUniqueInput[]
-    delete?: SectionAudioWhereUniqueInput | SectionAudioWhereUniqueInput[]
-    connect?: SectionAudioWhereUniqueInput | SectionAudioWhereUniqueInput[]
-    update?: SectionAudioUpdateWithWhereUniqueWithoutSectionInput | SectionAudioUpdateWithWhereUniqueWithoutSectionInput[]
-    updateMany?: SectionAudioUpdateManyWithWhereWithoutSectionInput | SectionAudioUpdateManyWithWhereWithoutSectionInput[]
-    deleteMany?: SectionAudioScalarWhereInput | SectionAudioScalarWhereInput[]
+  export type SectionCreateNestedManyWithoutToqueInput = {
+    create?: XOR<SectionCreateWithoutToqueInput, SectionUncheckedCreateWithoutToqueInput> | SectionCreateWithoutToqueInput[] | SectionUncheckedCreateWithoutToqueInput[]
+    connectOrCreate?: SectionCreateOrConnectWithoutToqueInput | SectionCreateOrConnectWithoutToqueInput[]
+    createMany?: SectionCreateManyToqueInputEnvelope
+    connect?: SectionWhereUniqueInput | SectionWhereUniqueInput[]
   }
 
-  export type BeatUncheckedUpdateManyWithoutSectionNestedInput = {
-    create?: XOR<BeatCreateWithoutSectionInput, BeatUncheckedCreateWithoutSectionInput> | BeatCreateWithoutSectionInput[] | BeatUncheckedCreateWithoutSectionInput[]
-    connectOrCreate?: BeatCreateOrConnectWithoutSectionInput | BeatCreateOrConnectWithoutSectionInput[]
-    upsert?: BeatUpsertWithWhereUniqueWithoutSectionInput | BeatUpsertWithWhereUniqueWithoutSectionInput[]
-    createMany?: BeatCreateManySectionInputEnvelope
-    set?: BeatWhereUniqueInput | BeatWhereUniqueInput[]
-    disconnect?: BeatWhereUniqueInput | BeatWhereUniqueInput[]
-    delete?: BeatWhereUniqueInput | BeatWhereUniqueInput[]
-    connect?: BeatWhereUniqueInput | BeatWhereUniqueInput[]
-    update?: BeatUpdateWithWhereUniqueWithoutSectionInput | BeatUpdateWithWhereUniqueWithoutSectionInput[]
-    updateMany?: BeatUpdateManyWithWhereWithoutSectionInput | BeatUpdateManyWithWhereWithoutSectionInput[]
-    deleteMany?: BeatScalarWhereInput | BeatScalarWhereInput[]
+  export type SectionUncheckedCreateNestedManyWithoutToqueInput = {
+    create?: XOR<SectionCreateWithoutToqueInput, SectionUncheckedCreateWithoutToqueInput> | SectionCreateWithoutToqueInput[] | SectionUncheckedCreateWithoutToqueInput[]
+    connectOrCreate?: SectionCreateOrConnectWithoutToqueInput | SectionCreateOrConnectWithoutToqueInput[]
+    createMany?: SectionCreateManyToqueInputEnvelope
+    connect?: SectionWhereUniqueInput | SectionWhereUniqueInput[]
   }
 
-  export type SectionAudioUncheckedUpdateManyWithoutSectionNestedInput = {
-    create?: XOR<SectionAudioCreateWithoutSectionInput, SectionAudioUncheckedCreateWithoutSectionInput> | SectionAudioCreateWithoutSectionInput[] | SectionAudioUncheckedCreateWithoutSectionInput[]
-    connectOrCreate?: SectionAudioCreateOrConnectWithoutSectionInput | SectionAudioCreateOrConnectWithoutSectionInput[]
-    upsert?: SectionAudioUpsertWithWhereUniqueWithoutSectionInput | SectionAudioUpsertWithWhereUniqueWithoutSectionInput[]
-    createMany?: SectionAudioCreateManySectionInputEnvelope
-    set?: SectionAudioWhereUniqueInput | SectionAudioWhereUniqueInput[]
-    disconnect?: SectionAudioWhereUniqueInput | SectionAudioWhereUniqueInput[]
-    delete?: SectionAudioWhereUniqueInput | SectionAudioWhereUniqueInput[]
-    connect?: SectionAudioWhereUniqueInput | SectionAudioWhereUniqueInput[]
-    update?: SectionAudioUpdateWithWhereUniqueWithoutSectionInput | SectionAudioUpdateWithWhereUniqueWithoutSectionInput[]
-    updateMany?: SectionAudioUpdateManyWithWhereWithoutSectionInput | SectionAudioUpdateManyWithWhereWithoutSectionInput[]
-    deleteMany?: SectionAudioScalarWhereInput | SectionAudioScalarWhereInput[]
+  export type SectionUpdateManyWithoutToqueNestedInput = {
+    create?: XOR<SectionCreateWithoutToqueInput, SectionUncheckedCreateWithoutToqueInput> | SectionCreateWithoutToqueInput[] | SectionUncheckedCreateWithoutToqueInput[]
+    connectOrCreate?: SectionCreateOrConnectWithoutToqueInput | SectionCreateOrConnectWithoutToqueInput[]
+    upsert?: SectionUpsertWithWhereUniqueWithoutToqueInput | SectionUpsertWithWhereUniqueWithoutToqueInput[]
+    createMany?: SectionCreateManyToqueInputEnvelope
+    set?: SectionWhereUniqueInput | SectionWhereUniqueInput[]
+    disconnect?: SectionWhereUniqueInput | SectionWhereUniqueInput[]
+    delete?: SectionWhereUniqueInput | SectionWhereUniqueInput[]
+    connect?: SectionWhereUniqueInput | SectionWhereUniqueInput[]
+    update?: SectionUpdateWithWhereUniqueWithoutToqueInput | SectionUpdateWithWhereUniqueWithoutToqueInput[]
+    updateMany?: SectionUpdateManyWithWhereWithoutToqueInput | SectionUpdateManyWithWhereWithoutToqueInput[]
+    deleteMany?: SectionScalarWhereInput | SectionScalarWhereInput[]
   }
 
-  export type SectionCreateNestedOneWithoutBeatsInput = {
-    create?: XOR<SectionCreateWithoutBeatsInput, SectionUncheckedCreateWithoutBeatsInput>
-    connectOrCreate?: SectionCreateOrConnectWithoutBeatsInput
-    connect?: SectionWhereUniqueInput
-  }
-
-  export type SectionUpdateOneRequiredWithoutBeatsNestedInput = {
-    create?: XOR<SectionCreateWithoutBeatsInput, SectionUncheckedCreateWithoutBeatsInput>
-    connectOrCreate?: SectionCreateOrConnectWithoutBeatsInput
-    upsert?: SectionUpsertWithoutBeatsInput
-    connect?: SectionWhereUniqueInput
-    update?: XOR<XOR<SectionUpdateToOneWithWhereWithoutBeatsInput, SectionUpdateWithoutBeatsInput>, SectionUncheckedUpdateWithoutBeatsInput>
-  }
-
-  export type SectionCreateNestedOneWithoutAudiosInput = {
-    create?: XOR<SectionCreateWithoutAudiosInput, SectionUncheckedCreateWithoutAudiosInput>
-    connectOrCreate?: SectionCreateOrConnectWithoutAudiosInput
-    connect?: SectionWhereUniqueInput
-  }
-
-  export type UserCreateNestedOneWithoutSectionAudiosInput = {
-    create?: XOR<UserCreateWithoutSectionAudiosInput, UserUncheckedCreateWithoutSectionAudiosInput>
-    connectOrCreate?: UserCreateOrConnectWithoutSectionAudiosInput
-    connect?: UserWhereUniqueInput
-  }
-
-  export type SectionUpdateOneRequiredWithoutAudiosNestedInput = {
-    create?: XOR<SectionCreateWithoutAudiosInput, SectionUncheckedCreateWithoutAudiosInput>
-    connectOrCreate?: SectionCreateOrConnectWithoutAudiosInput
-    upsert?: SectionUpsertWithoutAudiosInput
-    connect?: SectionWhereUniqueInput
-    update?: XOR<XOR<SectionUpdateToOneWithWhereWithoutAudiosInput, SectionUpdateWithoutAudiosInput>, SectionUncheckedUpdateWithoutAudiosInput>
-  }
-
-  export type UserUpdateOneRequiredWithoutSectionAudiosNestedInput = {
-    create?: XOR<UserCreateWithoutSectionAudiosInput, UserUncheckedCreateWithoutSectionAudiosInput>
-    connectOrCreate?: UserCreateOrConnectWithoutSectionAudiosInput
-    upsert?: UserUpsertWithoutSectionAudiosInput
-    connect?: UserWhereUniqueInput
-    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutSectionAudiosInput, UserUpdateWithoutSectionAudiosInput>, UserUncheckedUpdateWithoutSectionAudiosInput>
+  export type SectionUncheckedUpdateManyWithoutToqueNestedInput = {
+    create?: XOR<SectionCreateWithoutToqueInput, SectionUncheckedCreateWithoutToqueInput> | SectionCreateWithoutToqueInput[] | SectionUncheckedCreateWithoutToqueInput[]
+    connectOrCreate?: SectionCreateOrConnectWithoutToqueInput | SectionCreateOrConnectWithoutToqueInput[]
+    upsert?: SectionUpsertWithWhereUniqueWithoutToqueInput | SectionUpsertWithWhereUniqueWithoutToqueInput[]
+    createMany?: SectionCreateManyToqueInputEnvelope
+    set?: SectionWhereUniqueInput | SectionWhereUniqueInput[]
+    disconnect?: SectionWhereUniqueInput | SectionWhereUniqueInput[]
+    delete?: SectionWhereUniqueInput | SectionWhereUniqueInput[]
+    connect?: SectionWhereUniqueInput | SectionWhereUniqueInput[]
+    update?: SectionUpdateWithWhereUniqueWithoutToqueInput | SectionUpdateWithWhereUniqueWithoutToqueInput[]
+    updateMany?: SectionUpdateManyWithWhereWithoutToqueInput | SectionUpdateManyWithWhereWithoutToqueInput[]
+    deleteMany?: SectionScalarWhereInput | SectionScalarWhereInput[]
   }
 
   export type UserCreateNestedOneWithoutFavoritesInput = {
@@ -11974,32 +10411,6 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type SectionAudioCreateWithoutUploadedByInput = {
-    id?: string
-    url: string
-    createdAt?: Date | string
-    approved?: boolean
-    section: SectionCreateNestedOneWithoutAudiosInput
-  }
-
-  export type SectionAudioUncheckedCreateWithoutUploadedByInput = {
-    id?: string
-    url: string
-    createdAt?: Date | string
-    approved?: boolean
-    sectionId: string
-  }
-
-  export type SectionAudioCreateOrConnectWithoutUploadedByInput = {
-    where: SectionAudioWhereUniqueInput
-    create: XOR<SectionAudioCreateWithoutUploadedByInput, SectionAudioUncheckedCreateWithoutUploadedByInput>
-  }
-
-  export type SectionAudioCreateManyUploadedByInputEnvelope = {
-    data: SectionAudioCreateManyUploadedByInput | SectionAudioCreateManyUploadedByInput[]
-    skipDuplicates?: boolean
-  }
-
   export type FavoriteCreateWithoutUserInput = {
     createdAt?: Date | string
     point: PointCreateNestedOneWithoutFavoritesInput
@@ -12105,34 +10516,6 @@ export namespace Prisma {
     youtubeUrl?: StringNullableFilter<"Point"> | string | null
   }
 
-  export type SectionAudioUpsertWithWhereUniqueWithoutUploadedByInput = {
-    where: SectionAudioWhereUniqueInput
-    update: XOR<SectionAudioUpdateWithoutUploadedByInput, SectionAudioUncheckedUpdateWithoutUploadedByInput>
-    create: XOR<SectionAudioCreateWithoutUploadedByInput, SectionAudioUncheckedCreateWithoutUploadedByInput>
-  }
-
-  export type SectionAudioUpdateWithWhereUniqueWithoutUploadedByInput = {
-    where: SectionAudioWhereUniqueInput
-    data: XOR<SectionAudioUpdateWithoutUploadedByInput, SectionAudioUncheckedUpdateWithoutUploadedByInput>
-  }
-
-  export type SectionAudioUpdateManyWithWhereWithoutUploadedByInput = {
-    where: SectionAudioScalarWhereInput
-    data: XOR<SectionAudioUpdateManyMutationInput, SectionAudioUncheckedUpdateManyWithoutUploadedByInput>
-  }
-
-  export type SectionAudioScalarWhereInput = {
-    AND?: SectionAudioScalarWhereInput | SectionAudioScalarWhereInput[]
-    OR?: SectionAudioScalarWhereInput[]
-    NOT?: SectionAudioScalarWhereInput | SectionAudioScalarWhereInput[]
-    id?: StringFilter<"SectionAudio"> | string
-    url?: StringFilter<"SectionAudio"> | string
-    createdAt?: DateTimeFilter<"SectionAudio"> | Date | string
-    approved?: BoolFilter<"SectionAudio"> | boolean
-    sectionId?: StringFilter<"SectionAudio"> | string
-    uploadedById?: StringFilter<"SectionAudio"> | string
-  }
-
   export type FavoriteUpsertWithWhereUniqueWithoutUserInput = {
     where: FavoriteWhereUniqueInput
     update: XOR<FavoriteUpdateWithoutUserInput, FavoriteUncheckedUpdateWithoutUserInput>
@@ -12200,7 +10583,6 @@ export namespace Prisma {
     password: string
     role?: $Enums.Role
     createdAt?: Date | string
-    sectionAudios?: SectionAudioCreateNestedManyWithoutUploadedByInput
     favorites?: FavoriteCreateNestedManyWithoutUserInput
     approvals?: PointCreateNestedManyWithoutApprovedByInput
   }
@@ -12212,7 +10594,6 @@ export namespace Prisma {
     password: string
     role?: $Enums.Role
     createdAt?: Date | string
-    sectionAudios?: SectionAudioUncheckedCreateNestedManyWithoutUploadedByInput
     favorites?: FavoriteUncheckedCreateNestedManyWithoutUserInput
     approvals?: PointUncheckedCreateNestedManyWithoutApprovedByInput
   }
@@ -12230,7 +10611,6 @@ export namespace Prisma {
     role?: $Enums.Role
     createdAt?: Date | string
     pointsCreated?: PointCreateNestedManyWithoutCreatedByInput
-    sectionAudios?: SectionAudioCreateNestedManyWithoutUploadedByInput
     favorites?: FavoriteCreateNestedManyWithoutUserInput
   }
 
@@ -12242,7 +10622,6 @@ export namespace Prisma {
     role?: $Enums.Role
     createdAt?: Date | string
     pointsCreated?: PointUncheckedCreateNestedManyWithoutCreatedByInput
-    sectionAudios?: SectionAudioUncheckedCreateNestedManyWithoutUploadedByInput
     favorites?: FavoriteUncheckedCreateNestedManyWithoutUserInput
   }
 
@@ -12255,16 +10634,14 @@ export namespace Prisma {
     id?: string
     order: number
     text: string
-    beats?: BeatCreateNestedManyWithoutSectionInput
-    audios?: SectionAudioCreateNestedManyWithoutSectionInput
+    toque?: ToqueCreateNestedOneWithoutSectionsInput
   }
 
   export type SectionUncheckedCreateWithoutPointInput = {
     id?: string
     order: number
     text: string
-    beats?: BeatUncheckedCreateNestedManyWithoutSectionInput
-    audios?: SectionAudioUncheckedCreateNestedManyWithoutSectionInput
+    toqueId?: string | null
   }
 
   export type SectionCreateOrConnectWithoutPointInput = {
@@ -12340,7 +10717,6 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    sectionAudios?: SectionAudioUpdateManyWithoutUploadedByNestedInput
     favorites?: FavoriteUpdateManyWithoutUserNestedInput
     approvals?: PointUpdateManyWithoutApprovedByNestedInput
   }
@@ -12352,7 +10728,6 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    sectionAudios?: SectionAudioUncheckedUpdateManyWithoutUploadedByNestedInput
     favorites?: FavoriteUncheckedUpdateManyWithoutUserNestedInput
     approvals?: PointUncheckedUpdateManyWithoutApprovedByNestedInput
   }
@@ -12376,7 +10751,6 @@ export namespace Prisma {
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     pointsCreated?: PointUpdateManyWithoutCreatedByNestedInput
-    sectionAudios?: SectionAudioUpdateManyWithoutUploadedByNestedInput
     favorites?: FavoriteUpdateManyWithoutUserNestedInput
   }
 
@@ -12388,7 +10762,6 @@ export namespace Prisma {
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     pointsCreated?: PointUncheckedUpdateManyWithoutCreatedByNestedInput
-    sectionAudios?: SectionAudioUncheckedUpdateManyWithoutUploadedByNestedInput
     favorites?: FavoriteUncheckedUpdateManyWithoutUserNestedInput
   }
 
@@ -12416,6 +10789,7 @@ export namespace Prisma {
     order?: IntFilter<"Section"> | number
     text?: StringFilter<"Section"> | string
     pointId?: StringFilter<"Section"> | string
+    toqueId?: StringNullableFilter<"Section"> | string | null
   }
 
   export type FavoriteUpsertWithWhereUniqueWithoutPointInput = {
@@ -12541,52 +10915,23 @@ export namespace Prisma {
     create: XOR<PointCreateWithoutSectionsInput, PointUncheckedCreateWithoutSectionsInput>
   }
 
-  export type BeatCreateWithoutSectionInput = {
+  export type ToqueCreateWithoutSectionsInput = {
     id?: string
-    pattern: string
-    order: number
-  }
-
-  export type BeatUncheckedCreateWithoutSectionInput = {
-    id?: string
-    pattern: string
-    order: number
-  }
-
-  export type BeatCreateOrConnectWithoutSectionInput = {
-    where: BeatWhereUniqueInput
-    create: XOR<BeatCreateWithoutSectionInput, BeatUncheckedCreateWithoutSectionInput>
-  }
-
-  export type BeatCreateManySectionInputEnvelope = {
-    data: BeatCreateManySectionInput | BeatCreateManySectionInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type SectionAudioCreateWithoutSectionInput = {
-    id?: string
-    url: string
+    nome: string
+    audio: string
     createdAt?: Date | string
-    approved?: boolean
-    uploadedBy: UserCreateNestedOneWithoutSectionAudiosInput
   }
 
-  export type SectionAudioUncheckedCreateWithoutSectionInput = {
+  export type ToqueUncheckedCreateWithoutSectionsInput = {
     id?: string
-    url: string
+    nome: string
+    audio: string
     createdAt?: Date | string
-    approved?: boolean
-    uploadedById: string
   }
 
-  export type SectionAudioCreateOrConnectWithoutSectionInput = {
-    where: SectionAudioWhereUniqueInput
-    create: XOR<SectionAudioCreateWithoutSectionInput, SectionAudioUncheckedCreateWithoutSectionInput>
-  }
-
-  export type SectionAudioCreateManySectionInputEnvelope = {
-    data: SectionAudioCreateManySectionInput | SectionAudioCreateManySectionInput[]
-    skipDuplicates?: boolean
+  export type ToqueCreateOrConnectWithoutSectionsInput = {
+    where: ToqueWhereUniqueInput
+    create: XOR<ToqueCreateWithoutSectionsInput, ToqueUncheckedCreateWithoutSectionsInput>
   }
 
   export type PointUpsertWithoutSectionsInput = {
@@ -12638,206 +10983,69 @@ export namespace Prisma {
     favorites?: FavoriteUncheckedUpdateManyWithoutPointNestedInput
   }
 
-  export type BeatUpsertWithWhereUniqueWithoutSectionInput = {
-    where: BeatWhereUniqueInput
-    update: XOR<BeatUpdateWithoutSectionInput, BeatUncheckedUpdateWithoutSectionInput>
-    create: XOR<BeatCreateWithoutSectionInput, BeatUncheckedCreateWithoutSectionInput>
+  export type ToqueUpsertWithoutSectionsInput = {
+    update: XOR<ToqueUpdateWithoutSectionsInput, ToqueUncheckedUpdateWithoutSectionsInput>
+    create: XOR<ToqueCreateWithoutSectionsInput, ToqueUncheckedCreateWithoutSectionsInput>
+    where?: ToqueWhereInput
   }
 
-  export type BeatUpdateWithWhereUniqueWithoutSectionInput = {
-    where: BeatWhereUniqueInput
-    data: XOR<BeatUpdateWithoutSectionInput, BeatUncheckedUpdateWithoutSectionInput>
+  export type ToqueUpdateToOneWithWhereWithoutSectionsInput = {
+    where?: ToqueWhereInput
+    data: XOR<ToqueUpdateWithoutSectionsInput, ToqueUncheckedUpdateWithoutSectionsInput>
   }
 
-  export type BeatUpdateManyWithWhereWithoutSectionInput = {
-    where: BeatScalarWhereInput
-    data: XOR<BeatUpdateManyMutationInput, BeatUncheckedUpdateManyWithoutSectionInput>
+  export type ToqueUpdateWithoutSectionsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    nome?: StringFieldUpdateOperationsInput | string
+    audio?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type BeatScalarWhereInput = {
-    AND?: BeatScalarWhereInput | BeatScalarWhereInput[]
-    OR?: BeatScalarWhereInput[]
-    NOT?: BeatScalarWhereInput | BeatScalarWhereInput[]
-    id?: StringFilter<"Beat"> | string
-    pattern?: StringFilter<"Beat"> | string
-    order?: IntFilter<"Beat"> | number
-    sectionId?: StringFilter<"Beat"> | string
+  export type ToqueUncheckedUpdateWithoutSectionsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    nome?: StringFieldUpdateOperationsInput | string
+    audio?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type SectionAudioUpsertWithWhereUniqueWithoutSectionInput = {
-    where: SectionAudioWhereUniqueInput
-    update: XOR<SectionAudioUpdateWithoutSectionInput, SectionAudioUncheckedUpdateWithoutSectionInput>
-    create: XOR<SectionAudioCreateWithoutSectionInput, SectionAudioUncheckedCreateWithoutSectionInput>
-  }
-
-  export type SectionAudioUpdateWithWhereUniqueWithoutSectionInput = {
-    where: SectionAudioWhereUniqueInput
-    data: XOR<SectionAudioUpdateWithoutSectionInput, SectionAudioUncheckedUpdateWithoutSectionInput>
-  }
-
-  export type SectionAudioUpdateManyWithWhereWithoutSectionInput = {
-    where: SectionAudioScalarWhereInput
-    data: XOR<SectionAudioUpdateManyMutationInput, SectionAudioUncheckedUpdateManyWithoutSectionInput>
-  }
-
-  export type SectionCreateWithoutBeatsInput = {
+  export type SectionCreateWithoutToqueInput = {
     id?: string
     order: number
     text: string
     point: PointCreateNestedOneWithoutSectionsInput
-    audios?: SectionAudioCreateNestedManyWithoutSectionInput
   }
 
-  export type SectionUncheckedCreateWithoutBeatsInput = {
+  export type SectionUncheckedCreateWithoutToqueInput = {
     id?: string
     order: number
     text: string
     pointId: string
-    audios?: SectionAudioUncheckedCreateNestedManyWithoutSectionInput
   }
 
-  export type SectionCreateOrConnectWithoutBeatsInput = {
+  export type SectionCreateOrConnectWithoutToqueInput = {
     where: SectionWhereUniqueInput
-    create: XOR<SectionCreateWithoutBeatsInput, SectionUncheckedCreateWithoutBeatsInput>
+    create: XOR<SectionCreateWithoutToqueInput, SectionUncheckedCreateWithoutToqueInput>
   }
 
-  export type SectionUpsertWithoutBeatsInput = {
-    update: XOR<SectionUpdateWithoutBeatsInput, SectionUncheckedUpdateWithoutBeatsInput>
-    create: XOR<SectionCreateWithoutBeatsInput, SectionUncheckedCreateWithoutBeatsInput>
-    where?: SectionWhereInput
+  export type SectionCreateManyToqueInputEnvelope = {
+    data: SectionCreateManyToqueInput | SectionCreateManyToqueInput[]
+    skipDuplicates?: boolean
   }
 
-  export type SectionUpdateToOneWithWhereWithoutBeatsInput = {
-    where?: SectionWhereInput
-    data: XOR<SectionUpdateWithoutBeatsInput, SectionUncheckedUpdateWithoutBeatsInput>
-  }
-
-  export type SectionUpdateWithoutBeatsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    order?: IntFieldUpdateOperationsInput | number
-    text?: StringFieldUpdateOperationsInput | string
-    point?: PointUpdateOneRequiredWithoutSectionsNestedInput
-    audios?: SectionAudioUpdateManyWithoutSectionNestedInput
-  }
-
-  export type SectionUncheckedUpdateWithoutBeatsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    order?: IntFieldUpdateOperationsInput | number
-    text?: StringFieldUpdateOperationsInput | string
-    pointId?: StringFieldUpdateOperationsInput | string
-    audios?: SectionAudioUncheckedUpdateManyWithoutSectionNestedInput
-  }
-
-  export type SectionCreateWithoutAudiosInput = {
-    id?: string
-    order: number
-    text: string
-    point: PointCreateNestedOneWithoutSectionsInput
-    beats?: BeatCreateNestedManyWithoutSectionInput
-  }
-
-  export type SectionUncheckedCreateWithoutAudiosInput = {
-    id?: string
-    order: number
-    text: string
-    pointId: string
-    beats?: BeatUncheckedCreateNestedManyWithoutSectionInput
-  }
-
-  export type SectionCreateOrConnectWithoutAudiosInput = {
+  export type SectionUpsertWithWhereUniqueWithoutToqueInput = {
     where: SectionWhereUniqueInput
-    create: XOR<SectionCreateWithoutAudiosInput, SectionUncheckedCreateWithoutAudiosInput>
+    update: XOR<SectionUpdateWithoutToqueInput, SectionUncheckedUpdateWithoutToqueInput>
+    create: XOR<SectionCreateWithoutToqueInput, SectionUncheckedCreateWithoutToqueInput>
   }
 
-  export type UserCreateWithoutSectionAudiosInput = {
-    id?: string
-    name?: string | null
-    username: string
-    password: string
-    role?: $Enums.Role
-    createdAt?: Date | string
-    pointsCreated?: PointCreateNestedManyWithoutCreatedByInput
-    favorites?: FavoriteCreateNestedManyWithoutUserInput
-    approvals?: PointCreateNestedManyWithoutApprovedByInput
+  export type SectionUpdateWithWhereUniqueWithoutToqueInput = {
+    where: SectionWhereUniqueInput
+    data: XOR<SectionUpdateWithoutToqueInput, SectionUncheckedUpdateWithoutToqueInput>
   }
 
-  export type UserUncheckedCreateWithoutSectionAudiosInput = {
-    id?: string
-    name?: string | null
-    username: string
-    password: string
-    role?: $Enums.Role
-    createdAt?: Date | string
-    pointsCreated?: PointUncheckedCreateNestedManyWithoutCreatedByInput
-    favorites?: FavoriteUncheckedCreateNestedManyWithoutUserInput
-    approvals?: PointUncheckedCreateNestedManyWithoutApprovedByInput
-  }
-
-  export type UserCreateOrConnectWithoutSectionAudiosInput = {
-    where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutSectionAudiosInput, UserUncheckedCreateWithoutSectionAudiosInput>
-  }
-
-  export type SectionUpsertWithoutAudiosInput = {
-    update: XOR<SectionUpdateWithoutAudiosInput, SectionUncheckedUpdateWithoutAudiosInput>
-    create: XOR<SectionCreateWithoutAudiosInput, SectionUncheckedCreateWithoutAudiosInput>
-    where?: SectionWhereInput
-  }
-
-  export type SectionUpdateToOneWithWhereWithoutAudiosInput = {
-    where?: SectionWhereInput
-    data: XOR<SectionUpdateWithoutAudiosInput, SectionUncheckedUpdateWithoutAudiosInput>
-  }
-
-  export type SectionUpdateWithoutAudiosInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    order?: IntFieldUpdateOperationsInput | number
-    text?: StringFieldUpdateOperationsInput | string
-    point?: PointUpdateOneRequiredWithoutSectionsNestedInput
-    beats?: BeatUpdateManyWithoutSectionNestedInput
-  }
-
-  export type SectionUncheckedUpdateWithoutAudiosInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    order?: IntFieldUpdateOperationsInput | number
-    text?: StringFieldUpdateOperationsInput | string
-    pointId?: StringFieldUpdateOperationsInput | string
-    beats?: BeatUncheckedUpdateManyWithoutSectionNestedInput
-  }
-
-  export type UserUpsertWithoutSectionAudiosInput = {
-    update: XOR<UserUpdateWithoutSectionAudiosInput, UserUncheckedUpdateWithoutSectionAudiosInput>
-    create: XOR<UserCreateWithoutSectionAudiosInput, UserUncheckedCreateWithoutSectionAudiosInput>
-    where?: UserWhereInput
-  }
-
-  export type UserUpdateToOneWithWhereWithoutSectionAudiosInput = {
-    where?: UserWhereInput
-    data: XOR<UserUpdateWithoutSectionAudiosInput, UserUncheckedUpdateWithoutSectionAudiosInput>
-  }
-
-  export type UserUpdateWithoutSectionAudiosInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
-    username?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    pointsCreated?: PointUpdateManyWithoutCreatedByNestedInput
-    favorites?: FavoriteUpdateManyWithoutUserNestedInput
-    approvals?: PointUpdateManyWithoutApprovedByNestedInput
-  }
-
-  export type UserUncheckedUpdateWithoutSectionAudiosInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
-    username?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    pointsCreated?: PointUncheckedUpdateManyWithoutCreatedByNestedInput
-    favorites?: FavoriteUncheckedUpdateManyWithoutUserNestedInput
-    approvals?: PointUncheckedUpdateManyWithoutApprovedByNestedInput
+  export type SectionUpdateManyWithWhereWithoutToqueInput = {
+    where: SectionScalarWhereInput
+    data: XOR<SectionUpdateManyMutationInput, SectionUncheckedUpdateManyWithoutToqueInput>
   }
 
   export type UserCreateWithoutFavoritesInput = {
@@ -12848,7 +11056,6 @@ export namespace Prisma {
     role?: $Enums.Role
     createdAt?: Date | string
     pointsCreated?: PointCreateNestedManyWithoutCreatedByInput
-    sectionAudios?: SectionAudioCreateNestedManyWithoutUploadedByInput
     approvals?: PointCreateNestedManyWithoutApprovedByInput
   }
 
@@ -12860,7 +11067,6 @@ export namespace Prisma {
     role?: $Enums.Role
     createdAt?: Date | string
     pointsCreated?: PointUncheckedCreateNestedManyWithoutCreatedByInput
-    sectionAudios?: SectionAudioUncheckedCreateNestedManyWithoutUploadedByInput
     approvals?: PointUncheckedCreateNestedManyWithoutApprovedByInput
   }
 
@@ -12931,7 +11137,6 @@ export namespace Prisma {
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     pointsCreated?: PointUpdateManyWithoutCreatedByNestedInput
-    sectionAudios?: SectionAudioUpdateManyWithoutUploadedByNestedInput
     approvals?: PointUpdateManyWithoutApprovedByNestedInput
   }
 
@@ -12943,7 +11148,6 @@ export namespace Prisma {
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     pointsCreated?: PointUncheckedUpdateManyWithoutCreatedByNestedInput
-    sectionAudios?: SectionAudioUncheckedUpdateManyWithoutUploadedByNestedInput
     approvals?: PointUncheckedUpdateManyWithoutApprovedByNestedInput
   }
 
@@ -13011,14 +11215,6 @@ export namespace Prisma {
     approvedById?: string | null
     audioUrl?: string | null
     youtubeUrl?: string | null
-  }
-
-  export type SectionAudioCreateManyUploadedByInput = {
-    id?: string
-    url: string
-    createdAt?: Date | string
-    approved?: boolean
-    sectionId: string
   }
 
   export type FavoriteCreateManyUserInput = {
@@ -13098,30 +11294,6 @@ export namespace Prisma {
     youtubeUrl?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
-  export type SectionAudioUpdateWithoutUploadedByInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    url?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    approved?: BoolFieldUpdateOperationsInput | boolean
-    section?: SectionUpdateOneRequiredWithoutAudiosNestedInput
-  }
-
-  export type SectionAudioUncheckedUpdateWithoutUploadedByInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    url?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    approved?: BoolFieldUpdateOperationsInput | boolean
-    sectionId?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type SectionAudioUncheckedUpdateManyWithoutUploadedByInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    url?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    approved?: BoolFieldUpdateOperationsInput | boolean
-    sectionId?: StringFieldUpdateOperationsInput | string
-  }
-
   export type FavoriteUpdateWithoutUserInput = {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     point?: PointUpdateOneRequiredWithoutFavoritesNestedInput
@@ -13196,6 +11368,7 @@ export namespace Prisma {
     id?: string
     order: number
     text: string
+    toqueId?: string | null
   }
 
   export type FavoriteCreateManyPointInput = {
@@ -13207,22 +11380,21 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     order?: IntFieldUpdateOperationsInput | number
     text?: StringFieldUpdateOperationsInput | string
-    beats?: BeatUpdateManyWithoutSectionNestedInput
-    audios?: SectionAudioUpdateManyWithoutSectionNestedInput
+    toque?: ToqueUpdateOneWithoutSectionsNestedInput
   }
 
   export type SectionUncheckedUpdateWithoutPointInput = {
     id?: StringFieldUpdateOperationsInput | string
     order?: IntFieldUpdateOperationsInput | number
     text?: StringFieldUpdateOperationsInput | string
-    beats?: BeatUncheckedUpdateManyWithoutSectionNestedInput
-    audios?: SectionAudioUncheckedUpdateManyWithoutSectionNestedInput
+    toqueId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type SectionUncheckedUpdateManyWithoutPointInput = {
     id?: StringFieldUpdateOperationsInput | string
     order?: IntFieldUpdateOperationsInput | number
     text?: StringFieldUpdateOperationsInput | string
+    toqueId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type FavoriteUpdateWithoutPointInput = {
@@ -13312,60 +11484,32 @@ export namespace Prisma {
     youtubeUrl?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
-  export type BeatCreateManySectionInput = {
+  export type SectionCreateManyToqueInput = {
     id?: string
-    pattern: string
     order: number
+    text: string
+    pointId: string
   }
 
-  export type SectionAudioCreateManySectionInput = {
-    id?: string
-    url: string
-    createdAt?: Date | string
-    approved?: boolean
-    uploadedById: string
-  }
-
-  export type BeatUpdateWithoutSectionInput = {
+  export type SectionUpdateWithoutToqueInput = {
     id?: StringFieldUpdateOperationsInput | string
-    pattern?: StringFieldUpdateOperationsInput | string
     order?: IntFieldUpdateOperationsInput | number
+    text?: StringFieldUpdateOperationsInput | string
+    point?: PointUpdateOneRequiredWithoutSectionsNestedInput
   }
 
-  export type BeatUncheckedUpdateWithoutSectionInput = {
+  export type SectionUncheckedUpdateWithoutToqueInput = {
     id?: StringFieldUpdateOperationsInput | string
-    pattern?: StringFieldUpdateOperationsInput | string
     order?: IntFieldUpdateOperationsInput | number
+    text?: StringFieldUpdateOperationsInput | string
+    pointId?: StringFieldUpdateOperationsInput | string
   }
 
-  export type BeatUncheckedUpdateManyWithoutSectionInput = {
+  export type SectionUncheckedUpdateManyWithoutToqueInput = {
     id?: StringFieldUpdateOperationsInput | string
-    pattern?: StringFieldUpdateOperationsInput | string
     order?: IntFieldUpdateOperationsInput | number
-  }
-
-  export type SectionAudioUpdateWithoutSectionInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    url?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    approved?: BoolFieldUpdateOperationsInput | boolean
-    uploadedBy?: UserUpdateOneRequiredWithoutSectionAudiosNestedInput
-  }
-
-  export type SectionAudioUncheckedUpdateWithoutSectionInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    url?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    approved?: BoolFieldUpdateOperationsInput | boolean
-    uploadedById?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type SectionAudioUncheckedUpdateManyWithoutSectionInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    url?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    approved?: BoolFieldUpdateOperationsInput | boolean
-    uploadedById?: StringFieldUpdateOperationsInput | string
+    text?: StringFieldUpdateOperationsInput | string
+    pointId?: StringFieldUpdateOperationsInput | string
   }
 
 

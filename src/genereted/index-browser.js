@@ -158,23 +158,15 @@ exports.Prisma.SectionScalarFieldEnum = {
   id: 'id',
   order: 'order',
   text: 'text',
-  pointId: 'pointId'
+  pointId: 'pointId',
+  toqueId: 'toqueId'
 };
 
-exports.Prisma.BeatScalarFieldEnum = {
+exports.Prisma.ToqueScalarFieldEnum = {
   id: 'id',
-  pattern: 'pattern',
-  order: 'order',
-  sectionId: 'sectionId'
-};
-
-exports.Prisma.SectionAudioScalarFieldEnum = {
-  id: 'id',
-  url: 'url',
-  createdAt: 'createdAt',
-  approved: 'approved',
-  sectionId: 'sectionId',
-  uploadedById: 'uploadedById'
+  nome: 'nome',
+  audio: 'audio',
+  createdAt: 'createdAt'
 };
 
 exports.Prisma.FavoriteScalarFieldEnum = {
@@ -244,8 +236,7 @@ exports.Prisma.ModelName = {
   Point: 'Point',
   Lines: 'Lines',
   Section: 'Section',
-  Beat: 'Beat',
-  SectionAudio: 'SectionAudio',
+  Toque: 'Toque',
   Favorite: 'Favorite'
 };
 

@@ -40,7 +40,7 @@ const PontoPage = async () => {
               <div className="flex gap-3">
                 {line.points.map((point) => (
                   <Link
-                    href={`/ponto/${point.slug}`}
+                    href={`/pontos/${point.slug}`}
                     key={point.id}
                     className="p-16 flex flex-col items-center bg-transparent border rounded-4xl w-fit"
                   >

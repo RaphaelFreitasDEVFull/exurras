@@ -1,31 +1,27 @@
 import { prisma } from "@/lib/prisma";
-import { Role } from "./genereted/client";
-import { hashSync } from "bcrypt-ts";
 
 async function main() {
-  const username = "admin";
+  const toques = [
+    { nome: "Barra Vento Dobrado", audio: "/barra-vento-dobrado.mp3" },
+    { nome: "Barra Vento", audio: "/barra-vento.mp3" },
+    { nome: "Cábula Reto Variação", audio: "/cabula-reto-variacao.mp3" },
+    { nome: "Cábula Reto", audio: "/cabula-reto.mp3" },
+    { nome: "Ijexá Dobrado", audio: "/ijexa-dobrado.mp3" },
+    { nome: "Ijexá Variação", audio: "/ijexa-variacao.mp3" },
+    { nome: "Ijexá", audio: "/ijexa.mp3" },
+    { nome: "Maculelê", audio: "/maculele.mp3" },
+    { nome: "Nagô", audio: "/nago.mp3" },
+    { nome: "Pajelança Variação", audio: "/pajelanca-variacao.mp3" },
+    { nome: "Pajelança", audio: "/pajelanca.mp3" },
+    { nome: "Samba Cábula", audio: "/samba-cabula.mp3" },
+  ];
 
-  const existing = await prisma.user.findUnique({
-    where: { username },
+  await prisma.toque.createMany({
+    data: toques,
+    skipDuplicates: true, // evita duplicar se rodar seed de novo
   });
 
-  if (existing) {
-    console.log("Usuário admin já existe");
-    return;
-  }
-
-  const hashedPassword = await hashSync("32381878");
-
-  const user = await prisma.user.create({
-    data: {
-      name: "Raphael SIlva Freitas",
-      username: "admin",
-      password: hashedPassword,
-      role: Role.ADMIN, // ou MEMBER se não tiver ADMIN
-    },
-  });
-
-  console.log("Usuário criado:", user.username);
+  console.log("✅ Seed concluído");
 }
 
 main()
