@@ -134,8 +134,10 @@ exports.Prisma.PointScalarFieldEnum = {
   title: 'title',
   slug: 'slug',
   description: 'description',
+  author: 'author',
   linha: 'linha',
   type: 'type',
+  lineCategoty: 'lineCategoty',
   createdAt: 'createdAt',
   createdById: 'createdById',
   approved: 'approved',
@@ -143,6 +145,13 @@ exports.Prisma.PointScalarFieldEnum = {
   approvedById: 'approvedById',
   audioUrl: 'audioUrl',
   youtubeUrl: 'youtubeUrl'
+};
+
+exports.Prisma.LinesScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  slug: 'slug',
+  createdAt: 'createdAt'
 };
 
 exports.Prisma.SectionScalarFieldEnum = {
@@ -233,6 +242,7 @@ exports.PointType = exports.$Enums.PointType = {
 exports.Prisma.ModelName = {
   User: 'User',
   Point: 'Point',
+  Lines: 'Lines',
   Section: 'Section',
   Beat: 'Beat',
   SectionAudio: 'SectionAudio',

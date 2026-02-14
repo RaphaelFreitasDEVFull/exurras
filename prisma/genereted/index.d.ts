@@ -24,6 +24,12 @@ export type User = $Result.DefaultSelection<Prisma.$UserPayload>
  */
 export type Point = $Result.DefaultSelection<Prisma.$PointPayload>
 /**
+ * Model Lines
+ * ///////////////////////
+ * ///////////////////////
+ */
+export type Lines = $Result.DefaultSelection<Prisma.$LinesPayload>
+/**
  * Model Section
  * 
  */
@@ -248,6 +254,16 @@ export class PrismaClient<
     * ```
     */
   get point(): Prisma.PointDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.lines`: Exposes CRUD operations for the **Lines** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Lines
+    * const lines = await prisma.lines.findMany()
+    * ```
+    */
+  get lines(): Prisma.LinesDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.section`: Exposes CRUD operations for the **Section** model.
@@ -724,6 +740,7 @@ export namespace Prisma {
   export const ModelName: {
     User: 'User',
     Point: 'Point',
+    Lines: 'Lines',
     Section: 'Section',
     Beat: 'Beat',
     SectionAudio: 'SectionAudio',
@@ -743,7 +760,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "point" | "section" | "beat" | "sectionAudio" | "favorite"
+      modelProps: "user" | "point" | "lines" | "section" | "beat" | "sectionAudio" | "favorite"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -892,6 +909,80 @@ export namespace Prisma {
           count: {
             args: Prisma.PointCountArgs<ExtArgs>
             result: $Utils.Optional<PointCountAggregateOutputType> | number
+          }
+        }
+      }
+      Lines: {
+        payload: Prisma.$LinesPayload<ExtArgs>
+        fields: Prisma.LinesFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.LinesFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LinesPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.LinesFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LinesPayload>
+          }
+          findFirst: {
+            args: Prisma.LinesFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LinesPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.LinesFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LinesPayload>
+          }
+          findMany: {
+            args: Prisma.LinesFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LinesPayload>[]
+          }
+          create: {
+            args: Prisma.LinesCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LinesPayload>
+          }
+          createMany: {
+            args: Prisma.LinesCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.LinesCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LinesPayload>[]
+          }
+          delete: {
+            args: Prisma.LinesDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LinesPayload>
+          }
+          update: {
+            args: Prisma.LinesUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LinesPayload>
+          }
+          deleteMany: {
+            args: Prisma.LinesDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.LinesUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.LinesUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LinesPayload>[]
+          }
+          upsert: {
+            args: Prisma.LinesUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LinesPayload>
+          }
+          aggregate: {
+            args: Prisma.LinesAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateLines>
+          }
+          groupBy: {
+            args: Prisma.LinesGroupByArgs<ExtArgs>
+            result: $Utils.Optional<LinesGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.LinesCountArgs<ExtArgs>
+            result: $Utils.Optional<LinesCountAggregateOutputType> | number
           }
         }
       }
@@ -1301,6 +1392,7 @@ export namespace Prisma {
   export type GlobalOmitConfig = {
     user?: UserOmit
     point?: PointOmit
+    lines?: LinesOmit
     section?: SectionOmit
     beat?: BeatOmit
     sectionAudio?: SectionAudioOmit
@@ -1475,6 +1567,37 @@ export namespace Prisma {
    */
   export type PointCountOutputTypeCountFavoritesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: FavoriteWhereInput
+  }
+
+
+  /**
+   * Count Type LinesCountOutputType
+   */
+
+  export type LinesCountOutputType = {
+    points: number
+  }
+
+  export type LinesCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    points?: boolean | LinesCountOutputTypeCountPointsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * LinesCountOutputType without action
+   */
+  export type LinesCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LinesCountOutputType
+     */
+    select?: LinesCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * LinesCountOutputType without action
+   */
+  export type LinesCountOutputTypeCountPointsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PointWhereInput
   }
 
 
@@ -2704,8 +2827,10 @@ export namespace Prisma {
     title: string | null
     slug: string | null
     description: string | null
+    author: string | null
     linha: $Enums.Linha | null
     type: $Enums.PointType | null
+    lineCategoty: string | null
     createdAt: Date | null
     createdById: string | null
     approved: boolean | null
@@ -2720,8 +2845,10 @@ export namespace Prisma {
     title: string | null
     slug: string | null
     description: string | null
+    author: string | null
     linha: $Enums.Linha | null
     type: $Enums.PointType | null
+    lineCategoty: string | null
     createdAt: Date | null
     createdById: string | null
     approved: boolean | null
@@ -2736,8 +2863,10 @@ export namespace Prisma {
     title: number
     slug: number
     description: number
+    author: number
     linha: number
     type: number
+    lineCategoty: number
     createdAt: number
     createdById: number
     approved: number
@@ -2754,8 +2883,10 @@ export namespace Prisma {
     title?: true
     slug?: true
     description?: true
+    author?: true
     linha?: true
     type?: true
+    lineCategoty?: true
     createdAt?: true
     createdById?: true
     approved?: true
@@ -2770,8 +2901,10 @@ export namespace Prisma {
     title?: true
     slug?: true
     description?: true
+    author?: true
     linha?: true
     type?: true
+    lineCategoty?: true
     createdAt?: true
     createdById?: true
     approved?: true
@@ -2786,8 +2919,10 @@ export namespace Prisma {
     title?: true
     slug?: true
     description?: true
+    author?: true
     linha?: true
     type?: true
+    lineCategoty?: true
     createdAt?: true
     createdById?: true
     approved?: true
@@ -2875,8 +3010,10 @@ export namespace Prisma {
     title: string
     slug: string
     description: string | null
+    author: string | null
     linha: $Enums.Linha
     type: $Enums.PointType
+    lineCategoty: string
     createdAt: Date
     createdById: string
     approved: boolean
@@ -2908,8 +3045,10 @@ export namespace Prisma {
     title?: boolean
     slug?: boolean
     description?: boolean
+    author?: boolean
     linha?: boolean
     type?: boolean
+    lineCategoty?: boolean
     createdAt?: boolean
     createdById?: boolean
     approved?: boolean
@@ -2917,6 +3056,7 @@ export namespace Prisma {
     approvedById?: boolean
     audioUrl?: boolean
     youtubeUrl?: boolean
+    line?: boolean | LinesDefaultArgs<ExtArgs>
     createdBy?: boolean | UserDefaultArgs<ExtArgs>
     approvedBy?: boolean | Point$approvedByArgs<ExtArgs>
     sections?: boolean | Point$sectionsArgs<ExtArgs>
@@ -2929,8 +3069,10 @@ export namespace Prisma {
     title?: boolean
     slug?: boolean
     description?: boolean
+    author?: boolean
     linha?: boolean
     type?: boolean
+    lineCategoty?: boolean
     createdAt?: boolean
     createdById?: boolean
     approved?: boolean
@@ -2938,6 +3080,7 @@ export namespace Prisma {
     approvedById?: boolean
     audioUrl?: boolean
     youtubeUrl?: boolean
+    line?: boolean | LinesDefaultArgs<ExtArgs>
     createdBy?: boolean | UserDefaultArgs<ExtArgs>
     approvedBy?: boolean | Point$approvedByArgs<ExtArgs>
   }, ExtArgs["result"]["point"]>
@@ -2947,8 +3090,10 @@ export namespace Prisma {
     title?: boolean
     slug?: boolean
     description?: boolean
+    author?: boolean
     linha?: boolean
     type?: boolean
+    lineCategoty?: boolean
     createdAt?: boolean
     createdById?: boolean
     approved?: boolean
@@ -2956,6 +3101,7 @@ export namespace Prisma {
     approvedById?: boolean
     audioUrl?: boolean
     youtubeUrl?: boolean
+    line?: boolean | LinesDefaultArgs<ExtArgs>
     createdBy?: boolean | UserDefaultArgs<ExtArgs>
     approvedBy?: boolean | Point$approvedByArgs<ExtArgs>
   }, ExtArgs["result"]["point"]>
@@ -2965,8 +3111,10 @@ export namespace Prisma {
     title?: boolean
     slug?: boolean
     description?: boolean
+    author?: boolean
     linha?: boolean
     type?: boolean
+    lineCategoty?: boolean
     createdAt?: boolean
     createdById?: boolean
     approved?: boolean
@@ -2976,8 +3124,9 @@ export namespace Prisma {
     youtubeUrl?: boolean
   }
 
-  export type PointOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "slug" | "description" | "linha" | "type" | "createdAt" | "createdById" | "approved" | "approvedAt" | "approvedById" | "audioUrl" | "youtubeUrl", ExtArgs["result"]["point"]>
+  export type PointOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "slug" | "description" | "author" | "linha" | "type" | "lineCategoty" | "createdAt" | "createdById" | "approved" | "approvedAt" | "approvedById" | "audioUrl" | "youtubeUrl", ExtArgs["result"]["point"]>
   export type PointInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    line?: boolean | LinesDefaultArgs<ExtArgs>
     createdBy?: boolean | UserDefaultArgs<ExtArgs>
     approvedBy?: boolean | Point$approvedByArgs<ExtArgs>
     sections?: boolean | Point$sectionsArgs<ExtArgs>
@@ -2985,10 +3134,12 @@ export namespace Prisma {
     _count?: boolean | PointCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type PointIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    line?: boolean | LinesDefaultArgs<ExtArgs>
     createdBy?: boolean | UserDefaultArgs<ExtArgs>
     approvedBy?: boolean | Point$approvedByArgs<ExtArgs>
   }
   export type PointIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    line?: boolean | LinesDefaultArgs<ExtArgs>
     createdBy?: boolean | UserDefaultArgs<ExtArgs>
     approvedBy?: boolean | Point$approvedByArgs<ExtArgs>
   }
@@ -2996,6 +3147,7 @@ export namespace Prisma {
   export type $PointPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Point"
     objects: {
+      line: Prisma.$LinesPayload<ExtArgs>
       createdBy: Prisma.$UserPayload<ExtArgs>
       approvedBy: Prisma.$UserPayload<ExtArgs> | null
       sections: Prisma.$SectionPayload<ExtArgs>[]
@@ -3006,8 +3158,10 @@ export namespace Prisma {
       title: string
       slug: string
       description: string | null
+      author: string | null
       linha: $Enums.Linha
       type: $Enums.PointType
+      lineCategoty: string
       createdAt: Date
       createdById: string
       approved: boolean
@@ -3409,6 +3563,7 @@ export namespace Prisma {
    */
   export interface Prisma__PointClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    line<T extends LinesDefaultArgs<ExtArgs> = {}>(args?: Subset<T, LinesDefaultArgs<ExtArgs>>): Prisma__LinesClient<$Result.GetResult<Prisma.$LinesPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     createdBy<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     approvedBy<T extends Point$approvedByArgs<ExtArgs> = {}>(args?: Subset<T, Point$approvedByArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     sections<T extends Point$sectionsArgs<ExtArgs> = {}>(args?: Subset<T, Point$sectionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SectionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -3446,8 +3601,10 @@ export namespace Prisma {
     readonly title: FieldRef<"Point", 'String'>
     readonly slug: FieldRef<"Point", 'String'>
     readonly description: FieldRef<"Point", 'String'>
+    readonly author: FieldRef<"Point", 'String'>
     readonly linha: FieldRef<"Point", 'Linha'>
     readonly type: FieldRef<"Point", 'PointType'>
+    readonly lineCategoty: FieldRef<"Point", 'String'>
     readonly createdAt: FieldRef<"Point", 'DateTime'>
     readonly createdById: FieldRef<"Point", 'String'>
     readonly approved: FieldRef<"Point", 'Boolean'>
@@ -3933,6 +4090,1063 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: PointInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Lines
+   */
+
+  export type AggregateLines = {
+    _count: LinesCountAggregateOutputType | null
+    _min: LinesMinAggregateOutputType | null
+    _max: LinesMaxAggregateOutputType | null
+  }
+
+  export type LinesMinAggregateOutputType = {
+    id: string | null
+    title: string | null
+    slug: string | null
+    createdAt: Date | null
+  }
+
+  export type LinesMaxAggregateOutputType = {
+    id: string | null
+    title: string | null
+    slug: string | null
+    createdAt: Date | null
+  }
+
+  export type LinesCountAggregateOutputType = {
+    id: number
+    title: number
+    slug: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type LinesMinAggregateInputType = {
+    id?: true
+    title?: true
+    slug?: true
+    createdAt?: true
+  }
+
+  export type LinesMaxAggregateInputType = {
+    id?: true
+    title?: true
+    slug?: true
+    createdAt?: true
+  }
+
+  export type LinesCountAggregateInputType = {
+    id?: true
+    title?: true
+    slug?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type LinesAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Lines to aggregate.
+     */
+    where?: LinesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Lines to fetch.
+     */
+    orderBy?: LinesOrderByWithRelationInput | LinesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: LinesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Lines from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Lines.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Lines
+    **/
+    _count?: true | LinesCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: LinesMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: LinesMaxAggregateInputType
+  }
+
+  export type GetLinesAggregateType<T extends LinesAggregateArgs> = {
+        [P in keyof T & keyof AggregateLines]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateLines[P]>
+      : GetScalarType<T[P], AggregateLines[P]>
+  }
+
+
+
+
+  export type LinesGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: LinesWhereInput
+    orderBy?: LinesOrderByWithAggregationInput | LinesOrderByWithAggregationInput[]
+    by: LinesScalarFieldEnum[] | LinesScalarFieldEnum
+    having?: LinesScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: LinesCountAggregateInputType | true
+    _min?: LinesMinAggregateInputType
+    _max?: LinesMaxAggregateInputType
+  }
+
+  export type LinesGroupByOutputType = {
+    id: string
+    title: string
+    slug: string
+    createdAt: Date
+    _count: LinesCountAggregateOutputType | null
+    _min: LinesMinAggregateOutputType | null
+    _max: LinesMaxAggregateOutputType | null
+  }
+
+  type GetLinesGroupByPayload<T extends LinesGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<LinesGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof LinesGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], LinesGroupByOutputType[P]>
+            : GetScalarType<T[P], LinesGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type LinesSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    title?: boolean
+    slug?: boolean
+    createdAt?: boolean
+    points?: boolean | Lines$pointsArgs<ExtArgs>
+    _count?: boolean | LinesCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["lines"]>
+
+  export type LinesSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    title?: boolean
+    slug?: boolean
+    createdAt?: boolean
+  }, ExtArgs["result"]["lines"]>
+
+  export type LinesSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    title?: boolean
+    slug?: boolean
+    createdAt?: boolean
+  }, ExtArgs["result"]["lines"]>
+
+  export type LinesSelectScalar = {
+    id?: boolean
+    title?: boolean
+    slug?: boolean
+    createdAt?: boolean
+  }
+
+  export type LinesOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "slug" | "createdAt", ExtArgs["result"]["lines"]>
+  export type LinesInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    points?: boolean | Lines$pointsArgs<ExtArgs>
+    _count?: boolean | LinesCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type LinesIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type LinesIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+
+  export type $LinesPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Lines"
+    objects: {
+      points: Prisma.$PointPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      title: string
+      slug: string
+      createdAt: Date
+    }, ExtArgs["result"]["lines"]>
+    composites: {}
+  }
+
+  type LinesGetPayload<S extends boolean | null | undefined | LinesDefaultArgs> = $Result.GetResult<Prisma.$LinesPayload, S>
+
+  type LinesCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<LinesFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: LinesCountAggregateInputType | true
+    }
+
+  export interface LinesDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Lines'], meta: { name: 'Lines' } }
+    /**
+     * Find zero or one Lines that matches the filter.
+     * @param {LinesFindUniqueArgs} args - Arguments to find a Lines
+     * @example
+     * // Get one Lines
+     * const lines = await prisma.lines.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends LinesFindUniqueArgs>(args: SelectSubset<T, LinesFindUniqueArgs<ExtArgs>>): Prisma__LinesClient<$Result.GetResult<Prisma.$LinesPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Lines that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {LinesFindUniqueOrThrowArgs} args - Arguments to find a Lines
+     * @example
+     * // Get one Lines
+     * const lines = await prisma.lines.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends LinesFindUniqueOrThrowArgs>(args: SelectSubset<T, LinesFindUniqueOrThrowArgs<ExtArgs>>): Prisma__LinesClient<$Result.GetResult<Prisma.$LinesPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Lines that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LinesFindFirstArgs} args - Arguments to find a Lines
+     * @example
+     * // Get one Lines
+     * const lines = await prisma.lines.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends LinesFindFirstArgs>(args?: SelectSubset<T, LinesFindFirstArgs<ExtArgs>>): Prisma__LinesClient<$Result.GetResult<Prisma.$LinesPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Lines that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LinesFindFirstOrThrowArgs} args - Arguments to find a Lines
+     * @example
+     * // Get one Lines
+     * const lines = await prisma.lines.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends LinesFindFirstOrThrowArgs>(args?: SelectSubset<T, LinesFindFirstOrThrowArgs<ExtArgs>>): Prisma__LinesClient<$Result.GetResult<Prisma.$LinesPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Lines that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LinesFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Lines
+     * const lines = await prisma.lines.findMany()
+     * 
+     * // Get first 10 Lines
+     * const lines = await prisma.lines.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const linesWithIdOnly = await prisma.lines.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends LinesFindManyArgs>(args?: SelectSubset<T, LinesFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LinesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Lines.
+     * @param {LinesCreateArgs} args - Arguments to create a Lines.
+     * @example
+     * // Create one Lines
+     * const Lines = await prisma.lines.create({
+     *   data: {
+     *     // ... data to create a Lines
+     *   }
+     * })
+     * 
+     */
+    create<T extends LinesCreateArgs>(args: SelectSubset<T, LinesCreateArgs<ExtArgs>>): Prisma__LinesClient<$Result.GetResult<Prisma.$LinesPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Lines.
+     * @param {LinesCreateManyArgs} args - Arguments to create many Lines.
+     * @example
+     * // Create many Lines
+     * const lines = await prisma.lines.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends LinesCreateManyArgs>(args?: SelectSubset<T, LinesCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Lines and returns the data saved in the database.
+     * @param {LinesCreateManyAndReturnArgs} args - Arguments to create many Lines.
+     * @example
+     * // Create many Lines
+     * const lines = await prisma.lines.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Lines and only return the `id`
+     * const linesWithIdOnly = await prisma.lines.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends LinesCreateManyAndReturnArgs>(args?: SelectSubset<T, LinesCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LinesPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Lines.
+     * @param {LinesDeleteArgs} args - Arguments to delete one Lines.
+     * @example
+     * // Delete one Lines
+     * const Lines = await prisma.lines.delete({
+     *   where: {
+     *     // ... filter to delete one Lines
+     *   }
+     * })
+     * 
+     */
+    delete<T extends LinesDeleteArgs>(args: SelectSubset<T, LinesDeleteArgs<ExtArgs>>): Prisma__LinesClient<$Result.GetResult<Prisma.$LinesPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Lines.
+     * @param {LinesUpdateArgs} args - Arguments to update one Lines.
+     * @example
+     * // Update one Lines
+     * const lines = await prisma.lines.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends LinesUpdateArgs>(args: SelectSubset<T, LinesUpdateArgs<ExtArgs>>): Prisma__LinesClient<$Result.GetResult<Prisma.$LinesPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Lines.
+     * @param {LinesDeleteManyArgs} args - Arguments to filter Lines to delete.
+     * @example
+     * // Delete a few Lines
+     * const { count } = await prisma.lines.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends LinesDeleteManyArgs>(args?: SelectSubset<T, LinesDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Lines.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LinesUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Lines
+     * const lines = await prisma.lines.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends LinesUpdateManyArgs>(args: SelectSubset<T, LinesUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Lines and returns the data updated in the database.
+     * @param {LinesUpdateManyAndReturnArgs} args - Arguments to update many Lines.
+     * @example
+     * // Update many Lines
+     * const lines = await prisma.lines.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Lines and only return the `id`
+     * const linesWithIdOnly = await prisma.lines.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends LinesUpdateManyAndReturnArgs>(args: SelectSubset<T, LinesUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LinesPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Lines.
+     * @param {LinesUpsertArgs} args - Arguments to update or create a Lines.
+     * @example
+     * // Update or create a Lines
+     * const lines = await prisma.lines.upsert({
+     *   create: {
+     *     // ... data to create a Lines
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Lines we want to update
+     *   }
+     * })
+     */
+    upsert<T extends LinesUpsertArgs>(args: SelectSubset<T, LinesUpsertArgs<ExtArgs>>): Prisma__LinesClient<$Result.GetResult<Prisma.$LinesPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Lines.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LinesCountArgs} args - Arguments to filter Lines to count.
+     * @example
+     * // Count the number of Lines
+     * const count = await prisma.lines.count({
+     *   where: {
+     *     // ... the filter for the Lines we want to count
+     *   }
+     * })
+    **/
+    count<T extends LinesCountArgs>(
+      args?: Subset<T, LinesCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], LinesCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Lines.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LinesAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends LinesAggregateArgs>(args: Subset<T, LinesAggregateArgs>): Prisma.PrismaPromise<GetLinesAggregateType<T>>
+
+    /**
+     * Group by Lines.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LinesGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends LinesGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: LinesGroupByArgs['orderBy'] }
+        : { orderBy?: LinesGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, LinesGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetLinesGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Lines model
+   */
+  readonly fields: LinesFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Lines.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__LinesClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    points<T extends Lines$pointsArgs<ExtArgs> = {}>(args?: Subset<T, Lines$pointsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PointPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Lines model
+   */
+  interface LinesFieldRefs {
+    readonly id: FieldRef<"Lines", 'String'>
+    readonly title: FieldRef<"Lines", 'String'>
+    readonly slug: FieldRef<"Lines", 'String'>
+    readonly createdAt: FieldRef<"Lines", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Lines findUnique
+   */
+  export type LinesFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Lines
+     */
+    select?: LinesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Lines
+     */
+    omit?: LinesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LinesInclude<ExtArgs> | null
+    /**
+     * Filter, which Lines to fetch.
+     */
+    where: LinesWhereUniqueInput
+  }
+
+  /**
+   * Lines findUniqueOrThrow
+   */
+  export type LinesFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Lines
+     */
+    select?: LinesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Lines
+     */
+    omit?: LinesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LinesInclude<ExtArgs> | null
+    /**
+     * Filter, which Lines to fetch.
+     */
+    where: LinesWhereUniqueInput
+  }
+
+  /**
+   * Lines findFirst
+   */
+  export type LinesFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Lines
+     */
+    select?: LinesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Lines
+     */
+    omit?: LinesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LinesInclude<ExtArgs> | null
+    /**
+     * Filter, which Lines to fetch.
+     */
+    where?: LinesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Lines to fetch.
+     */
+    orderBy?: LinesOrderByWithRelationInput | LinesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Lines.
+     */
+    cursor?: LinesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Lines from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Lines.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Lines.
+     */
+    distinct?: LinesScalarFieldEnum | LinesScalarFieldEnum[]
+  }
+
+  /**
+   * Lines findFirstOrThrow
+   */
+  export type LinesFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Lines
+     */
+    select?: LinesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Lines
+     */
+    omit?: LinesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LinesInclude<ExtArgs> | null
+    /**
+     * Filter, which Lines to fetch.
+     */
+    where?: LinesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Lines to fetch.
+     */
+    orderBy?: LinesOrderByWithRelationInput | LinesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Lines.
+     */
+    cursor?: LinesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Lines from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Lines.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Lines.
+     */
+    distinct?: LinesScalarFieldEnum | LinesScalarFieldEnum[]
+  }
+
+  /**
+   * Lines findMany
+   */
+  export type LinesFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Lines
+     */
+    select?: LinesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Lines
+     */
+    omit?: LinesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LinesInclude<ExtArgs> | null
+    /**
+     * Filter, which Lines to fetch.
+     */
+    where?: LinesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Lines to fetch.
+     */
+    orderBy?: LinesOrderByWithRelationInput | LinesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Lines.
+     */
+    cursor?: LinesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Lines from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Lines.
+     */
+    skip?: number
+    distinct?: LinesScalarFieldEnum | LinesScalarFieldEnum[]
+  }
+
+  /**
+   * Lines create
+   */
+  export type LinesCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Lines
+     */
+    select?: LinesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Lines
+     */
+    omit?: LinesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LinesInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Lines.
+     */
+    data: XOR<LinesCreateInput, LinesUncheckedCreateInput>
+  }
+
+  /**
+   * Lines createMany
+   */
+  export type LinesCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Lines.
+     */
+    data: LinesCreateManyInput | LinesCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Lines createManyAndReturn
+   */
+  export type LinesCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Lines
+     */
+    select?: LinesSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Lines
+     */
+    omit?: LinesOmit<ExtArgs> | null
+    /**
+     * The data used to create many Lines.
+     */
+    data: LinesCreateManyInput | LinesCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Lines update
+   */
+  export type LinesUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Lines
+     */
+    select?: LinesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Lines
+     */
+    omit?: LinesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LinesInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Lines.
+     */
+    data: XOR<LinesUpdateInput, LinesUncheckedUpdateInput>
+    /**
+     * Choose, which Lines to update.
+     */
+    where: LinesWhereUniqueInput
+  }
+
+  /**
+   * Lines updateMany
+   */
+  export type LinesUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Lines.
+     */
+    data: XOR<LinesUpdateManyMutationInput, LinesUncheckedUpdateManyInput>
+    /**
+     * Filter which Lines to update
+     */
+    where?: LinesWhereInput
+    /**
+     * Limit how many Lines to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Lines updateManyAndReturn
+   */
+  export type LinesUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Lines
+     */
+    select?: LinesSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Lines
+     */
+    omit?: LinesOmit<ExtArgs> | null
+    /**
+     * The data used to update Lines.
+     */
+    data: XOR<LinesUpdateManyMutationInput, LinesUncheckedUpdateManyInput>
+    /**
+     * Filter which Lines to update
+     */
+    where?: LinesWhereInput
+    /**
+     * Limit how many Lines to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Lines upsert
+   */
+  export type LinesUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Lines
+     */
+    select?: LinesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Lines
+     */
+    omit?: LinesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LinesInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Lines to update in case it exists.
+     */
+    where: LinesWhereUniqueInput
+    /**
+     * In case the Lines found by the `where` argument doesn't exist, create a new Lines with this data.
+     */
+    create: XOR<LinesCreateInput, LinesUncheckedCreateInput>
+    /**
+     * In case the Lines was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<LinesUpdateInput, LinesUncheckedUpdateInput>
+  }
+
+  /**
+   * Lines delete
+   */
+  export type LinesDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Lines
+     */
+    select?: LinesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Lines
+     */
+    omit?: LinesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LinesInclude<ExtArgs> | null
+    /**
+     * Filter which Lines to delete.
+     */
+    where: LinesWhereUniqueInput
+  }
+
+  /**
+   * Lines deleteMany
+   */
+  export type LinesDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Lines to delete
+     */
+    where?: LinesWhereInput
+    /**
+     * Limit how many Lines to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Lines.points
+   */
+  export type Lines$pointsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Point
+     */
+    select?: PointSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Point
+     */
+    omit?: PointOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PointInclude<ExtArgs> | null
+    where?: PointWhereInput
+    orderBy?: PointOrderByWithRelationInput | PointOrderByWithRelationInput[]
+    cursor?: PointWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: PointScalarFieldEnum | PointScalarFieldEnum[]
+  }
+
+  /**
+   * Lines without action
+   */
+  export type LinesDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Lines
+     */
+    select?: LinesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Lines
+     */
+    omit?: LinesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LinesInclude<ExtArgs> | null
   }
 
 
@@ -8302,8 +9516,10 @@ export namespace Prisma {
     title: 'title',
     slug: 'slug',
     description: 'description',
+    author: 'author',
     linha: 'linha',
     type: 'type',
+    lineCategoty: 'lineCategoty',
     createdAt: 'createdAt',
     createdById: 'createdById',
     approved: 'approved',
@@ -8314,6 +9530,16 @@ export namespace Prisma {
   };
 
   export type PointScalarFieldEnum = (typeof PointScalarFieldEnum)[keyof typeof PointScalarFieldEnum]
+
+
+  export const LinesScalarFieldEnum: {
+    id: 'id',
+    title: 'title',
+    slug: 'slug',
+    createdAt: 'createdAt'
+  };
+
+  export type LinesScalarFieldEnum = (typeof LinesScalarFieldEnum)[keyof typeof LinesScalarFieldEnum]
 
 
   export const SectionScalarFieldEnum: {
@@ -8571,8 +9797,10 @@ export namespace Prisma {
     title?: StringFilter<"Point"> | string
     slug?: StringFilter<"Point"> | string
     description?: StringNullableFilter<"Point"> | string | null
+    author?: StringNullableFilter<"Point"> | string | null
     linha?: EnumLinhaFilter<"Point"> | $Enums.Linha
     type?: EnumPointTypeFilter<"Point"> | $Enums.PointType
+    lineCategoty?: StringFilter<"Point"> | string
     createdAt?: DateTimeFilter<"Point"> | Date | string
     createdById?: StringFilter<"Point"> | string
     approved?: BoolFilter<"Point"> | boolean
@@ -8580,6 +9808,7 @@ export namespace Prisma {
     approvedById?: StringNullableFilter<"Point"> | string | null
     audioUrl?: StringNullableFilter<"Point"> | string | null
     youtubeUrl?: StringNullableFilter<"Point"> | string | null
+    line?: XOR<LinesScalarRelationFilter, LinesWhereInput>
     createdBy?: XOR<UserScalarRelationFilter, UserWhereInput>
     approvedBy?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     sections?: SectionListRelationFilter
@@ -8591,8 +9820,10 @@ export namespace Prisma {
     title?: SortOrder
     slug?: SortOrder
     description?: SortOrderInput | SortOrder
+    author?: SortOrderInput | SortOrder
     linha?: SortOrder
     type?: SortOrder
+    lineCategoty?: SortOrder
     createdAt?: SortOrder
     createdById?: SortOrder
     approved?: SortOrder
@@ -8600,6 +9831,7 @@ export namespace Prisma {
     approvedById?: SortOrderInput | SortOrder
     audioUrl?: SortOrderInput | SortOrder
     youtubeUrl?: SortOrderInput | SortOrder
+    line?: LinesOrderByWithRelationInput
     createdBy?: UserOrderByWithRelationInput
     approvedBy?: UserOrderByWithRelationInput
     sections?: SectionOrderByRelationAggregateInput
@@ -8614,8 +9846,10 @@ export namespace Prisma {
     NOT?: PointWhereInput | PointWhereInput[]
     title?: StringFilter<"Point"> | string
     description?: StringNullableFilter<"Point"> | string | null
+    author?: StringNullableFilter<"Point"> | string | null
     linha?: EnumLinhaFilter<"Point"> | $Enums.Linha
     type?: EnumPointTypeFilter<"Point"> | $Enums.PointType
+    lineCategoty?: StringFilter<"Point"> | string
     createdAt?: DateTimeFilter<"Point"> | Date | string
     createdById?: StringFilter<"Point"> | string
     approved?: BoolFilter<"Point"> | boolean
@@ -8623,6 +9857,7 @@ export namespace Prisma {
     approvedById?: StringNullableFilter<"Point"> | string | null
     audioUrl?: StringNullableFilter<"Point"> | string | null
     youtubeUrl?: StringNullableFilter<"Point"> | string | null
+    line?: XOR<LinesScalarRelationFilter, LinesWhereInput>
     createdBy?: XOR<UserScalarRelationFilter, UserWhereInput>
     approvedBy?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     sections?: SectionListRelationFilter
@@ -8634,8 +9869,10 @@ export namespace Prisma {
     title?: SortOrder
     slug?: SortOrder
     description?: SortOrderInput | SortOrder
+    author?: SortOrderInput | SortOrder
     linha?: SortOrder
     type?: SortOrder
+    lineCategoty?: SortOrder
     createdAt?: SortOrder
     createdById?: SortOrder
     approved?: SortOrder
@@ -8656,8 +9893,10 @@ export namespace Prisma {
     title?: StringWithAggregatesFilter<"Point"> | string
     slug?: StringWithAggregatesFilter<"Point"> | string
     description?: StringNullableWithAggregatesFilter<"Point"> | string | null
+    author?: StringNullableWithAggregatesFilter<"Point"> | string | null
     linha?: EnumLinhaWithAggregatesFilter<"Point"> | $Enums.Linha
     type?: EnumPointTypeWithAggregatesFilter<"Point"> | $Enums.PointType
+    lineCategoty?: StringWithAggregatesFilter<"Point"> | string
     createdAt?: DateTimeWithAggregatesFilter<"Point"> | Date | string
     createdById?: StringWithAggregatesFilter<"Point"> | string
     approved?: BoolWithAggregatesFilter<"Point"> | boolean
@@ -8665,6 +9904,56 @@ export namespace Prisma {
     approvedById?: StringNullableWithAggregatesFilter<"Point"> | string | null
     audioUrl?: StringNullableWithAggregatesFilter<"Point"> | string | null
     youtubeUrl?: StringNullableWithAggregatesFilter<"Point"> | string | null
+  }
+
+  export type LinesWhereInput = {
+    AND?: LinesWhereInput | LinesWhereInput[]
+    OR?: LinesWhereInput[]
+    NOT?: LinesWhereInput | LinesWhereInput[]
+    id?: StringFilter<"Lines"> | string
+    title?: StringFilter<"Lines"> | string
+    slug?: StringFilter<"Lines"> | string
+    createdAt?: DateTimeFilter<"Lines"> | Date | string
+    points?: PointListRelationFilter
+  }
+
+  export type LinesOrderByWithRelationInput = {
+    id?: SortOrder
+    title?: SortOrder
+    slug?: SortOrder
+    createdAt?: SortOrder
+    points?: PointOrderByRelationAggregateInput
+  }
+
+  export type LinesWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    slug?: string
+    AND?: LinesWhereInput | LinesWhereInput[]
+    OR?: LinesWhereInput[]
+    NOT?: LinesWhereInput | LinesWhereInput[]
+    title?: StringFilter<"Lines"> | string
+    createdAt?: DateTimeFilter<"Lines"> | Date | string
+    points?: PointListRelationFilter
+  }, "id" | "slug">
+
+  export type LinesOrderByWithAggregationInput = {
+    id?: SortOrder
+    title?: SortOrder
+    slug?: SortOrder
+    createdAt?: SortOrder
+    _count?: LinesCountOrderByAggregateInput
+    _max?: LinesMaxOrderByAggregateInput
+    _min?: LinesMinOrderByAggregateInput
+  }
+
+  export type LinesScalarWhereWithAggregatesInput = {
+    AND?: LinesScalarWhereWithAggregatesInput | LinesScalarWhereWithAggregatesInput[]
+    OR?: LinesScalarWhereWithAggregatesInput[]
+    NOT?: LinesScalarWhereWithAggregatesInput | LinesScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Lines"> | string
+    title?: StringWithAggregatesFilter<"Lines"> | string
+    slug?: StringWithAggregatesFilter<"Lines"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"Lines"> | Date | string
   }
 
   export type SectionWhereInput = {
@@ -8975,6 +10264,7 @@ export namespace Prisma {
     title: string
     slug: string
     description?: string | null
+    author?: string | null
     linha: $Enums.Linha
     type?: $Enums.PointType
     createdAt?: Date | string
@@ -8982,6 +10272,7 @@ export namespace Prisma {
     approvedAt?: Date | string | null
     audioUrl?: string | null
     youtubeUrl?: string | null
+    line: LinesCreateNestedOneWithoutPointsInput
     createdBy: UserCreateNestedOneWithoutPointsCreatedInput
     approvedBy?: UserCreateNestedOneWithoutApprovalsInput
     sections?: SectionCreateNestedManyWithoutPointInput
@@ -8993,8 +10284,10 @@ export namespace Prisma {
     title: string
     slug: string
     description?: string | null
+    author?: string | null
     linha: $Enums.Linha
     type?: $Enums.PointType
+    lineCategoty: string
     createdAt?: Date | string
     createdById: string
     approved?: boolean
@@ -9011,6 +10304,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    author?: NullableStringFieldUpdateOperationsInput | string | null
     linha?: EnumLinhaFieldUpdateOperationsInput | $Enums.Linha
     type?: EnumPointTypeFieldUpdateOperationsInput | $Enums.PointType
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -9018,6 +10312,7 @@ export namespace Prisma {
     approvedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     audioUrl?: NullableStringFieldUpdateOperationsInput | string | null
     youtubeUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    line?: LinesUpdateOneRequiredWithoutPointsNestedInput
     createdBy?: UserUpdateOneRequiredWithoutPointsCreatedNestedInput
     approvedBy?: UserUpdateOneWithoutApprovalsNestedInput
     sections?: SectionUpdateManyWithoutPointNestedInput
@@ -9029,8 +10324,10 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    author?: NullableStringFieldUpdateOperationsInput | string | null
     linha?: EnumLinhaFieldUpdateOperationsInput | $Enums.Linha
     type?: EnumPointTypeFieldUpdateOperationsInput | $Enums.PointType
+    lineCategoty?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     createdById?: StringFieldUpdateOperationsInput | string
     approved?: BoolFieldUpdateOperationsInput | boolean
@@ -9047,8 +10344,10 @@ export namespace Prisma {
     title: string
     slug: string
     description?: string | null
+    author?: string | null
     linha: $Enums.Linha
     type?: $Enums.PointType
+    lineCategoty: string
     createdAt?: Date | string
     createdById: string
     approved?: boolean
@@ -9063,6 +10362,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    author?: NullableStringFieldUpdateOperationsInput | string | null
     linha?: EnumLinhaFieldUpdateOperationsInput | $Enums.Linha
     type?: EnumPointTypeFieldUpdateOperationsInput | $Enums.PointType
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -9077,8 +10377,10 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    author?: NullableStringFieldUpdateOperationsInput | string | null
     linha?: EnumLinhaFieldUpdateOperationsInput | $Enums.Linha
     type?: EnumPointTypeFieldUpdateOperationsInput | $Enums.PointType
+    lineCategoty?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     createdById?: StringFieldUpdateOperationsInput | string
     approved?: BoolFieldUpdateOperationsInput | boolean
@@ -9086,6 +10388,59 @@ export namespace Prisma {
     approvedById?: NullableStringFieldUpdateOperationsInput | string | null
     audioUrl?: NullableStringFieldUpdateOperationsInput | string | null
     youtubeUrl?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type LinesCreateInput = {
+    id?: string
+    title: string
+    slug: string
+    createdAt?: Date | string
+    points?: PointCreateNestedManyWithoutLineInput
+  }
+
+  export type LinesUncheckedCreateInput = {
+    id?: string
+    title: string
+    slug: string
+    createdAt?: Date | string
+    points?: PointUncheckedCreateNestedManyWithoutLineInput
+  }
+
+  export type LinesUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    points?: PointUpdateManyWithoutLineNestedInput
+  }
+
+  export type LinesUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    points?: PointUncheckedUpdateManyWithoutLineNestedInput
+  }
+
+  export type LinesCreateManyInput = {
+    id?: string
+    title: string
+    slug: string
+    createdAt?: Date | string
+  }
+
+  export type LinesUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type LinesUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type SectionCreateInput = {
@@ -9493,6 +10848,11 @@ export namespace Prisma {
     not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
   }
 
+  export type LinesScalarRelationFilter = {
+    is?: LinesWhereInput
+    isNot?: LinesWhereInput
+  }
+
   export type UserScalarRelationFilter = {
     is?: UserWhereInput
     isNot?: UserWhereInput
@@ -9518,8 +10878,10 @@ export namespace Prisma {
     title?: SortOrder
     slug?: SortOrder
     description?: SortOrder
+    author?: SortOrder
     linha?: SortOrder
     type?: SortOrder
+    lineCategoty?: SortOrder
     createdAt?: SortOrder
     createdById?: SortOrder
     approved?: SortOrder
@@ -9534,8 +10896,10 @@ export namespace Prisma {
     title?: SortOrder
     slug?: SortOrder
     description?: SortOrder
+    author?: SortOrder
     linha?: SortOrder
     type?: SortOrder
+    lineCategoty?: SortOrder
     createdAt?: SortOrder
     createdById?: SortOrder
     approved?: SortOrder
@@ -9550,8 +10914,10 @@ export namespace Prisma {
     title?: SortOrder
     slug?: SortOrder
     description?: SortOrder
+    author?: SortOrder
     linha?: SortOrder
     type?: SortOrder
+    lineCategoty?: SortOrder
     createdAt?: SortOrder
     createdById?: SortOrder
     approved?: SortOrder
@@ -9601,6 +10967,27 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedDateTimeNullableFilter<$PrismaModel>
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
+  }
+
+  export type LinesCountOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    slug?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type LinesMaxOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    slug?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type LinesMinOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    slug?: SortOrder
+    createdAt?: SortOrder
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -9952,6 +11339,12 @@ export namespace Prisma {
     deleteMany?: PointScalarWhereInput | PointScalarWhereInput[]
   }
 
+  export type LinesCreateNestedOneWithoutPointsInput = {
+    create?: XOR<LinesCreateWithoutPointsInput, LinesUncheckedCreateWithoutPointsInput>
+    connectOrCreate?: LinesCreateOrConnectWithoutPointsInput
+    connect?: LinesWhereUniqueInput
+  }
+
   export type UserCreateNestedOneWithoutPointsCreatedInput = {
     create?: XOR<UserCreateWithoutPointsCreatedInput, UserUncheckedCreateWithoutPointsCreatedInput>
     connectOrCreate?: UserCreateOrConnectWithoutPointsCreatedInput
@@ -10006,6 +11399,14 @@ export namespace Prisma {
 
   export type NullableDateTimeFieldUpdateOperationsInput = {
     set?: Date | string | null
+  }
+
+  export type LinesUpdateOneRequiredWithoutPointsNestedInput = {
+    create?: XOR<LinesCreateWithoutPointsInput, LinesUncheckedCreateWithoutPointsInput>
+    connectOrCreate?: LinesCreateOrConnectWithoutPointsInput
+    upsert?: LinesUpsertWithoutPointsInput
+    connect?: LinesWhereUniqueInput
+    update?: XOR<XOR<LinesUpdateToOneWithWhereWithoutPointsInput, LinesUpdateWithoutPointsInput>, LinesUncheckedUpdateWithoutPointsInput>
   }
 
   export type UserUpdateOneRequiredWithoutPointsCreatedNestedInput = {
@@ -10080,6 +11481,48 @@ export namespace Prisma {
     update?: FavoriteUpdateWithWhereUniqueWithoutPointInput | FavoriteUpdateWithWhereUniqueWithoutPointInput[]
     updateMany?: FavoriteUpdateManyWithWhereWithoutPointInput | FavoriteUpdateManyWithWhereWithoutPointInput[]
     deleteMany?: FavoriteScalarWhereInput | FavoriteScalarWhereInput[]
+  }
+
+  export type PointCreateNestedManyWithoutLineInput = {
+    create?: XOR<PointCreateWithoutLineInput, PointUncheckedCreateWithoutLineInput> | PointCreateWithoutLineInput[] | PointUncheckedCreateWithoutLineInput[]
+    connectOrCreate?: PointCreateOrConnectWithoutLineInput | PointCreateOrConnectWithoutLineInput[]
+    createMany?: PointCreateManyLineInputEnvelope
+    connect?: PointWhereUniqueInput | PointWhereUniqueInput[]
+  }
+
+  export type PointUncheckedCreateNestedManyWithoutLineInput = {
+    create?: XOR<PointCreateWithoutLineInput, PointUncheckedCreateWithoutLineInput> | PointCreateWithoutLineInput[] | PointUncheckedCreateWithoutLineInput[]
+    connectOrCreate?: PointCreateOrConnectWithoutLineInput | PointCreateOrConnectWithoutLineInput[]
+    createMany?: PointCreateManyLineInputEnvelope
+    connect?: PointWhereUniqueInput | PointWhereUniqueInput[]
+  }
+
+  export type PointUpdateManyWithoutLineNestedInput = {
+    create?: XOR<PointCreateWithoutLineInput, PointUncheckedCreateWithoutLineInput> | PointCreateWithoutLineInput[] | PointUncheckedCreateWithoutLineInput[]
+    connectOrCreate?: PointCreateOrConnectWithoutLineInput | PointCreateOrConnectWithoutLineInput[]
+    upsert?: PointUpsertWithWhereUniqueWithoutLineInput | PointUpsertWithWhereUniqueWithoutLineInput[]
+    createMany?: PointCreateManyLineInputEnvelope
+    set?: PointWhereUniqueInput | PointWhereUniqueInput[]
+    disconnect?: PointWhereUniqueInput | PointWhereUniqueInput[]
+    delete?: PointWhereUniqueInput | PointWhereUniqueInput[]
+    connect?: PointWhereUniqueInput | PointWhereUniqueInput[]
+    update?: PointUpdateWithWhereUniqueWithoutLineInput | PointUpdateWithWhereUniqueWithoutLineInput[]
+    updateMany?: PointUpdateManyWithWhereWithoutLineInput | PointUpdateManyWithWhereWithoutLineInput[]
+    deleteMany?: PointScalarWhereInput | PointScalarWhereInput[]
+  }
+
+  export type PointUncheckedUpdateManyWithoutLineNestedInput = {
+    create?: XOR<PointCreateWithoutLineInput, PointUncheckedCreateWithoutLineInput> | PointCreateWithoutLineInput[] | PointUncheckedCreateWithoutLineInput[]
+    connectOrCreate?: PointCreateOrConnectWithoutLineInput | PointCreateOrConnectWithoutLineInput[]
+    upsert?: PointUpsertWithWhereUniqueWithoutLineInput | PointUpsertWithWhereUniqueWithoutLineInput[]
+    createMany?: PointCreateManyLineInputEnvelope
+    set?: PointWhereUniqueInput | PointWhereUniqueInput[]
+    disconnect?: PointWhereUniqueInput | PointWhereUniqueInput[]
+    delete?: PointWhereUniqueInput | PointWhereUniqueInput[]
+    connect?: PointWhereUniqueInput | PointWhereUniqueInput[]
+    update?: PointUpdateWithWhereUniqueWithoutLineInput | PointUpdateWithWhereUniqueWithoutLineInput[]
+    updateMany?: PointUpdateManyWithWhereWithoutLineInput | PointUpdateManyWithWhereWithoutLineInput[]
+    deleteMany?: PointScalarWhereInput | PointScalarWhereInput[]
   }
 
   export type PointCreateNestedOneWithoutSectionsInput = {
@@ -10488,6 +11931,7 @@ export namespace Prisma {
     title: string
     slug: string
     description?: string | null
+    author?: string | null
     linha: $Enums.Linha
     type?: $Enums.PointType
     createdAt?: Date | string
@@ -10495,6 +11939,7 @@ export namespace Prisma {
     approvedAt?: Date | string | null
     audioUrl?: string | null
     youtubeUrl?: string | null
+    line: LinesCreateNestedOneWithoutPointsInput
     approvedBy?: UserCreateNestedOneWithoutApprovalsInput
     sections?: SectionCreateNestedManyWithoutPointInput
     favorites?: FavoriteCreateNestedManyWithoutPointInput
@@ -10505,8 +11950,10 @@ export namespace Prisma {
     title: string
     slug: string
     description?: string | null
+    author?: string | null
     linha: $Enums.Linha
     type?: $Enums.PointType
+    lineCategoty: string
     createdAt?: Date | string
     approved?: boolean
     approvedAt?: Date | string | null
@@ -10578,6 +12025,7 @@ export namespace Prisma {
     title: string
     slug: string
     description?: string | null
+    author?: string | null
     linha: $Enums.Linha
     type?: $Enums.PointType
     createdAt?: Date | string
@@ -10585,6 +12033,7 @@ export namespace Prisma {
     approvedAt?: Date | string | null
     audioUrl?: string | null
     youtubeUrl?: string | null
+    line: LinesCreateNestedOneWithoutPointsInput
     createdBy: UserCreateNestedOneWithoutPointsCreatedInput
     sections?: SectionCreateNestedManyWithoutPointInput
     favorites?: FavoriteCreateNestedManyWithoutPointInput
@@ -10595,8 +12044,10 @@ export namespace Prisma {
     title: string
     slug: string
     description?: string | null
+    author?: string | null
     linha: $Enums.Linha
     type?: $Enums.PointType
+    lineCategoty: string
     createdAt?: Date | string
     createdById: string
     approved?: boolean
@@ -10641,8 +12092,10 @@ export namespace Prisma {
     title?: StringFilter<"Point"> | string
     slug?: StringFilter<"Point"> | string
     description?: StringNullableFilter<"Point"> | string | null
+    author?: StringNullableFilter<"Point"> | string | null
     linha?: EnumLinhaFilter<"Point"> | $Enums.Linha
     type?: EnumPointTypeFilter<"Point"> | $Enums.PointType
+    lineCategoty?: StringFilter<"Point"> | string
     createdAt?: DateTimeFilter<"Point"> | Date | string
     createdById?: StringFilter<"Point"> | string
     approved?: BoolFilter<"Point"> | boolean
@@ -10719,6 +12172,25 @@ export namespace Prisma {
   export type PointUpdateManyWithWhereWithoutApprovedByInput = {
     where: PointScalarWhereInput
     data: XOR<PointUpdateManyMutationInput, PointUncheckedUpdateManyWithoutApprovedByInput>
+  }
+
+  export type LinesCreateWithoutPointsInput = {
+    id?: string
+    title: string
+    slug: string
+    createdAt?: Date | string
+  }
+
+  export type LinesUncheckedCreateWithoutPointsInput = {
+    id?: string
+    title: string
+    slug: string
+    createdAt?: Date | string
+  }
+
+  export type LinesCreateOrConnectWithoutPointsInput = {
+    where: LinesWhereUniqueInput
+    create: XOR<LinesCreateWithoutPointsInput, LinesUncheckedCreateWithoutPointsInput>
   }
 
   export type UserCreateWithoutPointsCreatedInput = {
@@ -10823,6 +12295,31 @@ export namespace Prisma {
   export type FavoriteCreateManyPointInputEnvelope = {
     data: FavoriteCreateManyPointInput | FavoriteCreateManyPointInput[]
     skipDuplicates?: boolean
+  }
+
+  export type LinesUpsertWithoutPointsInput = {
+    update: XOR<LinesUpdateWithoutPointsInput, LinesUncheckedUpdateWithoutPointsInput>
+    create: XOR<LinesCreateWithoutPointsInput, LinesUncheckedCreateWithoutPointsInput>
+    where?: LinesWhereInput
+  }
+
+  export type LinesUpdateToOneWithWhereWithoutPointsInput = {
+    where?: LinesWhereInput
+    data: XOR<LinesUpdateWithoutPointsInput, LinesUncheckedUpdateWithoutPointsInput>
+  }
+
+  export type LinesUpdateWithoutPointsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type LinesUncheckedUpdateWithoutPointsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type UserUpsertWithoutPointsCreatedInput = {
@@ -10937,11 +12434,12 @@ export namespace Prisma {
     data: XOR<FavoriteUpdateManyMutationInput, FavoriteUncheckedUpdateManyWithoutPointInput>
   }
 
-  export type PointCreateWithoutSectionsInput = {
+  export type PointCreateWithoutLineInput = {
     id?: string
     title: string
     slug: string
     description?: string | null
+    author?: string | null
     linha: $Enums.Linha
     type?: $Enums.PointType
     createdAt?: Date | string
@@ -10949,6 +12447,71 @@ export namespace Prisma {
     approvedAt?: Date | string | null
     audioUrl?: string | null
     youtubeUrl?: string | null
+    createdBy: UserCreateNestedOneWithoutPointsCreatedInput
+    approvedBy?: UserCreateNestedOneWithoutApprovalsInput
+    sections?: SectionCreateNestedManyWithoutPointInput
+    favorites?: FavoriteCreateNestedManyWithoutPointInput
+  }
+
+  export type PointUncheckedCreateWithoutLineInput = {
+    id?: string
+    title: string
+    slug: string
+    description?: string | null
+    author?: string | null
+    linha: $Enums.Linha
+    type?: $Enums.PointType
+    createdAt?: Date | string
+    createdById: string
+    approved?: boolean
+    approvedAt?: Date | string | null
+    approvedById?: string | null
+    audioUrl?: string | null
+    youtubeUrl?: string | null
+    sections?: SectionUncheckedCreateNestedManyWithoutPointInput
+    favorites?: FavoriteUncheckedCreateNestedManyWithoutPointInput
+  }
+
+  export type PointCreateOrConnectWithoutLineInput = {
+    where: PointWhereUniqueInput
+    create: XOR<PointCreateWithoutLineInput, PointUncheckedCreateWithoutLineInput>
+  }
+
+  export type PointCreateManyLineInputEnvelope = {
+    data: PointCreateManyLineInput | PointCreateManyLineInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type PointUpsertWithWhereUniqueWithoutLineInput = {
+    where: PointWhereUniqueInput
+    update: XOR<PointUpdateWithoutLineInput, PointUncheckedUpdateWithoutLineInput>
+    create: XOR<PointCreateWithoutLineInput, PointUncheckedCreateWithoutLineInput>
+  }
+
+  export type PointUpdateWithWhereUniqueWithoutLineInput = {
+    where: PointWhereUniqueInput
+    data: XOR<PointUpdateWithoutLineInput, PointUncheckedUpdateWithoutLineInput>
+  }
+
+  export type PointUpdateManyWithWhereWithoutLineInput = {
+    where: PointScalarWhereInput
+    data: XOR<PointUpdateManyMutationInput, PointUncheckedUpdateManyWithoutLineInput>
+  }
+
+  export type PointCreateWithoutSectionsInput = {
+    id?: string
+    title: string
+    slug: string
+    description?: string | null
+    author?: string | null
+    linha: $Enums.Linha
+    type?: $Enums.PointType
+    createdAt?: Date | string
+    approved?: boolean
+    approvedAt?: Date | string | null
+    audioUrl?: string | null
+    youtubeUrl?: string | null
+    line: LinesCreateNestedOneWithoutPointsInput
     createdBy: UserCreateNestedOneWithoutPointsCreatedInput
     approvedBy?: UserCreateNestedOneWithoutApprovalsInput
     favorites?: FavoriteCreateNestedManyWithoutPointInput
@@ -10959,8 +12522,10 @@ export namespace Prisma {
     title: string
     slug: string
     description?: string | null
+    author?: string | null
     linha: $Enums.Linha
     type?: $Enums.PointType
+    lineCategoty: string
     createdAt?: Date | string
     createdById: string
     approved?: boolean
@@ -11040,6 +12605,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    author?: NullableStringFieldUpdateOperationsInput | string | null
     linha?: EnumLinhaFieldUpdateOperationsInput | $Enums.Linha
     type?: EnumPointTypeFieldUpdateOperationsInput | $Enums.PointType
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -11047,6 +12613,7 @@ export namespace Prisma {
     approvedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     audioUrl?: NullableStringFieldUpdateOperationsInput | string | null
     youtubeUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    line?: LinesUpdateOneRequiredWithoutPointsNestedInput
     createdBy?: UserUpdateOneRequiredWithoutPointsCreatedNestedInput
     approvedBy?: UserUpdateOneWithoutApprovalsNestedInput
     favorites?: FavoriteUpdateManyWithoutPointNestedInput
@@ -11057,8 +12624,10 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    author?: NullableStringFieldUpdateOperationsInput | string | null
     linha?: EnumLinhaFieldUpdateOperationsInput | $Enums.Linha
     type?: EnumPointTypeFieldUpdateOperationsInput | $Enums.PointType
+    lineCategoty?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     createdById?: StringFieldUpdateOperationsInput | string
     approved?: BoolFieldUpdateOperationsInput | boolean
@@ -11305,6 +12874,7 @@ export namespace Prisma {
     title: string
     slug: string
     description?: string | null
+    author?: string | null
     linha: $Enums.Linha
     type?: $Enums.PointType
     createdAt?: Date | string
@@ -11312,6 +12882,7 @@ export namespace Prisma {
     approvedAt?: Date | string | null
     audioUrl?: string | null
     youtubeUrl?: string | null
+    line: LinesCreateNestedOneWithoutPointsInput
     createdBy: UserCreateNestedOneWithoutPointsCreatedInput
     approvedBy?: UserCreateNestedOneWithoutApprovalsInput
     sections?: SectionCreateNestedManyWithoutPointInput
@@ -11322,8 +12893,10 @@ export namespace Prisma {
     title: string
     slug: string
     description?: string | null
+    author?: string | null
     linha: $Enums.Linha
     type?: $Enums.PointType
+    lineCategoty: string
     createdAt?: Date | string
     createdById: string
     approved?: boolean
@@ -11390,6 +12963,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    author?: NullableStringFieldUpdateOperationsInput | string | null
     linha?: EnumLinhaFieldUpdateOperationsInput | $Enums.Linha
     type?: EnumPointTypeFieldUpdateOperationsInput | $Enums.PointType
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -11397,6 +12971,7 @@ export namespace Prisma {
     approvedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     audioUrl?: NullableStringFieldUpdateOperationsInput | string | null
     youtubeUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    line?: LinesUpdateOneRequiredWithoutPointsNestedInput
     createdBy?: UserUpdateOneRequiredWithoutPointsCreatedNestedInput
     approvedBy?: UserUpdateOneWithoutApprovalsNestedInput
     sections?: SectionUpdateManyWithoutPointNestedInput
@@ -11407,8 +12982,10 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    author?: NullableStringFieldUpdateOperationsInput | string | null
     linha?: EnumLinhaFieldUpdateOperationsInput | $Enums.Linha
     type?: EnumPointTypeFieldUpdateOperationsInput | $Enums.PointType
+    lineCategoty?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     createdById?: StringFieldUpdateOperationsInput | string
     approved?: BoolFieldUpdateOperationsInput | boolean
@@ -11424,8 +13001,10 @@ export namespace Prisma {
     title: string
     slug: string
     description?: string | null
+    author?: string | null
     linha: $Enums.Linha
     type?: $Enums.PointType
+    lineCategoty: string
     createdAt?: Date | string
     approved?: boolean
     approvedAt?: Date | string | null
@@ -11452,8 +13031,10 @@ export namespace Prisma {
     title: string
     slug: string
     description?: string | null
+    author?: string | null
     linha: $Enums.Linha
     type?: $Enums.PointType
+    lineCategoty: string
     createdAt?: Date | string
     createdById: string
     approved?: boolean
@@ -11467,6 +13048,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    author?: NullableStringFieldUpdateOperationsInput | string | null
     linha?: EnumLinhaFieldUpdateOperationsInput | $Enums.Linha
     type?: EnumPointTypeFieldUpdateOperationsInput | $Enums.PointType
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -11474,6 +13056,7 @@ export namespace Prisma {
     approvedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     audioUrl?: NullableStringFieldUpdateOperationsInput | string | null
     youtubeUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    line?: LinesUpdateOneRequiredWithoutPointsNestedInput
     approvedBy?: UserUpdateOneWithoutApprovalsNestedInput
     sections?: SectionUpdateManyWithoutPointNestedInput
     favorites?: FavoriteUpdateManyWithoutPointNestedInput
@@ -11484,8 +13067,10 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    author?: NullableStringFieldUpdateOperationsInput | string | null
     linha?: EnumLinhaFieldUpdateOperationsInput | $Enums.Linha
     type?: EnumPointTypeFieldUpdateOperationsInput | $Enums.PointType
+    lineCategoty?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     approved?: BoolFieldUpdateOperationsInput | boolean
     approvedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -11501,8 +13086,10 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    author?: NullableStringFieldUpdateOperationsInput | string | null
     linha?: EnumLinhaFieldUpdateOperationsInput | $Enums.Linha
     type?: EnumPointTypeFieldUpdateOperationsInput | $Enums.PointType
+    lineCategoty?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     approved?: BoolFieldUpdateOperationsInput | boolean
     approvedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -11555,6 +13142,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    author?: NullableStringFieldUpdateOperationsInput | string | null
     linha?: EnumLinhaFieldUpdateOperationsInput | $Enums.Linha
     type?: EnumPointTypeFieldUpdateOperationsInput | $Enums.PointType
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -11562,6 +13150,7 @@ export namespace Prisma {
     approvedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     audioUrl?: NullableStringFieldUpdateOperationsInput | string | null
     youtubeUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    line?: LinesUpdateOneRequiredWithoutPointsNestedInput
     createdBy?: UserUpdateOneRequiredWithoutPointsCreatedNestedInput
     sections?: SectionUpdateManyWithoutPointNestedInput
     favorites?: FavoriteUpdateManyWithoutPointNestedInput
@@ -11572,8 +13161,10 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    author?: NullableStringFieldUpdateOperationsInput | string | null
     linha?: EnumLinhaFieldUpdateOperationsInput | $Enums.Linha
     type?: EnumPointTypeFieldUpdateOperationsInput | $Enums.PointType
+    lineCategoty?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     createdById?: StringFieldUpdateOperationsInput | string
     approved?: BoolFieldUpdateOperationsInput | boolean
@@ -11589,8 +13180,10 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    author?: NullableStringFieldUpdateOperationsInput | string | null
     linha?: EnumLinhaFieldUpdateOperationsInput | $Enums.Linha
     type?: EnumPointTypeFieldUpdateOperationsInput | $Enums.PointType
+    lineCategoty?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     createdById?: StringFieldUpdateOperationsInput | string
     approved?: BoolFieldUpdateOperationsInput | boolean
@@ -11645,6 +13238,78 @@ export namespace Prisma {
   export type FavoriteUncheckedUpdateManyWithoutPointInput = {
     userId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PointCreateManyLineInput = {
+    id?: string
+    title: string
+    slug: string
+    description?: string | null
+    author?: string | null
+    linha: $Enums.Linha
+    type?: $Enums.PointType
+    createdAt?: Date | string
+    createdById: string
+    approved?: boolean
+    approvedAt?: Date | string | null
+    approvedById?: string | null
+    audioUrl?: string | null
+    youtubeUrl?: string | null
+  }
+
+  export type PointUpdateWithoutLineInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    author?: NullableStringFieldUpdateOperationsInput | string | null
+    linha?: EnumLinhaFieldUpdateOperationsInput | $Enums.Linha
+    type?: EnumPointTypeFieldUpdateOperationsInput | $Enums.PointType
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    approved?: BoolFieldUpdateOperationsInput | boolean
+    approvedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    audioUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    youtubeUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdBy?: UserUpdateOneRequiredWithoutPointsCreatedNestedInput
+    approvedBy?: UserUpdateOneWithoutApprovalsNestedInput
+    sections?: SectionUpdateManyWithoutPointNestedInput
+    favorites?: FavoriteUpdateManyWithoutPointNestedInput
+  }
+
+  export type PointUncheckedUpdateWithoutLineInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    author?: NullableStringFieldUpdateOperationsInput | string | null
+    linha?: EnumLinhaFieldUpdateOperationsInput | $Enums.Linha
+    type?: EnumPointTypeFieldUpdateOperationsInput | $Enums.PointType
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdById?: StringFieldUpdateOperationsInput | string
+    approved?: BoolFieldUpdateOperationsInput | boolean
+    approvedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    approvedById?: NullableStringFieldUpdateOperationsInput | string | null
+    audioUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    youtubeUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    sections?: SectionUncheckedUpdateManyWithoutPointNestedInput
+    favorites?: FavoriteUncheckedUpdateManyWithoutPointNestedInput
+  }
+
+  export type PointUncheckedUpdateManyWithoutLineInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    author?: NullableStringFieldUpdateOperationsInput | string | null
+    linha?: EnumLinhaFieldUpdateOperationsInput | $Enums.Linha
+    type?: EnumPointTypeFieldUpdateOperationsInput | $Enums.PointType
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdById?: StringFieldUpdateOperationsInput | string
+    approved?: BoolFieldUpdateOperationsInput | boolean
+    approvedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    approvedById?: NullableStringFieldUpdateOperationsInput | string | null
+    audioUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    youtubeUrl?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type BeatCreateManySectionInput = {

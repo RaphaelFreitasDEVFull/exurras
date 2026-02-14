@@ -3,8 +3,10 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
-import { Music, Plus, Home, User2 } from "lucide-react";
+import { Music, Plus, Home, User2, LogOut } from "lucide-react";
 import { Role } from "../../../prisma/genereted/client";
+import { Button } from "@/components/ui/button";
+import { logout } from "./logout";
 
 const navItems = [
   {
@@ -28,7 +30,7 @@ const navItems = [
 
   {
     title: "Usuario",
-    href: "/usuarios",
+    href: "/usuario",
     icon: User2,
     isAdmin: true,
   },
@@ -41,6 +43,10 @@ interface Props {
 
 export function SidebarNav({ username, role }: Props) {
   const pathname = usePathname();
+
+  async function handleLogout() {
+    await logout();
+  }
 
   return (
     <div className="flex h-screen w-64 flex-col border-r border-sidebar-border bg-sidebar">
@@ -80,7 +86,10 @@ export function SidebarNav({ username, role }: Props) {
             );
           })}
       </nav>
-
+      <Button size={"lg"} variant={"secondary"} onClick={handleLogout}>
+        <LogOut />
+        Sair
+      </Button>
       <div className="border-t border-sidebar-border p-4">
         <div className="flex items-center gap-3 rounded-lg bg-sidebar-accent px-3 py-2">
           <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-xs font-semibold text-primary-foreground">
