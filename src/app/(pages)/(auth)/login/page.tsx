@@ -22,36 +22,44 @@ const Login = () => {
         },
       });
     }
-  }, [state?.error]);
+  }, [state]);
 
   return (
-    <div className="flex w-full items-center justify-center h-screen">
-      <div className="border border-green-400/30 p-12  w-125 flex flex-col gap-4">
-        <h1 className="text-red-600 font-bold text-3xl text-center">Login</h1>
-        <form action={formAction} className="flex flex-col gap-3">
-          <div className="flex flex-col gap-3">
-            <Label>Usuario</Label>
+    <div className="flex w-full items-center justify-center min-h-dvh px-4">
+      <div className="w-full max-w-md border border-green-400/30 p-8 md:p-12 flex flex-col gap-6 rounded-xl bg-background/50 backdrop-blur">
+        <h1 className="text-3xl font-bold text-center">Login</h1>
+
+        <form action={formAction} className="flex flex-col gap-4">
+          <div className="flex flex-col gap-2">
+            <Label htmlFor="username">Usuário</Label>
             <Input
-              className="bg-transparent w-full p-4 outline-none focus:outline-none"
+              id="username"
               name="username"
+              required
+              placeholder="Digite seu usuário"
+              className="bg-transparent"
             />
           </div>
-          <div className="flex flex-col gap-3">
-            <Label>Senha</Label>
+
+          <div className="flex flex-col gap-2">
+            <Label htmlFor="password">Senha</Label>
             <Input
-              type="password"
+              id="password"
               name="password"
-              className="bg-transparent w-full p-4 outline-none focus:outline-none"
+              type="password"
+              required
+              placeholder="Digite sua senha"
+              className="bg-transparent"
             />
           </div>
+
           <Button
             disabled={isPending}
             type="submit"
-            variant={"secondary"}
-            className="cursor-pointer"
+            variant="secondary"
+            className="cursor-pointer w-full"
           >
-            {" "}
-            Entrar{" "}
+            {isPending ? "Entrando..." : "Entrar"}
           </Button>
         </form>
       </div>

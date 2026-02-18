@@ -11,14 +11,14 @@ interface Props {
 export function DashboardLayout({ children, username, role }: Props) {
   return (
     <SessionProvider>
-      <div className="flex h-screen overflow-hidden">
-        {/* Sidebar fixo */}
-        <div className="h-full">
-          <SidebarNav username={username} role={role} />
-        </div>
+      <div className="flex h-dvh w-full overflow-hidden bg-muted/40">
+        {/* SidebarNav controla mobile/desktop */}
+        <SidebarNav username={username} role={role} />
 
-        {/* Só o main rola */}
-        <main className="flex-1 overflow-y-auto">{children}</main>
+        {/* Conteúdo */}
+        <main className="flex-1 overflow-y-auto w-full md:pt-0 pt-14">
+          {children}
+        </main>
       </div>
     </SessionProvider>
   );

@@ -1,46 +1,18 @@
 "use client";
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { cn } from "@/lib/utils";
-import { Music, Plus, Home, User2, LogOut, Drum } from "lucide-react";
-import { Role } from "@/genereted";
 import { Button } from "@/components/ui/button";
-import { logout } from "./logout";
+import {
+  SheetTrigger,
+  SheetContent,
+  Sheet,
+  SheetTitle,
+} from "@/components/ui/sheet";
+import { Home, Music, Plus, User2, Drum, Menu } from "lucide-react";
+import { usePathname } from "next/navigation";
 
-const navItems = [
-  {
-    title: "Início",
-    href: "/",
-    icon: Home,
-    isAdmin: false,
-  },
-  {
-    title: "Pontos",
-    href: "/pontos",
-    icon: Music,
-    isAdmin: false,
-  },
-  {
-    title: "Adicionar Ponto",
-    href: "/pontos/novo",
-    icon: Plus,
-    isAdmin: false,
-  },
-
-  {
-    title: "Usuario",
-    href: "/usuario",
-    icon: User2,
-    isAdmin: true,
-  },
-  {
-    title: "Toques",
-    href: "/toques",
-    icon: Drum,
-    isAdmin: false,
-  },
-];
+import { useState } from "react";
+import NavContent from "./navbar";
+import { Role } from "@/genereted";
 
 interface Props {
   username: string;
@@ -48,67 +20,58 @@ interface Props {
 }
 
 export function SidebarNav({ username, role }: Props) {
-  const pathname = usePathname();
+  const navItems = [
+    { title: "Início", href: "/", icon: Home, isAdmin: false },
+    { title: "Pontos", href: "/pontos", icon: Music, isAdmin: false },
+    { title: "Adicionar", href: "/pontos/novo", icon: Plus, isAdmin: false },
+    { title: "Usuário", href: "/usuario", icon: User2, isAdmin: true },
+    { title: "Toques", href: "/toques", icon: Drum, isAdmin: false },
+  ];
 
-  async function handleLogout() {
-    await logout();
-  }
+  const pathname = usePathname();
+  const [collapsed, setCollapsed] = useState(false);
+
+  const firstLetter = username?.[0]?.toUpperCase() ?? "?";
+
+  const filtered = navItems.filter((i) => !i.isAdmin || role === "ADMIN");
 
   return (
-    <div className="flex  h-screen w-64 flex-col border-r border-sidebar-border bg-sidebar">
-      <div className="flex h-16 items-center gap-3 border-b border-sidebar-border px-6">
-        <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary">
-          <Music className="h-5 w-5 text-primary-foreground" />
-        </div>
-        <div className="flex flex-col">
-          <span className="text-sm font-semibold text-sidebar-foreground">
-            Pontos
-          </span>
-          <span className="text-xs text-muted-foreground">Umbanda</span>
-        </div>
+    <>
+      {/* DESKTOP */}
+      <div className="hidden md:block">
+        <NavContent
+          collapsed={collapsed}
+          setCollapsed={setCollapsed}
+          pathname={pathname}
+          filtered={filtered}
+          username={username}
+          firstLetter={firstLetter}
+        />
       </div>
 
-      <nav className="flex-1 space-y-1 p-4">
-        {navItems
-          .filter((item) => !item.isAdmin || (item.isAdmin && role === "ADMIN"))
-          .map((item) => {
-            const Icon = item.icon;
-            const isActive = pathname === item.href;
+      {/* MOBILE */}
+      <div className="md:hidden p-2 border-b flex items-center">
+        <Sheet>
+          <SheetTrigger asChild>
+            <Button size="icon" variant="ghost">
+              <Menu />
+            </Button>
+          </SheetTrigger>
+          <SheetTitle className="sr-only">Menu de navegação</SheetTitle>
 
-            return (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={cn(
-                  "flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors",
-                  isActive
-                    ? "bg-sidebar-accent text-sidebar-accent-foreground"
-                    : "text-muted-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground",
-                )}
-              >
-                <Icon className="h-5 w-5" />
-                {item.title}
-              </Link>
-            );
-          })}
-      </nav>
-      <Button size={"lg"} variant={"secondary"} onClick={handleLogout}>
-        <LogOut />
-        Sair
-      </Button>
-      <div className="border-t border-sidebar-border p-4">
-        <div className="flex items-center gap-3 rounded-lg bg-sidebar-accent px-3 py-2">
-          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-xs font-semibold text-primary-foreground">
-            {username.split("")[0].toUpperCase()}
-          </div>
-          <div className="flex flex-col">
-            <span className="text-sm font-medium text-sidebar-foreground ">
-              {username.toUpperCase()}
-            </span>
-            <span className="text-xs text-muted-foreground">Configurações</span>
-          </div>
-        </div>
+          <SheetContent side="left" className="p-0 w-72">
+            <NavContent
+              mobile
+              collapsed={false}
+              pathname={pathname}
+              filtered={filtered}
+              username={username}
+              firstLetter={firstLetter}
+              setCollapsed={() => {}}
+            />
+          </SheetContent>
+        </Sheet>
       </div>
-    </div>
+    </>
   );
 }

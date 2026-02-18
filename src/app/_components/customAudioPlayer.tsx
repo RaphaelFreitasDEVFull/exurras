@@ -10,14 +10,9 @@ interface CustomAudioPlayerProps {
   title?: string;
 }
 
-interface VolumeChangeEvent {
-  target: {
-    value: string;
-  };
-}
-
 export default function CustomAudioPlayer({ src }: CustomAudioPlayerProps) {
   const audioRef = useRef<HTMLAudioElement>(null);
+
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
@@ -27,78 +22,123 @@ export default function CustomAudioPlayer({ src }: CustomAudioPlayerProps) {
     if (!audio) return;
 
     const updateTime = () => setCurrentTime(audio.currentTime);
-    const updateDuration = () => setDuration(audio.duration);
-    const handleEnded = () => setIsPlaying(false);
+
+    const updateDuration = () => {
+      if (!isNaN(audio.duration)) {
+        setDuration(audio.duration);
+      }
+    };
+
+    const onPlay = () => setIsPlaying(true);
+    const onPause = () => setIsPlaying(false);
+    const onEnded = () => setIsPlaying(false);
 
     audio.addEventListener("timeupdate", updateTime);
     audio.addEventListener("loadedmetadata", updateDuration);
-    audio.addEventListener("ended", handleEnded);
+    audio.addEventListener("play", onPlay);
+    audio.addEventListener("pause", onPause);
+    audio.addEventListener("ended", onEnded);
 
     return () => {
       audio.removeEventListener("timeupdate", updateTime);
       audio.removeEventListener("loadedmetadata", updateDuration);
-      audio.removeEventListener("ended", handleEnded);
+      audio.removeEventListener("play", onPlay);
+      audio.removeEventListener("pause", onPause);
+      audio.removeEventListener("ended", onEnded);
     };
-  }, []);
+  }, [src]);
 
-  const togglePlay = () => {
-    if (isPlaying) {
-      audioRef.current?.pause();
-    } else {
-      audioRef.current?.play();
+  const togglePlay = async () => {
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    try {
+      if (audio.paused) {
+        await audio.play();
+      } else {
+        audio.pause();
+      }
+    } catch (err) {
+      console.error("Erro ao tocar áudio:", err);
     }
-    setIsPlaying(!isPlaying);
   };
 
-  const handleSeek = (e: VolumeChangeEvent) => {
-    const newTime = parseFloat(e.target.value);
-    if (audioRef.current) {
-      audioRef.current.currentTime = newTime;
-    }
-    setCurrentTime(newTime);
+  const handleSeek = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const time = Number(e.target.value);
+    if (!audioRef.current) return;
+
+    audioRef.current.currentTime = time;
+    setCurrentTime(time);
   };
 
-  const formatTime = (time: number): string => {
-    if (isNaN(time)) return "0:00";
-    const minutes = Math.floor(time / 60);
-    const seconds = Math.floor(time % 60);
-    return `${minutes}:${seconds.toString().padStart(2, "0")}`;
+  const formatTime = (time: number) => {
+    if (!time || isNaN(time)) return "0:00";
+
+    const m = Math.floor(time / 60);
+    const s = Math.floor(time % 60);
+
+    return `${m}:${s.toString().padStart(2, "0")}`;
   };
 
   return (
-    <div className="w-full max-w-md mx-auto flex gap-2 rounded-2xl shadow-2xl ">
-      <audio ref={audioRef} src={src} />
-      <div className="flex justify-center">
-        <Button
-          onClick={togglePlay}
-          size={"icon"}
-          className="bg-white text-purple-600 rounded-full p-2 hover:scale-110 transition-transform shadow-lg"
-        >
-          {isPlaying ? (
-            <Pause size={14} />
-          ) : (
-            <Play size={14} className="ml-1" />
-          )}
-        </Button>
-      </div>
+    <div
+      className="
+      w-full 
+      max-w-xl 
+      mx-auto 
+      flex 
+      items-center 
+      gap-3 
+      p-3 
+      rounded-2xl 
+      shadow-xl 
+      bg-purple-600/90
+    "
+    >
+      <audio ref={audioRef} src={src} preload="metadata" />
 
-      {/* Progress Bar */}
-      <div className="mb-4">
+      {/* Botão */}
+      <Button
+        onClick={togglePlay}
+        size="icon"
+        className="
+          bg-white 
+          text-purple-600 
+          rounded-full 
+          hover:scale-110 
+          transition
+          shrink-0
+        "
+      >
+        {isPlaying ? (
+          <Pause size={16} />
+        ) : (
+          <Play size={16} className="ml-0.5" />
+        )}
+      </Button>
+
+      {/* Área de progresso */}
+      <div className="flex-1 min-w-0">
         <Input
           type="range"
           min="0"
           max={duration || 0}
+          step="0.01"
           value={currentTime}
           onChange={handleSeek}
-          className="w-full h-2 bg-white/30 rounded-lg appearance-none cursor-pointer accent-white"
+          className="
+            w-full 
+            h-2 
+            cursor-pointer 
+            accent-white
+          "
         />
-        <div className="flex justify-between text-white/80 text-xs mt-2">
+
+        <div className="flex justify-between text-white/90 text-xs mt-1">
           <span>{formatTime(currentTime)}</span>
           <span>{formatTime(duration)}</span>
         </div>
       </div>
-
-      {/* Play/Pause Button */}
     </div>
   );
 }
