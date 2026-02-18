@@ -17,7 +17,7 @@ export async function newPoint(_: unknown, formData: FormData) {
   const fd = new FormData();
   fd.append("file", file);
 
-  const res = await fetch("http://localhost:3000/api/upload", {
+  const res = await fetch(`${process.env.PROJECT_URL}/api/upload`, {
     method: "POST",
     body: fd,
   });
