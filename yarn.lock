@@ -3355,14 +3355,6 @@ ansis@^4.0.0:
   resolved "https://registry.yarnpkg.com/ansis/-/ansis-4.2.0.tgz#2e6e61c46b11726ac67f78785385618b9e658780"
   integrity sha512-HqZ5rWlFjGiV0tDm3UxxgNRqsOTniqoKZu0pIAfh7TZQMGuZK+hH0drySty0si0QXj1ieop4+SkSfPZBPPkHig==
 
-appwrite@^22.0.0:
-  version "22.0.0"
-  resolved "https://registry.yarnpkg.com/appwrite/-/appwrite-22.0.0.tgz#2c84b159f4ca87cfa702e22d957aa380f5b5164b"
-  integrity sha512-iFlfshYttuQheIyar6m789+Z/gvfKWQxWQCDhHzH9cEkFkn+laJZV8nMvGRH+1rTYNfAcFuycWKBGZiEDFxXug==
-  dependencies:
-    bignumber.js "9.0.0"
-    json-bigint "1.0.0"
-
 argparse@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/argparse/-/argparse-2.0.1.tgz#246f50f3ca78a3240f6c997e8a9bd1eac49e4b38"
@@ -3524,11 +3516,6 @@ bcrypt-ts@^8.0.1:
   version "8.0.1"
   resolved "https://registry.yarnpkg.com/bcrypt-ts/-/bcrypt-ts-8.0.1.tgz#ff221c0332a3cfa9632b132ae484044642b133b4"
   integrity sha512-ILrO7U7YieyG+71KVIVVuPCmjN8N9DY3gYs4OiEoJvW8A5HOe4eerRhLD0Rgo2CAyANRKssFGXmLF74zJz094g==
-
-bignumber.js@9.0.0:
-  version "9.0.0"
-  resolved "https://registry.yarnpkg.com/bignumber.js/-/bignumber.js-9.0.0.tgz#805880f84a329b5eac6e7cb6f8274b6d82bdf075"
-  integrity sha512-t/OYhhJ2SD+YGBQcjY8GzzDHEk9f3nerxjtfa6tlMXfe7frs/WozhvCNoGvpM0P3bNf3Gq5ZRMlGr5f3r4/N8A==
 
 bignumber.js@^9.0.0:
   version "9.3.1"
@@ -5862,6 +5849,11 @@ next-auth@^5.0.0-beta.30:
   dependencies:
     "@auth/core" "0.41.0"
 
+next-themes@^0.4.6:
+  version "0.4.6"
+  resolved "https://registry.yarnpkg.com/next-themes/-/next-themes-0.4.6.tgz#8d7e92d03b8fea6582892a50a928c9b23502e8b6"
+  integrity sha512-pZvgD5L0IEvX5/9GWyHMf3m8BKiVQwsCMHfoFosXtXBMnaS0ZnIJ9ST4b4NqLVKDEm8QBxoNNGNaBv2JNF6XNA==
+
 next@16.1.6:
   version "16.1.6"
   resolved "https://registry.yarnpkg.com/next/-/next-16.1.6.tgz#24a861371cbe211be7760d9a89ddf2415e3824de"
@@ -5884,10 +5876,23 @@ next@16.1.6:
     "@next/swc-win32-x64-msvc" "16.1.6"
     sharp "^0.34.4"
 
+node-appwrite@^22.1.0:
+  version "22.1.0"
+  resolved "https://registry.yarnpkg.com/node-appwrite/-/node-appwrite-22.1.0.tgz#7872692d30caf66ae5fdf14e3760d69b823bc58b"
+  integrity sha512-OLwOhlLf/aHI+ahhFPltQG53TOzGxcdugqPXIfx6+tEgB1utKNV7gLAxm6qFjZ5ozhXJusCwRRlv76Rl8gmpYg==
+  dependencies:
+    json-bigint "1.0.0"
+    node-fetch-native-with-agent "1.7.2"
+
 node-domexception@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/node-domexception/-/node-domexception-1.0.0.tgz#6888db46a1f71c0b76b3f7555016b63fe64766e5"
   integrity sha512-/jKZoMpw0F8GRwl4/eLROPA3cfcXtLApP0QzLmUT/HuPCZWyB7IY9ZrMeKw2O/nFIqPQB3PVM9aYm0F312AXDQ==
+
+node-fetch-native-with-agent@1.7.2:
+  version "1.7.2"
+  resolved "https://registry.yarnpkg.com/node-fetch-native-with-agent/-/node-fetch-native-with-agent-1.7.2.tgz#13b74160f2c1a856c656534bfe7984da5eb5172f"
+  integrity sha512-5MaOOCuJEvcckoz7/tjdx1M6OusOY6Xc5f459IaruGStWnKzlI1qpNgaAwmn4LmFYcsSlj+jBMk84wmmRxfk5g==
 
 node-fetch-native@^1.6.6:
   version "1.6.7"
@@ -6871,6 +6876,11 @@ sisteransi@^1.0.5:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/sisteransi/-/sisteransi-1.0.5.tgz#134d681297756437cc05ca01370d3a7a571075ed"
   integrity sha512-bLGGlR1QxBcynn2d5YmDX4MGjlZvy2MRBDRNHLJ8VI6l6+9FUiyTFNJ0IveOSP0bcXgVDPRcfGqA0pjaqUpfVg==
+
+sonner@^2.0.7:
+  version "2.0.7"
+  resolved "https://registry.yarnpkg.com/sonner/-/sonner-2.0.7.tgz#810c1487a67ec3370126e0f400dfb9edddc3e4f6"
+  integrity sha512-W6ZN4p58k8aDKA4XPcx2hpIQXBRAgyiWVkYhT7CvK6D3iAu7xjvVyhQHg2/iaKJZ1XVJ4r7XuwGL+WGEK37i9w==
 
 source-map-js@^1.0.2, source-map-js@^1.2.1:
   version "1.2.1"

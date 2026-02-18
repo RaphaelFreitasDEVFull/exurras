@@ -3,11 +3,26 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { useActionState } from "react";
+import { useActionState, useEffect } from "react";
 import { loginUser } from "./_action/login";
+import { toast } from "sonner";
 
 const Login = () => {
   const [state, formAction, isPending] = useActionState(loginUser, null);
+
+  useEffect(() => {
+    if (state?.error) {
+      toast.error(state.error, {
+        position: "top-center",
+        style: {
+          background: "rgba(24,24,27,0.7)",
+          backdropFilter: "blur(12px)",
+          color: "#fff",
+          border: "1px solid rgba(255,255,255,0.2)",
+        },
+      });
+    }
+  }, [state?.error]);
 
   return (
     <div className="flex w-full items-center justify-center h-screen">

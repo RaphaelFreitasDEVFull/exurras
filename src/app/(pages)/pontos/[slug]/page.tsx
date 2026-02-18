@@ -56,6 +56,23 @@ const PontoPage = () => {
     null,
   );
 
+  useEffect(() => {
+    if (!state2) return;
+
+    setPoint((prev) => {
+      if (!prev) return prev;
+
+      return {
+        ...prev,
+        sections: prev.sections.map((section) =>
+          section.id === state2.id
+            ? { ...section, toque: state2.toque }
+            : section,
+        ),
+      };
+    });
+  }, [state2]); // ✅ SOMENTE state2
+
   const path = pathname.split("/")[2];
   useEffect(() => {
     async function findPoint() {
@@ -107,7 +124,7 @@ const PontoPage = () => {
                             "https://drive.google.com/file/d/19Jq2PMVCIktS8RSBNSkBUWS7sfCLIoaC/view?usp=drive_link"
                           }
                         />
-                        Seu navegador não suporta áudi
+                        Seu navegador não suporta áudio
                       </audio>
                     )}
                   </div>
@@ -187,7 +204,10 @@ const PontoPage = () => {
                   </div>
                 </div>
                 <div className="p-12 w-150 flex flex-col gap-4">
-                  <YouTubePlayer url={point?.youtubeUrl || ""} />
+                  <YouTubePlayer
+                    url={point?.youtubeUrl || ""}
+                    slug={point?.slug}
+                  />
                   <div className="border border-gray-400/20 rounded-4xl p-4 flex flex-col gap-5">
                     <h3>Informações</h3>
                     <div>

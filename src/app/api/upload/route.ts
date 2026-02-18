@@ -1,5 +1,5 @@
-import { PutObjectCommand } from "@aws-sdk/client-s3";
-import { s3 } from "@/lib/backblaze";
+import { storage } from "@/lib/appwrite";
+import { ID } from "node-appwrite";
 
 export async function POST(req: Request) {
   try {
@@ -12,25 +12,21 @@ export async function POST(req: Request) {
 
     const buffer = Buffer.from(await file.arrayBuffer());
 
-    const fileName = `audios/${Date.now()}-${file.name}`;
-
-    await s3.send(
-      new PutObjectCommand({
-        Bucket: process.env.B2_BUCKET!,
-        Key: fileName,
-        Body: buffer,
-        ContentType: file.type,
-      }),
+    const uploaded = await storage.createFile(
+      process.env.APPWRITE_BUCKET_ID!, // bucketId
+      ID.unique(),
+      new File([buffer], file.name, { type: file.type }),
     );
 
-    const url = `https://f000.backblazeb2.com/file/${process.env.B2_BUCKET}/${fileName}`;
+    // URL de visualização/download
+    const url = `${process.env.APPWRITE_ENDPOINT}/storage/buckets/${process.env.APPWRITE_BUCKET_ID}/files/${uploaded.$id}/view?project=${process.env.APPWRITE_PROJECT_ID}`;
 
     return Response.json({ url });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("UPLOAD ERROR:", error);
 
     return Response.json(
-      { error: error.message || "Erro no upload" },
+      { error: error instanceof Error ? error.message : "Erro no upload" },
       { status: 500 },
     );
   }

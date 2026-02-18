@@ -3,12 +3,14 @@
 import { prisma } from "@/lib/prisma";
 
 export async function includeToqueInSection(_: unknown, formData: FormData) {
-  const id = formData.get("id") as string;
+  const sectionId = formData.get("id") as string;
+  const toqueId = formData.get("toque") as string;
 
-  await prisma.section.update({
-    where: { id },
-    data: {
-      toqueId: formData.get("toque") as string,
-    },
+  const updated = await prisma.section.update({
+    where: { id: sectionId },
+    data: { toqueId },
+    include: { toque: true },
   });
+
+  return updated; // <-- importante
 }
